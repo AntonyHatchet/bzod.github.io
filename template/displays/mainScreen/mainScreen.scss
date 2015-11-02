@@ -1,0 +1,96 @@
+#mainScreen{
+	width: 100%;
+	height: 100%;
+
+	.imgContainer{
+		position: relative;
+		min-width: 1024px;
+		min-height: 768px;
+		width: 100%;
+		height: 100%;
+
+		img{
+			position: absolute;
+			min-width: 1024px;
+			min-height: 768px;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			opacity: 0;
+
+			&:nth-child(1){
+				opacity: 1;
+			}
+			&:nth-child(2){
+				transition: opacity 1.88s ease;
+			}
+			&:nth-child(3){
+				transition: opacity 0.92s ease;
+			}
+			&:nth-child(4){
+				transition: opacity 1.16s ease;
+			}
+			&:nth-child(5){
+				transition: opacity 1.93s ease;
+			}
+			&:nth-child(6){
+				transition: opacity 1.16s ease;
+			}
+			&:nth-child(7){
+				transition: opacity 1.93s ease;
+			}
+			&:nth-child(8){
+				transition: opacity 3s ease;
+			}
+			&:nth-child(9){
+				transition: opacity 1.09s ease;
+			}
+			&:nth-child(10){
+				transition: opacity 2s ease;
+			}
+		}
+	}
+
+	nav {
+		position: absolute;
+		top: 60%;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		text-align: center;
+		transition: opacity 0.92s ease;
+
+		a{
+			max-width: 150px;
+			text-decoration: none;
+			color: #ffffff;
+			padding: 20px 110px;
+		    margin-left: -60px;
+			background-color: #c41230;
+
+			&:before{
+			    content: "";
+			    position: absolute;
+			    margin: 0 auto;
+			    width: 256px;
+			    display: none;
+			    border: 2px solid #000;
+			    left: -60px;
+			    top: -30px;
+			    right: 0;
+
+			}
+
+			&:hover::before{
+				display:block;
+			}
+		}
+	}
+}
+
+/*	@media screen and (min-width: 480px) {
+	    body {
+	        background-color: lightgreen;
+	    }
+	}*/

@@ -1,0 +1,88 @@
+{
+	"questions":[
+		{
+			"id":"olimpia",
+			"dataId":0,
+			"name":"Олимпия",
+			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
+			"godImg":"img/tests/zeus.png",
+			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
+			"answers":[
+				{"wrong":"img/tests/wrong1.png"},
+				{"right":"img/tests/right.png"},
+				{"wrong":"img/tests/wrong2.png"}
+			],
+			"status": false,
+			"reward":"img/tests/reward1.jpg",
+			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+			"rewardHeader":"Neque porro quisquam"
+		},{
+			"id":"delphi",
+			"dataId":1,
+			"name":"Дельфы",
+			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
+			"godImg":"img/tests/zeus.png",
+			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
+			"answers":[
+				{"wrong":"img/tests/wrong1.png"},
+				{"wrong":"img/tests/wrong2.png"},
+				{"right":"img/tests/right.png"}
+			],
+			"status": false,
+			"reward":"img/tests/reward1.jpg",
+			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+			"rewardHeader":"Neque porro quisquam"
+		},{
+			"id":"athens",
+			"dataId":2,
+			"name":"Афины",
+			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
+			"godImg":"img/tests/zeus.png",
+			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
+			"answers":[
+				{"wrong":"img/tests/wrong1.png"},
+				{"wrong":"img/tests/wrong2.png"},
+				{"right":"img/tests/right.png"}
+			],
+			"status": false,
+			"reward":"img/tests/reward1.jpg",
+			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+			"rewardHeader":"Neque porro quisquam"
+		},{
+			"id":"crete",
+			"dataId":3,
+			"name":"Крит",
+			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
+			"godImg":"img/tests/zeus.png",
+			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
+			"answers":[
+				{"wrong":"img/tests/wrong1.png"},
+				{"wrong":"img/tests/wrong2.png"},
+				{"right":"img/tests/right.png"}
+			],
+			"status": false,
+			"reward":"img/tests/reward1.jpg",
+			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+			"rewardHeader":"Neque porro quisquam"
+		},{
+			"id":"korfu",
+			"dataId":4,
+			"name":"Корфу",
+			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
+			"godImg":"img/tests/zeus.png",
+			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
+			"answers":[
+				{"wrong":"img/tests/wrong1.png"},
+				{"wrong":"img/tests/wrong2.png"},
+				{"right":"img/tests/right.png"}
+			],
+			"status": false,
+			"reward":"img/tests/reward1.jpg",
+			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+			"rewardHeader":"Neque porro quisquam"
+		}
+	],
+	"statusGeneral":false,
+	"rewardGeneral": "full img url",
+	"testName":"Вдохновение античностью"
+}

@@ -1,0 +1,18 @@
+<div id="video">
+	<script id="videoTemplate" type="text/x-handlebars-template">
+		<h2>{{title}}</h2>
+		<div>
+			<video autoplay="autoplay" loop="loop" controls="controls">
+				{{#each source}}
+					<source src={{this}}>
+				{{/each}}
+			</video>
+		</div>
+		<div>
+			{{#each text}}
+				<p>{{this}}</p>
+			{{/each}}
+			<a href={{hrefTo}}>{{hrefText}}</a>
+		</div>
+	</script>
+</div>

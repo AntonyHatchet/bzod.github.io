@@ -1,0 +1,163 @@
+#reader{
+	width: 100%;
+	height: 100%;
+	font-weight: 400;
+	font-size: 1.2vw;
+	line-height: 1.1;
+	background: white none repeat scroll 0 0;
+
+	#dataContainer{
+		height: calc(100% - 60px); 
+		overflow: hidden; 
+		padding: 50px 20px 0; 
+		button.goFront{
+		    position: absolute;
+		    z-index: 10000;
+		    margin: 0;
+		    padding: 0;
+		    border: none;
+		    width: 104px;
+		    height: 88px;
+		    transition: all 500ms ease;
+		    background-color: rgba(0,0,0,0);
+		    background-repeat: no-repeat;
+		    background-image: url(../../../img/arrow.png);
+		    bottom: 5em;
+		    left: 46%;
+			&:hover{
+				background-image: url(../../../img/arrowBack.png);
+				height: 135px;
+			}
+	    }
+		.bookSpreads{
+			height: 100%;
+			display: none;
+
+			&.active{
+				display: block;
+			}
+
+			.menuBlock{
+				width: 80%;
+				margin-left: 10%;
+				
+				h3{
+					margin: 40px 0 10px;
+					font-weight: 400;
+				}
+				.text:hover{
+					cursor: pointer;
+					color: #c41230;
+				}
+			}
+
+			.rightPage{
+				width: 50%;
+				height: 100%;
+				float: right;
+				padding:20px;
+			    position: relative;
+			}
+			.leftPage{
+				float: left;
+				width: 50%;
+				height: 100%;
+				padding:20px;
+			    position: relative;
+
+			    .imageWrapper{
+				    width: 100%;
+				    margin-left: -7%;
+				}
+			}
+			.title{
+				text-transform: uppercase;
+				text-align: center;
+				font-weight: 500;
+				font-size: 1.5vw;
+			}
+			.textWrapper{
+				padding:10px 50px 20px;
+			}
+			.pageNumber{
+				text-align: center;
+			    position: absolute;
+		    	width: 80%;
+		    	bottom: 50px;
+		   		margin-left: 50px;
+
+		   		span{
+		   			width: 10%;
+		   			background-color: #ffffff;
+		   			padding: 0 50px;
+		   		}
+			}
+			hr{
+				position: absolute;
+			    width: 80%;
+			    bottom: 50px;
+			    margin-left: 50px;
+			}
+
+			.imageWrapper{
+				height: 136%; 
+				margin-top: -15%;
+
+				img{
+					width: 100%;
+					height: 100%;
+				}
+
+				.imageTitle{
+				    position: absolute;
+				    bottom: 0;
+				    left: 60px;
+				    font-weight: 600;
+				}
+			}
+
+		}
+	}
+
+	#paginator{
+		height: 60px;
+		border-top: solid 1px black; 
+		padding: 0 50px;
+		ul{
+			list-style: none;
+			
+			.active{
+				img{
+					border-bottom: 2px solid #c41230;
+					height: 25px;
+				}
+			}
+
+			li{
+				float: left;
+				margin:0 10px;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.sliderControl{
+		font-size: 1.6vw;
+		position: absolute;
+		top: calc(45% - 25px);
+		cursor: pointer;
+		z-index: 1000;
+		
+		&:hover{
+			color: #bf0000;
+		}
+
+		&.left{
+			left: 25px;
+		}
+		&.right{
+			right: 25px;
+		}
+
+	}
+}

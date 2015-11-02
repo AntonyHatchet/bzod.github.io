@@ -1,0 +1,32 @@
+#video{
+	height: 100%;
+	width: 100%;
+	padding-top: 5%;
+	background-color: #ffffff;
+	h2{
+		margin-top: 0;
+		text-align: center;
+	}
+
+	div{
+		width: 50%;
+		float: left;
+
+		video{
+			width: 100%;
+		}
+
+		p{
+			padding: 0 10%;
+		}
+
+		a{
+		    padding: 5%;
+		    float: right;
+		    background-color: #c41230;
+		    color: #fff;
+		    text-decoration: none;
+		    margin: 25%;
+		}
+	}
+}

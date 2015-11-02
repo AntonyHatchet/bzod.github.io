@@ -1,0 +1,65 @@
+<div id="tests">
+	<script id="testTemplate" type="text/x-handlebars-template">
+		<p class="goBackButton"></p>
+		{{#each questions}}
+			<div id={{id}} data-id={{dataId}}>
+				<section class="left">
+					<h1>{{name}}</h1>
+					<img class="god" src={{godImg}}>
+					<p class="question">{{text}}</p>
+					<!--<button class="readMore"></button>-->
+					<p class="aditionalText">{{aditionalText}}</p>
+				</section>
+				<section class='right'>
+					{{#if status}}
+						<div class="reward active">
+					{{else}}
+						<div class="reward">
+					{{/if}}
+							<img src={{reward}}>
+							<div class="rewardText">
+								<p class="rewardHeader">{{rewardHeader}}</p>
+								<p>{{rewardText}}</p>
+							</div>
+						</div>
+					{{#if status}}
+						<div class="answers">
+					{{else}}
+						<div class="answers active">
+					{{/if}}
+						{{#each answers}}
+							{{#if wrong}}
+								<div class="imgContainer">
+									<img src={{wrong}} class="wrong" data-toogle="wrongHover">
+									<div class="wrongHover"></div>
+								</div>
+							{{else}}
+								<div class="imgContainer">
+									<img src={{right}} class="right" data-toogle="rightHover">
+									<div class="rightHover"></div>
+								</div>
+							{{/if}}
+						{{/each}}
+						</div>
+				</section>
+			</div>
+		{{/each}}
+		<div id="finishTest" class="finishTest">
+			<h1>Поздравляем:)</h1>
+			<p>Вы прошли этап игры</p>
+			<p class="testName">{{testName}}</p>
+			<p>Все артефакты собранны и вы можетье увидеть готовое полотно.</p>
+			<ul>
+				{{#each questions}}
+					<li>
+						<p class="rewardImagTitle">{{name}}</p>
+						<div class="rewardImg">
+							<img src={{reward}}>
+						</div>
+					</li>
+				{{/each}}
+			</ul>
+			<a href="#gallery">Собрать картину</a>
+		</div>
+	</script>
+</div>
