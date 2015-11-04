@@ -3,12 +3,13 @@ define({
 		this.content = this.html;
 		var menu = this.renderMenu();
 		var test = this.renderTest('antiquityInspiration');
-		this.content.append(test); 
-		
+		this.content.append(test);
+
 		$('body').html('').append(this.content, menu);
 
 		this.animatePoints();
 		this.animateClouds();
+		//this.animateShip();
 		this.subscribe();
 	},
 
@@ -62,8 +63,6 @@ define({
 			}
 		}
 
-
-
 		setInterval(function(){
 				elementsArray.forEach(function(item, i, arr) {
 					moveElementTowards(item, getRandomArrayElement(directionArray))
@@ -75,24 +74,30 @@ define({
 
 	animatePoints: function(){
 
-		function csaHead(){
+		function zoomIn(){
+				$(".pointFinish").addClass("animatePoint").css("transform", "scale(1)");
+		};
 
-				$('.startPoint').animate({'opacity':'1'},330,function(){
-					$('.startPoint').css({'background':'url(/img/antiquityInspirationMap/point1.png)'});
-				});
-				$('.startPoint').animate({'opacity':'1'},330,function(){
-					$('.startPoint').css({'background':'url(/img/antiquityInspirationMap/point2.png)'});
-				});
-				$('.startPoint').animate({'opacity':'1'},330,function(){
-					$('.startPoint').css({'background':'url(/img/antiquityInspirationMap/point3.png)'});
-				});
+		function zoomOut(){
+			  $(".pointFinish").addClass("animatePoint").css("transform", "scale(0.5)");
+		};
 
+		setInterval(function(){ zoomIn() }, 1000);
+		setInterval(function(){ zoomOut() }, 2000);
 
+	},
 
-		}
-		var intervalCsaHead = setInterval(csaHead,1000);
+	animateShip: function (){
 
+		function moveRight(){
+			  $('.ship').addClass("move-right");
+		};
+		function moveLeft(){
+			  $('.ship').addClass("move-left");
+		};
 
+		setInterval(function(){ moveRight() }, 1000);
+		setInterval(function(){ moveLeft() }, 10000);
 
 	}
 

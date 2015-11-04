@@ -1,7 +1,35 @@
+.ship{
+		position: absolute;
+		//transition: all 10s ease-in-out;
+		width: 150px;
+		height: 150px;
+		left: 20%;
+		top: 75%;
+		animation-name: spin;
+		animation-duration: 1600ms;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+}
+
+@keyframes spin {
+		0%   {transform:rotate(-12deg);}
+		9%  {transform:rotate(-9.9deg);}
+		18%  {transform:rotate(7.8deg);}
+		27%  {transform:rotate(5.7deg);}
+		36% {transform:rotate(3.6deg);}
+		45% {transform:rotate(1.5deg);}
+		54% {transform:rotate(-0.6deg);}
+		63% {transform:rotate(-2.7deg);}
+		72% {transform:rotate(-4.8deg);}
+		81% {transform:rotate(-6.9deg);}
+		90% {transform:rotate(-9.5deg);}
+		100% {transform:rotate(-11deg);}
+}
+
 #antiquityInspirationMap{
 	padding-bottom: 105px;
 	overflow: hidden;
-  	width: 100%;
+  width: 100%;
 	height: 100%;
 	z-index: 1;
 
@@ -12,6 +40,8 @@
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
+
+
 
 		.map {
 			position: relative;
@@ -32,15 +62,19 @@
 			z-index: 2;
 		}
 
-		.startPoint{
-			background-image: url(/img/antiquityInspirationMap/point1.png);
+		.animatePoint{
+			transition: all 1s ease-in-out;
 		}
 
-		.finishPoint{
-			background-image: url(/img/antiquityInspirationMap/finishPoint.png);
+		.pointStart{
+			transform: scale(0.5);
+    	z-index: 3;
 		}
 
-
+		.pointFinish{
+			z-index: 2;
+			transform: scale(0.5);
+		}
 
 		.pointAthens{
 			top: 10%;
@@ -65,7 +99,7 @@
 
 		.cloud {
 			position: absolute;
-	    	transition: all 10s ease-in-out;
+	    transition: all 3s ease-in-out;
 			z-index: 1;
 		}
 
