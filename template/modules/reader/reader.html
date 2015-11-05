@@ -1,8 +1,10 @@
 <div id="reader">
-	<script id="pageTemplate" type="text/x-handlebars-template">
+	
+</div>
+<script id="pageTemplate" type="text/x-handlebars-template">
 		<span class="sliderControl left" data-controll="previousPage"><i class="fa fa-chevron-left"></i></span>
 		<div id="dataContainer">
-			<button id="goFront" class="goFront"></button>
+			<a href="#goFront" class="goFront"></a>
 			{{#each this}}
 				{{#ifCond @index "==" 0}}
 					<div class="bookSpreads active" data-number={{math @index "+" 1}}>
@@ -57,4 +59,3 @@
 		</div>
 		<span class="sliderControl right" data-controll="nextPage"><i class="fa fa-chevron-right"></i></span>
 	</script>
-</div>

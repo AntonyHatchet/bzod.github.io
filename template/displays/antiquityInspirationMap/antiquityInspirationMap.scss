@@ -1,30 +1,37 @@
+.shipContainer{
+	transition: all 120s ease-in-out;
+	position: absolute;
+	left: 76%;
+	top: 79%;
+}
+
+.ship-move-left{
+	transform: translate(-1600px,0);
+}
+
+.ship-move-right{
+	transform: translate(0px,0);
+}
+
 .ship{
-		position: absolute;
-		//transition: all 10s ease-in-out;
-		width: 150px;
-		height: 150px;
-		left: 20%;
-		top: 75%;
-		animation-name: spin;
-		animation-duration: 1600ms;
+		animation-name: pitching;
+		animation-duration: 5000ms;
 		animation-iteration-count: infinite;
 		animation-timing-function: linear;
 }
 
-@keyframes spin {
-		0%   {transform:rotate(-12deg);}
-		9%  {transform:rotate(-9.9deg);}
-		18%  {transform:rotate(7.8deg);}
-		27%  {transform:rotate(5.7deg);}
-		36% {transform:rotate(3.6deg);}
-		45% {transform:rotate(1.5deg);}
-		54% {transform:rotate(-0.6deg);}
-		63% {transform:rotate(-2.7deg);}
-		72% {transform:rotate(-4.8deg);}
-		81% {transform:rotate(-6.9deg);}
-		90% {transform:rotate(-9.5deg);}
-		100% {transform:rotate(-11deg);}
+@keyframes pitching {
+		0%   {transform:rotate(-2deg);}
+		14%  {transform:rotate(-4deg);}
+		29% {transform:rotate(-2deg);}
+		43% {transform:rotate(0deg);}
+		57% {transform:rotate(2deg);}
+		71% {transform:rotate(4deg);}
+		85% {transform:rotate(2deg);}
+		100% {transform:rotate(0deg);}
 }
+
+
 
 #antiquityInspirationMap{
 	padding-bottom: 105px;
@@ -62,6 +69,15 @@
 			z-index: 2;
 		}
 
+		.done{
+			position: absolute;
+			background-position: center !important;
+			background-repeat: no-repeat !important;
+			width: 57px;
+			height: 57px;
+			z-index: 2;
+		}
+
 		.animatePoint{
 			transition: all 1s ease-in-out;
 		}
@@ -76,22 +92,22 @@
 			transform: scale(0.5);
 		}
 
-		.pointAthens{
+		.athens{
 			top: 10%;
 			left: 46%;
 		}
 
-		.pointDelphi{
+		.delphi{
 			top: 23%;
 			left: 33%;
 		}
 
-		.pointCorfu{
+		.korfu{
 			top: 58%;
 			left: 13.5%;
 		}
 
-		.pointCrete{
+		.crete{
 			top: 57%;
 			left: 86%;
 		}
@@ -99,21 +115,21 @@
 
 		.cloud {
 			position: absolute;
-	    transition: all 3s ease-in-out;
+	    transition: all 20s ease-in-out;
 			z-index: 1;
 		}
 
 		.move-up{
-			transform: translate(0,-1024px);
+			transform: translate(0,-1920px);
 		}
 		.move-down{
-			transform: translate(0,1024px);
+			transform: translate(0,1920px);
 		}
 		.move-right{
-			transform: translate(1024px,0);
+			transform: translate(1920px,0);
 		}
 		.move-left{
-			transform: translate(-1024px,0);
+			transform: translate(-1920px,0);
 		}
 
 

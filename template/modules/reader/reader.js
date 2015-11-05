@@ -5,24 +5,29 @@ define({
 		return this.readerHtml;
 	},
 
-	loadBooks: function(bookName){
+	loadBooks: function(books){
 		var self = this;
-		require([
-			'text!../../../content/books/' + bookName + '.json'
-		], function(json) {
-			console.debug('Книга "' + bookName + '" загружена');
-			self.book = JSON.parse(json);
-			self.printPages(self);
-		});
+		self.books = {};
+		books.forEach(function(bookName,i){
+			require([
+				'text!../../../content/books/' + bookName + '.json'
+			], function(json) {
+				console.log('Книга "' + bookName + '" загружена');
+				var book = JSON.parse(json);
+				self.books[bookName]={};
+				self.books[bookName].length = book.pages.length;
+				self.books[bookName].content = self.renderHandlebarsTemplate("#pageTemplate",book.pages);
+			});
+		})
 	},
 
-	printPages: function(self){
-		var pages = self.book.pages;
-		var page = self.renderHandlebarsTemplate("#pageTemplate",pages);
+	printBookPages: function(book){
+		var self = this;
+		var bookPages = self.books[book]
+		console.log("printPages",self.books)
 
-		self.readerHtml.html(page);
-		self.subscribeReader(pages.length);
-		console.debug('Страница добавлена');
+		self.readerHtml.html(bookPages.content);
+		self.subscribeReader(bookPages.length);
 	},
 
 	subscribeReader: function(pagesLength){

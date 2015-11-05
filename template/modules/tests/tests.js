@@ -12,7 +12,7 @@ define({
 			'text!../../../content/tests/' + testName + '.json'
 		], function(json) {
 
-			console.debug('Тест "' + testName + '" загружен');
+			console.log('Тест "' + testName + '" загружен');
 			self[testName] = JSON.parse(json);
 
 			if(myStorage.getItem(testName)){
@@ -36,7 +36,7 @@ define({
 
 		self.testsHtml.html(page);
 		self.subscribeTest(testName);
-		console.debug('Страница добавлена');
+		console.log('Страница добавлена');
 	},
 
 	subscribeTest: function(testName){
@@ -69,20 +69,20 @@ define({
 			self.content.find('#tests').toggleClass('active');
 		});
 
-		$('body').find('#reloadButton').on('click', function(e) {
-			console.debug('Тесты сброшены');
-
+		self.on('Tests:Cleared',function(testId, testName) {
 			myStorage.clear();
 
 			self.testsHtml.find('.active').toggleClass('active');
 			self.testsHtml.find('.answers').toggleClass('active');
+			
+			console.log('Тесты сброшены');
 		});
 
 		self.on('Quest:Passed', function(testId, testName) {
 			var testData = JSON.parse(myStorage.getItem(testName));
 			var domTestId = testData.questions[testId].id;
 
-			console.debug('Квест "' + (testId + 1) + " из " + testName + '" завершен');
+			console.log('Квест "' + (testId + 1) + " из " + testName + '" завершен');
 			testData.questions[testId].status = true;
 			myStorage.setItem(testName,JSON.stringify(testData));
 			
@@ -118,16 +118,16 @@ define({
 
 			if(quest.status){
 
-				console.debug("Вопрос " + quest.name + " пройден");
+				console.log("Вопрос " + quest.name + " пройден");
 				compleatedQuest++
 			}else{
 
-				console.debug("Вопрос " + quest.name + " не пройден")
+				console.log("Вопрос " + quest.name + " не пройден")
 			}
 		});
 		if(compleatedQuest === (testData.questions.length - 1)){
 			self.trigger('Test:Passed', testData, lastTestId);
-			console.debug("Все вопросы пройдены");
+			console.log("Все вопросы пройдены");
 		}
 
 	}

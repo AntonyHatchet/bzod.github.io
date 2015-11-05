@@ -76,9 +76,9 @@ require([
 	
 			this.on('Display:Load', function(displayName) {
 				self.render();
-				console.debug('Рендер экрана "' + displayName + '" завершен');
+				console.log('Рендер экрана "' + displayName + '" завершен');
 			});
-			console.debug('Инициализация приложения завершена');
+			console.log('Инициализация приложения завершена');
 		},
 	
 		route: function(link, modulesList){
@@ -94,8 +94,8 @@ require([
 				// Модуль или модули загружены. Начинаем загрузку шаблона.
 				this.off('Module:Load').on('Module:Load', function(modules) {
 					this.loadTemplate(this.link);
-					console.debug('Загрузка модуля(ей)"' + modules + '" завершена');
-					console.debug('Загрузка Экрана"' + this.link + '" началась');
+					console.log('Загрузка модуля(ей)"' + modules + '" завершена');
+					console.log('Загрузка Экрана"' + this.link + '" началась');
 				});
 			}
 		},
@@ -106,7 +106,7 @@ require([
 				'../../template/displays/' + displayName + '/' + displayName,
 				'text!../../template/displays/' + displayName + '/' + displayName + '.html',
 			], function(js, html) {
-				console.debug('Экран "' + displayName + '" загружен');
+				console.log('Экран "' + displayName + '" загружен');
 				_.extend(self, js);
 				self.html = $(html);
 				self.loadCss(displayName, 'display');
@@ -123,7 +123,7 @@ require([
 						'../../template/modules/' + module + '/' + module ,
 						'text!../../template/modules/' + module + '/' + module + '.html'
 					], function(js, html) {
-						console.debug('Модуль "' + module + '" загружен');
+						console.log('Модуль "' + module + '" загружен');
 						self[module + 'Html'] = $(html);
 						_.extend(self, js);
 						self.loadCss(module, 'module');
@@ -152,7 +152,6 @@ require([
 			console.log('Создаем шаблон Handlebars', selector, data);
 	
 			var template = Handlebars.compile($(selector).html());
-	
 			return template(data);
 		}
 	});
@@ -163,7 +162,11 @@ require([
 	        "": "defaultRoute",
 	        "gallery":"gallery",
 	        "quest/:name":"activateQuestion",
-	        "antiquityInspirationMap" : "antiquityInspirationMap"
+	        "antiquityInspirationMap":"antiquityInspirationMap",
+	        "book/:name":"reader",
+	        "video/:name":"video",
+	        "goFront":"goFront",
+	        "goBottom":"goBottom"
 	        // matches http://example.com/#anything-here
 	    }
 	});
@@ -171,23 +174,43 @@ require([
 	var router = new AppRouter;
 	
 	router.on('route:defaultRoute', function(actions) {
-		console.debug('Переход к mainScreen');
+		console.log('Переход к mainScreen');
 	    app.route('mainScreen', ['preloader']);
 	})
 	
 	router.on('route:gallery', function(actions) {
-		console.debug('Переход к gallery');
+		console.log('Переход к gallery');
 	    app.route('gallery', ['accordion', 'redline', 'mainmenu','reader', 'transformer3D','video']);
 	})
 	
 	router.on('route:activateQuestion', function(quest) {
-		console.debug('Переход к тесту',quest);
+		console.log('Переход к тесту',quest);
 	    app.activateQuestion(quest);
 	})
 	
 	router.on('route:antiquityInspirationMap', function(actions) {
-		console.debug('Переход к antiquityInspirationMap');
+	
+	    console.log('Переход к antiquityInspirationMap');
+	
 	    app.route('antiquityInspirationMap', ['redline', 'mainmenu','reader', 'transformer3D', 'tests']);
+	})
+	
+	router.on('route:reader', function(actions) {
+	    console.log('Переход в книгу', actions);
+	
+	    router.navigate("gallery");
+	    app.printBookPages(actions);
+	    app.goTop();
+	})
+	
+	router.on('route:goFront', function(actions) {
+	    app.goFront();
+	    router.navigate("gallery");
+	})
+	
+	router.on('route:video', function(actions) {
+	    app.goBottom();
+	    router.navigate("gallery");
 	})
 	
 	// Start Backbone history a necessary step for bookmarkable URL's

@@ -83,6 +83,7 @@
 		}
 	],
 	"statusGeneral":false,
-	"rewardGeneral": "full img url",
+	"rewardGeneral": "img/content/damaEnd.jpg",
+	"name":"antiquityInspiration",
 	"testName":"Вдохновение античностью"
 }

@@ -4,17 +4,31 @@ define({
 		var menu = this.renderMenu();
 		var test = this.renderTest('antiquityInspiration');
 		this.content.append(test);
-
 		$('body').html('').append(this.content, menu);
 
+		this.buildDonePoints();
 		this.animatePoints();
 		this.animateClouds();
-		//this.animateShip();
+		this.animateShip();
 		this.subscribe();
 	},
 
 	subscribe: function() {
 		var self = this;
+	},
+
+	buildDonePoints: function(){
+		var data = JSON.parse(localStorage.antiquityInspiration);
+		data.questions.forEach(function(item, i){
+			if (item.status){
+				console.log("id=", item.id, " status=", item.status);
+				$("." +item.id + "").addClass("done");
+				console.log("добавляем done к", "." +item.id + "");
+				$("img." +item.id + "").remove();
+				$("<img class=" + item.id + " src="+"/img/antiquityInspirationMap/pointDone.png"+">").appendTo(".done."+item.id+"");
+				$("img." +item.id + "").addClass("done");
+			}
+		});
 	},
 
 	animateClouds: function(){
@@ -37,25 +51,21 @@ define({
 		 function moveElementTowards (element, direction){
 			switch (direction){
 				case 'left':
-					console.log('left');
 					self.content.find(element).css("top", getRandomInteger(1, 70) + "%");
 					self.content.find(element).css("left", getRandomInteger(100, 140) + "%");
 					self.content.find(element).addClass("move-left");
 					break;
 				case 'right':
-					console.log('right');
 					self.content.find(element).css("top", getRandomInteger(1, 70) + "%");
 					self.content.find(element).css("left", -getRandomInteger(10, 40) + "%");
 					self.content.find(element).addClass("move-right");
 					break;
 				case 'up':
-					console.log('up');
 					self.content.find(element).css("top", getRandomInteger(110, 130) + "%");
 					self.content.find(element).css("left", getRandomInteger(1, 80) + "%");
 					self.content.find(element).addClass("move-up");
 				break;
 				case 'down':
-					console.log('down');
 					self.content.find(element).css("top", -getRandomInteger(40, 60) + "%");
 					self.content.find(element).css("left", getRandomInteger(1, 80) + "%");
 					self.content.find(element).addClass("move-down");
@@ -63,11 +73,15 @@ define({
 			}
 		}
 
+		elementsArray.forEach(function(item, i, arr) {
+			moveElementTowards(item, getRandomArrayElement(directionArray))
+		});
+
 		setInterval(function(){
 				elementsArray.forEach(function(item, i, arr) {
 					moveElementTowards(item, getRandomArrayElement(directionArray))
 				}
-			)}, 10000);
+			)}, 20000);
 
 
 	},
@@ -75,30 +89,38 @@ define({
 	animatePoints: function(){
 
 		function zoomIn(){
-				$(".pointFinish").addClass("animatePoint").css("transform", "scale(1)");
+				$(".animatePoint").css("transform", "scale(1)");
 		};
 
 		function zoomOut(){
-			  $(".pointFinish").addClass("animatePoint").css("transform", "scale(0.5)");
+			  $(".animatePoint").css("transform", "scale(0.5)");
 		};
 
-		setInterval(function(){ zoomIn() }, 1000);
-		setInterval(function(){ zoomOut() }, 2000);
+		var timerId = setTimeout(function tick() {
+			zoomOut();
+			setTimeout(zoomIn,1000);
+			setTimeout(zoomOut, 2000);
+		  timerId = setTimeout(tick, 15000);
+		}, 15000);
 
 	},
 
 	animateShip: function (){
 
 		function moveRight(){
-			  $('.ship').addClass("move-right");
+				$('.shipContainer').removeClass("ship-move-left");
+			  $('.shipContainer').addClass("ship-move-right");
 		};
 		function moveLeft(){
-			  $('.ship').addClass("move-left");
+				$('.shipContainer').removeClass("ship-move-right");
+			  $('.shipContainer').addClass("ship-move-left");
 		};
 
-		setInterval(function(){ moveRight() }, 1000);
-		setInterval(function(){ moveLeft() }, 10000);
 
+		moveLeft();
+ 		setTimeout(moveRight, 120000);
+
+		//setInterval(function(){ moveRight() }, 12000);
 	}
 
 });
