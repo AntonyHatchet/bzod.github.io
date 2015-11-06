@@ -160,11 +160,11 @@ require([
 	var AppRouter = Backbone.Router.extend({
 	    routes: {
 	        "": "defaultRoute",
-	        "gallery":"gallery",
+	        "Уроки Валентина Серова":"gallery",
 	        "quest/:name":"activateQuestion",
-	        "antiquityInspirationMap":"antiquityInspirationMap",
-	        "book/:name":"reader",
-	        "video/:name":"video",
+	        "игра":"antiquityInspirationMap",
+	        "book/:name/:rusName":"reader",
+	        "video/:name/:rusName":"video",
 	        "goFront":"goFront",
 	        "goBottom":"goBottom"
 	        // matches http://example.com/#anything-here
@@ -195,22 +195,25 @@ require([
 	    app.route('antiquityInspirationMap', ['redline', 'mainmenu','reader', 'transformer3D', 'tests']);
 	})
 	
-	router.on('route:reader', function(actions) {
-	    console.log('Переход в книгу', actions);
+	router.on('route:reader', function(name,breadcrumbs) {
+	    console.log('Переход в книгу', name,breadcrumbs);
 	
-	    router.navigate("gallery");
-	    app.printBookPages(actions);
+	    router.navigate("Уроки Валентина Серова");
+	    app.printBookPages(name);
+	    app.breadcrumbsRender(breadcrumbs);
 	    app.goTop();
 	})
 	
 	router.on('route:goFront', function(actions) {
 	    app.goFront();
-	    router.navigate("gallery");
+	    router.navigate("Уроки Валентина Серова");
+	    app.breadcrumbsRender(app.getActiveTab());
 	})
 	
-	router.on('route:video', function(actions) {
+	router.on('route:video', function(name,breadcrumbs) {
 	    app.goBottom();
-	    router.navigate("gallery");
+	    router.navigate("Уроки Валентина Серова");
+	    app.breadcrumbsRender(breadcrumbs);
 	})
 	
 	// Start Backbone history a necessary step for bookmarkable URL's

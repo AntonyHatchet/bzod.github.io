@@ -44,7 +44,62 @@ ul.accordion {
         }
       }
 
-      table{
+      a{
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        border: none;
+        width: 104px;
+        height: 88px;
+        background-color: rgba(0,0,0,0);
+        background-repeat: no-repeat;
+        display: none;
+        z-index: 2;
+
+        &.goTop{ 
+          background-image: url(../../../img/read.png);
+          top: 1em;
+          left: 7em;
+          &:hover{
+            background-image: url(../../../img/readHover.png);
+            height: 135px;
+          }
+        }
+        &.goBottom{ 
+          bottom: 2em;
+          left: 55%;
+          background-image: url(../../../img/arrow.png);
+          &:hover{
+            background-image: url(../../../img/arrowHover.png);
+            height: 135px;
+          }
+        }
+      }
+
+      & img{
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    &.active{
+      width: calc(100% - 197px);
+      background-image: url(../../../img/open-eye.png);
+      background-position: 25px 5%;
+
+      #preloader{
+        margin-left: 98px;
+        width: calc(100% - 98px);
+      }
+
+      & div.image {
+        border-left: 1px solid #333333;
+
+        a{
+          display: block;
+        }
+
+              table{
         width: calc(100% - 94px);
         height: 100%;
         position:absolute;
@@ -122,61 +177,6 @@ ul.accordion {
           }
         }
       }
-
-      a{
-        position: absolute;
-        margin: 0;
-        padding: 0;
-        border: none;
-        width: 104px;
-        height: 88px;
-        background-color: rgba(0,0,0,0);
-        background-repeat: no-repeat;
-        display: none;
-        z-index: 2;
-
-        &.goTop{ 
-          background-image: url(../../../img/read.png);
-          top: 1em;
-          left: 7em;
-          &:hover{
-            background-image: url(../../../img/readHover.png);
-            height: 135px;
-          }
-        }
-        &.goBottom{ 
-          bottom: 2em;
-          left: 55%;
-          background-image: url(../../../img/arrow.png);
-          &:hover{
-            background-image: url(../../../img/arrowHover.png);
-            height: 135px;
-          }
-        }
-      }
-
-      & img{
-        height: 100%;
-        width: 100%;
-      }
-    }
-
-    &.active{
-      width: calc(100% - 197px);
-      background-image: url(../../../img/open-eye.png);
-      background-position: 25px 5%;
-
-      #preloader{
-        margin-left: 98px;
-        width: calc(100% - 98px);
-      }
-
-      & div.image {
-        border-left: 1px solid #333333;
-
-        a{
-          display: block;
-        }
       }
     }
   }

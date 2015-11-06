@@ -9,38 +9,32 @@ define({
 	subscribeRedline: function(self) {
 
 		this.checkProgress();
-    	self.on('Test:Passed', function(testId, lastTestId) {
+    	self.on('Test:Passed', function() {
  			this.checkProgress();
     	});
 	},
 
 	checkProgress: function(){
 		var self = this;
-		var counter = localStorage.length - 1;
+		var tests = localStorage.getItem('tests');
+		var tests = JSON.parse(tests);
+
+		console.log('checkProgress tests',tests);
 		var testCounter = 0;
 		//Вход в цикл
-		for(var i=0; i <= counter; i++){
+		_.keys(tests).forEach(function(test,counter,arr){
+			console.log("forEach checkProgress",tests[test])
+			testCounter++
 
-			if(localStorage.getItem(localStorage.key(i)) != "undefined" && localStorage.getItem(localStorage.key(i)) != "null"){
+			if(tests[test].statusGeneral){
 
-				var test = JSON.parse(localStorage.getItem(localStorage.key(i)));
-
-				testCounter++
-
-				if(test.statusGeneral){
-
-				 	console.log("Success", i,testCounter,(counter + 1) );
-				 	self.animateLine((testCounter * 100)/localStorage.length);
-				}else{
-
-					console.log("False");
-				}
-
+			 	console.log("Success", counter,testCounter,(counter + 1) );
+			 	self.animateLine((testCounter * 100)/arr.length);
 			}else{
 
-				console.log("Not an object!")
+				console.log("False");
 			}
-		}
+		});
 		//Выход из цикла
 	},
 

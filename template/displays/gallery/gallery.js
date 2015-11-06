@@ -19,5 +19,7 @@ define({
 	},
 	subscribe: function() {
 		var self = this;
+		
+
 	}
 });
