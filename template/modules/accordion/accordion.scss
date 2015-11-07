@@ -23,7 +23,7 @@ ul.accordion {
 
     p{
       transform: rotate(-90deg);
-      transform-origin: 13.2em 12em;
+      transform-origin: 11.2em 10em;
       font-weight: 400;
       font-size: 1.5em;
       text-transform: uppercase;
@@ -56,7 +56,7 @@ ul.accordion {
         display: none;
         z-index: 2;
 
-        &.goTop{ 
+        &.goTop{
           background-image: url(../../../img/read.png);
           top: 1em;
           left: 7em;
@@ -65,7 +65,7 @@ ul.accordion {
             height: 135px;
           }
         }
-        &.goBottom{ 
+        &.goBottom{
           bottom: 2em;
           left: 55%;
           background-image: url(../../../img/arrow.png);
@@ -131,7 +131,7 @@ ul.accordion {
                   background-image: url(../../../img/content/damaAnimation/1-5.png);
                 }
               }
-            }  
+            }
           }
           &:nth-child(2){
             td{

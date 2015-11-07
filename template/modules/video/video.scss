@@ -30,3 +30,13 @@
 		}
 	}
 }
+@media screen and (max-height:768px) {
+	#video{
+		padding-top: 0;
+		div {
+			a{
+				margin: 10% 25%;
+			}
+		}
+	}
+}

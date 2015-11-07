@@ -6,15 +6,17 @@ define({
 		this.content.append(test);
 		$('body').html('').append(this.content, menu);
 
+		this.subscribe();
 		this.buildDonePoints();
 		this.animatePoints();
 		this.animateClouds();
 		this.animateShip();
-		this.subscribe();
 	},
 
 	subscribe: function() {
 		var self = this;
+
+		this.testBreadcrumbsRender('antiquityInspiration');
 	},
 
 	buildDonePoints: function(){

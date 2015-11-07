@@ -160,9 +160,9 @@ require([
 	var AppRouter = Backbone.Router.extend({
 	    routes: {
 	        "": "defaultRoute",
-	        "Уроки Валентина Серова":"gallery",
+	        "lessons/:name":"gallery",
 	        "quest/:name":"activateQuestion",
-	        "игра":"antiquityInspirationMap",
+	        "antiquityInspirationMap":"antiquityInspirationMap",
 	        "book/:name/:rusName":"reader",
 	        "video/:name/:rusName":"video",
 	        "goFront":"goFront",
@@ -174,45 +174,49 @@ require([
 	var router = new AppRouter;
 	
 	router.on('route:defaultRoute', function(actions) {
-		console.log('Переход к mainScreen');
+	
+		  console.log('Переход к mainScreen');
 	    app.route('mainScreen', ['preloader']);
 	})
 	
 	router.on('route:gallery', function(actions) {
-		console.log('Переход к gallery');
+	
+		  console.log('Переход к gallery');
 	    app.route('gallery', ['accordion', 'redline', 'mainmenu','reader', 'transformer3D','video']);
 	})
 	
 	router.on('route:activateQuestion', function(quest) {
-		console.log('Переход к тесту',quest);
+	
+		  console.log('Переход к тесту',quest);
 	    app.activateQuestion(quest);
 	})
 	
 	router.on('route:antiquityInspirationMap', function(actions) {
 	
 	    console.log('Переход к antiquityInspirationMap');
-	
 	    app.route('antiquityInspirationMap', ['redline', 'mainmenu','reader', 'transformer3D', 'tests']);
 	})
 	
 	router.on('route:reader', function(name,breadcrumbs) {
-	    console.log('Переход в книгу', name,breadcrumbs);
 	
-	    router.navigate("Уроки Валентина Серова");
+	    console.log('Переход в книгу', name,breadcrumbs);
+	    router.navigate("#lessons/Уроки Валентина Серова");
 	    app.printBookPages(name);
 	    app.breadcrumbsRender(breadcrumbs);
 	    app.goTop();
 	})
 	
 	router.on('route:goFront', function(actions) {
+	
 	    app.goFront();
-	    router.navigate("Уроки Валентина Серова");
+	    router.navigate("#lessons/Уроки Валентина Серова");
 	    app.breadcrumbsRender(app.getActiveTab());
 	})
 	
 	router.on('route:video', function(name,breadcrumbs) {
+	
 	    app.goBottom();
-	    router.navigate("Уроки Валентина Серова");
+	    router.navigate("#lessons/Уроки Валентина Серова");
 	    app.breadcrumbsRender(breadcrumbs);
 	})
 	

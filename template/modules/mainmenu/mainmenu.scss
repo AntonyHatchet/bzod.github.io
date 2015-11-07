@@ -80,7 +80,7 @@
 						}
 						.item {
 							display: block;
-							height: 80px;
+							height: 11.23%;
 							border-top: 1px solid #fff;
 							color: #fff;
 							text-decoration: none;
@@ -154,5 +154,13 @@
 			font-size: 12px;
 			color: #333333;
 		}
+	}
+}
+@media screen and (max-height:768px) {
+	#menu #mainMenu .leftSide .leftMenu .menu .container .item{
+		line-height: 65px;
+	}
+	#menu #mainMenu .leftSide .leftMenu .menu .container .item.icon:before {
+		top: 11px;
 	}
 }

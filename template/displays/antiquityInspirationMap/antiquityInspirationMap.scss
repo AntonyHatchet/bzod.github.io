@@ -43,7 +43,6 @@
 	.screenContainer{
 		position: relative;
 		min-width: 1024px;
-		min-height: 768px;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
@@ -55,7 +54,6 @@
 			width: 100%;
 			height: 100%;
 			min-width: 1024px;
-			min-height: 768px;
 			left: 0;
 			top: 0;
 		}
@@ -139,4 +137,12 @@
 
 
 
+}
+@media screen and (max-height:768px) {
+	#antiquityInspirationMap .screenContainer .athens{
+		left: 45%;
+	}
+	#antiquityInspirationMap .screenContainer .korfu{
+		left: 12.5%;
+	}
 }
