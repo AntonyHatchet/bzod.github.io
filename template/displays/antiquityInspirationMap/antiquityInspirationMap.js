@@ -1,34 +1,51 @@
 define({
 	render: function() {
+		var self = this;
 		this.content = this.html;
 		var menu = this.renderMenu();
 		var test = this.renderTest('antiquityInspiration');
+
 		this.content.append(test);
 		$('body').html('').append(this.content, menu);
 
+		this.subscribe();
 		this.buildDonePoints();
 		this.animatePoints();
 		this.animateClouds();
 		this.animateShip();
-		this.subscribe();
 	},
 
 	subscribe: function() {
 		var self = this;
+
+		self.content.find(".point").on('click', function() {
+
+			var cityName = 	$(this).data("id");
+			console.log("Click on point! ", cityName);
+			var city = self.renderCity(cityName);
+			$('#antiquityInspirationMap').append(city);
+		});
+
+		setTimeout(function(){
+			self.testBreadcrumbsRender('antiquityInspiration');
+		},1000)
+
 	},
 
+
 	buildDonePoints: function(){
-		var data = JSON.parse(localStorage.antiquityInspiration);
-		data.questions.forEach(function(item, i){
-			if (item.status){
-				console.log("id=", item.id, " status=", item.status);
-				$("." +item.id + "").addClass("done");
-				console.log("добавляем done к", "." +item.id + "");
-				$("img." +item.id + "").remove();
-				$("<img class=" + item.id + " src="+"/img/antiquityInspirationMap/pointDone.png"+">").appendTo(".done."+item.id+"");
-				$("img." +item.id + "").addClass("done");
-			}
-		});
+		if(localStorage.tests){
+			var data = JSON.parse(localStorage.tests);
+			data.antiquityInspiration.questions.forEach(function(item, i){
+				$("." +item.id + "").attr('data-id', item.id);
+				if (item.status){
+					$("." +item.id + "").addClass("done");
+					$("img." +item.id + "").remove();
+					$("<img class=" + item.id + " src="+"/img/antiquityInspirationMap/pointDone.png"+">").appendTo(".done."+item.id+"");
+					$("img." +item.id + "").addClass("done");
+				}
+			});
+		}
 	},
 
 	animateClouds: function(){
@@ -73,54 +90,57 @@ define({
 			}
 		}
 
-		elementsArray.forEach(function(item, i, arr) {
-			moveElementTowards(item, getRandomArrayElement(directionArray))
-		});
-
-		setInterval(function(){
-				elementsArray.forEach(function(item, i, arr) {
-					moveElementTowards(item, getRandomArrayElement(directionArray))
-				}
-			)}, 20000);
-
+			var timerClouds = setTimeout(function tick() {
+						elementsArray.forEach(function(item, i, arr) {
+							moveElementTowards(item, getRandomArrayElement(directionArray))
+						});
+			  timerClouds = setTimeout(tick, 120000);
+			}, 1000);
 
 	},
 
 	animatePoints: function(){
-
+		var self = this;
 		function zoomIn(){
-				$(".animatePoint").css("transform", "scale(1)");
+			self.content.find(".animatePoint").css("transform", "scale(1)");
 		};
 
 		function zoomOut(){
-			  $(".animatePoint").css("transform", "scale(0.5)");
+			  self.content.find(".animatePoint").css("transform", "scale(0.5)");
 		};
 
-		var timerId = setTimeout(function tick() {
+		var timerPoints = setTimeout(function tick() {
 			zoomOut();
 			setTimeout(zoomIn,1000);
 			setTimeout(zoomOut, 2000);
-		  timerId = setTimeout(tick, 15000);
+		  timerPoints = setTimeout(tick, 15000);
 		}, 15000);
 
 	},
 
 	animateShip: function (){
-
+	var self = this;
 		function moveRight(){
-				$('.shipContainer').removeClass("ship-move-left");
-			  $('.shipContainer').addClass("ship-move-right");
+				self.content.find("img.ship").remove();
+				$(new Image()).attr('src', '' + "/img/antiquityInspirationMap/shipRight.png").addClass('ship').appendTo($('.shipContainer'));
+				self.content.find('.shipContainer').removeClass("ship-move-left");
+			  self.content.find('.shipContainer').addClass("ship-move-right");
 		};
 		function moveLeft(){
-				$('.shipContainer').removeClass("ship-move-right");
-			  $('.shipContainer').addClass("ship-move-left");
+				self.content.find("img.ship").remove();
+				$(new Image()).attr('src', '' + "/img/antiquityInspirationMap/shipLeft.png").addClass('ship').appendTo($('.shipContainer'));
+				self.content.find('.shipContainer').removeClass("ship-move-right");
+			  self.content.find('.shipContainer').addClass("ship-move-left");
 		};
 
 
 		moveLeft();
- 		setTimeout(moveRight, 120000);
+		var timerShip = setTimeout(function tick() {
+			moveRight();
+			setTimeout(moveLeft, 120000);
+			timerShip = setTimeout(tick, 240000);
+		}, 120000);
 
-		//setInterval(function(){ moveRight() }, 12000);
 	}
 
 });

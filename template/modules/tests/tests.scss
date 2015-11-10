@@ -25,7 +25,7 @@
 		height: 100%;
 		width: 100%;
 		display: none;
-		
+
 		&.active{
 			right: 0!important;
 			transition: 2s ease;
@@ -61,8 +61,7 @@
 			ul{
 				height: 300px;
 				list-style-type: none;
-				margin:0 0 5%;
-				padding: 0 10%;
+				margin:0px 0 5% 14%;
 
 				li{
 					width: 20%;
@@ -182,5 +181,15 @@
 				}
 			}
 		}
+	}
+}
+@media screen and (max-height:768px) {
+	#tests>div section.left .god{
+		width: 200px;
+		margin-left: calc(50% - 100.5px);
+	}
+	#tests>div.active{
+		padding-top: 0;
+		height: 99%;
 	}
 }

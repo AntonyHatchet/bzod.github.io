@@ -1,8 +1,13 @@
-#video{
+#city{
 	height: 100%;
 	width: 100%;
 	padding-top: 5%;
 	background-color: #ffffff;
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: 5;
+	
 	h2{
 		margin-top: 0;
 		text-align: center;
@@ -10,10 +15,9 @@
 
 	div{
 		width: 50%;
-	    height: 93%;
 		float: left;
 
-		video{
+		img{
 			width: 100%;
 		}
 
@@ -31,8 +35,9 @@
 		}
 	}
 }
+
 @media screen and (max-height:768px) {
-	#video{
+	#city{
 		padding-top: 0;
 		div {
 			a{

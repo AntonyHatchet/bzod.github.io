@@ -20,7 +20,6 @@ define({
 
 				self.tests = JSON.parse(myStorage.getItem('tests'));
 			}
-
 			self.printTestPages(self,testName);
 		});
 	},
@@ -37,7 +36,6 @@ define({
 
 		self.testsHtml.html(page);
 		self.subscribeTest(testName);
-		console.log('Страница добавлена');
 	},
 
 	subscribeTest: function(testName){
@@ -81,16 +79,19 @@ define({
 
 		self.on('Quest:Passed', function(testId, testName) {
 			var testData = JSON.parse(myStorage.getItem('tests'));
-			var domTestId = testData[testName].questions[testId].id;
+			console.log('testId:',testId,'testName: ', testName, 'testData: ',testData)
+			var domTestId = testData[testName].questions[(testId - 1)].id;
 
-			console.log('Квест "' + (testId + 1) + " из " + testName + '" завершен');
-			testData[testName].questions[testId].status = true;
+			console.log('Квест "' + ((testId - 1)) + " из " + testName + '" завершен');
+			testData[testName].questions[(testId - 1)].status = true;
 			myStorage.setItem("tests",JSON.stringify(testData));
 			
 			self.testsHtml.find('#'+domTestId+' .answers').toggleClass('active');
 			self.testsHtml.find('#'+domTestId+' .reward').toggleClass('active');
 
 			self.checkTestComplite(testData[testName],domTestId);
+
+			self.buildDonePoints();
 
 		});
 
@@ -126,7 +127,7 @@ define({
 				console.log("Вопрос " + quest.name + " не пройден")
 			}
 		});
-		if(compleatedQuest === (testData.questions.length - 1)){
+		if(compleatedQuest === (testData.questions.length)){
 			self.trigger('Test:Passed', testData, lastTestId);
 			console.log("Все вопросы пройдены");
 		}

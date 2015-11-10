@@ -3,6 +3,7 @@
 		padding: 0;
 	}
 	width: 100%;
+	height: 100%;
 	margin-top: -105px;
 	height: 105px;
 	border-spacing: 0;
@@ -12,7 +13,7 @@
 		td {
 			background-color: #363636;
 			color: #999999;
-			button {
+			button{
 				background-color: transparent;
 				border: 0;
 				min-width: 98px;
@@ -27,6 +28,9 @@
 				padding: 0 33px;
 				> img {
 					height: 26px;
+				}
+				&.pushed{
+					background-color: #4d4d4d;
 				}
 			}
 		}
@@ -48,6 +52,7 @@
 				left: 0;
 				right: 0;
 				bottom: 105px;
+		    z-index: 5;
 				.overlay {
 					position: absolute;
 					left: 0;
@@ -80,7 +85,7 @@
 						}
 						.item {
 							display: block;
-							height: 80px;
+							height: 11.23%;
 							border-top: 1px solid #fff;
 							color: #fff;
 							text-decoration: none;
@@ -137,10 +142,60 @@
 				font-size: 22px;
 				font-weight: bold;
 			}
+			span{
+				margin:0 5px;
+
+				&.white{
+					color: #ffffff;
+				}
+				&.verticalBar{
+					color: #c41230;
+					font-weight: bolder;
+				}
+			}
 		}
 		.rightSide {
 			white-space: nowrap;
 			box-sizing: border-box;
+			.selectSection{
+				display: none;
+				position: absolute;
+		    bottom: 103px;
+		    color: #fff;
+		    width: 239px;
+		    height: 100px;
+		    text-align: center;
+				background-image: url(../../../img/plashka.png);
+				background-repeat: no-repeat;
+				&.reloadButton{
+					right: 342px;
+					display: block;
+				}
+				&.turnOfSound{
+					right: 240px;
+					display: block;
+				}
+				&.goMenu{
+					right: 0px;
+					display: block;
+					background-image: url(../../../img/plashkaLeft.png)!important;
+				}
+				a{
+					cursor: pointer;
+			    background: #fff;
+			    padding: 5px;
+			    color: #000;
+			    width: 65px;
+			    margin: 0 15px;
+			    display: inline-block;
+			    height: 30px;
+
+					&:hover{
+						background: #000;
+						color: #fff;
+					}
+				}
+			}
 			button:last-child {
 				border-right: 0;
 			}
@@ -154,5 +209,13 @@
 			font-size: 12px;
 			color: #333333;
 		}
+	}
+}
+@media screen and (max-height:768px) {
+	#menu #mainMenu .leftSide .leftMenu .menu .container .item{
+		line-height: 65px;
+	}
+	#menu #mainMenu .leftSide .leftMenu .menu .container .item.icon:before {
+		top: 11px;
 	}
 }
