@@ -13,6 +13,9 @@ define({
 
 		this.on('Preload:End', self.animate);
 
+		var scene = this.content.find('#scene');
+		var parallax = new Parallax(scene[0]);
+
 		// this.content.find('#game').on('click', function(e) {
 		// 	e.preventDefault();
 		// 	self.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D', 'tests']);
@@ -20,15 +23,15 @@ define({
 	},
 	animate: function(){
 		var self = this;
-		self.timer('img:nth-child(8)',0);
-		self.timer('img:nth-child(9)',1000);
-		self.timer('img:nth-child(5)',1200);
-		self.timer('img:nth-child(7)',1200);
-		self.timer('img:nth-child(4)',2000);
-		self.timer('img:nth-child(6)',2000);
-		self.timer('img:nth-child(10)',2000);
-		self.timer('img:nth-child(2)',2120);
-		self.timer('img:nth-child(3)',3080);
+		self.timer('li:nth-child(8) img',0);
+		self.timer('li:nth-child(9) img',1000);
+		self.timer('li:nth-child(5) img',1200);
+		self.timer('li:nth-child(7) img',1200);
+		self.timer('li:nth-child(4) img',2000);
+		self.timer('li:nth-child(6) img',2000);
+		self.timer('li:nth-child(10) img',2000);
+		self.timer('li:nth-child(2) img',2120);
+		self.timer('li:nth-child(3) img',3080);
 		self.timer('nav',4000);
 	},
 	timer: function(element,timeout){

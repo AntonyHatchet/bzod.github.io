@@ -8,18 +8,19 @@ define({
 		this.content.append(test);
 		$('body').html('').append(this.content, menu);
 
-		this.subscribe();
-		this.buildDonePoints();
-		this.animatePoints();
-		this.animateClouds();
-		this.animateShip();
+		self.on('Test:Loaded', function() {
+			this.subscribe();
+			this.buildDonePoints();
+			this.animatePoints();
+			this.animateClouds();
+			this.animateShip();
+		});
 	},
 
 	subscribe: function() {
 		var self = this;
 
-		self.content.find(".point").on('click', function() {
-
+		self.content.find(".point").on('click', function(e) {
 			var cityName = 	$(this).data("id");
 			console.log("Click on point! ", cityName);
 			var city = self.renderCity(cityName);
@@ -34,18 +35,21 @@ define({
 
 
 	buildDonePoints: function(){
+		var data;
 		if(localStorage.tests){
-			var data = JSON.parse(localStorage.tests);
-			data.antiquityInspiration.questions.forEach(function(item, i){
-				$("." +item.id + "").attr('data-id', item.id);
-				if (item.status){
-					$("." +item.id + "").addClass("done");
-					$("img." +item.id + "").remove();
-					$("<img class=" + item.id + " src="+"/img/antiquityInspirationMap/pointDone.png"+">").appendTo(".done."+item.id+"");
-					$("img." +item.id + "").addClass("done");
-				}
-			});
+			data = JSON.parse(localStorage.tests);
+		}else{
+			data = this.tests;
 		}
+		data.antiquityInspiration.questions.forEach(function(item, i){
+			$("." +item.id + "").attr('data-id', item.id);
+			if (item.status){
+				$("." +item.id + "").addClass("done");
+				$("img." +item.id + "").remove();
+				$("<img class=" + item.id + " src="+"/img/antiquityInspirationMap/pointDone.png"+">").appendTo(".done."+item.id+"");
+				$("img." +item.id + "").addClass("done");
+			}
+		});
 	},
 
 	animateClouds: function(){

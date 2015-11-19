@@ -35,13 +35,19 @@ define({
 		var angleRight = new Span("");
 
 		$(angleRight).addClass('divider fa fa-angle-right')
-		console.log(currentWays,currentDir);
 
 		self.mainmenuHtml.find('.breadcrumbs').html('').append(currentDir,angleRight,currentWays);
 	},
 	testBreadcrumbsRender: function(testName){
 		var self = this;
-		var tests = self.tests[testName];
+		var tests;
+
+		if(localStorage.tests){
+			tests = JSON.parse(localStorage.tests)[testName];
+		}else{
+			tests = self.tests[testName];
+		}
+
 		var links = [];
 		var Span = function(content){
 
@@ -65,7 +71,6 @@ define({
 			var secondName = new Span(link.substring(link.indexOf("/") + 1));
 
 			return [firstName,secondName]
-			console.log(firstName, secondName);
 		}
 
 		$(angleRight).addClass('divider fa fa-angle-right');

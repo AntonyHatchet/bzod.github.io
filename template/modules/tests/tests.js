@@ -20,6 +20,7 @@ define({
 
 				self.tests = JSON.parse(myStorage.getItem('tests'));
 			}
+			self.trigger('Test:Loaded');
 			self.printTestPages(self,testName);
 		});
 	},
@@ -41,7 +42,6 @@ define({
 	subscribeTest: function(testName){
 		var self = this;
 		var myStorage = localStorage;
-
 		self.testsHtml.find('.imgContainer').on('click', function(e) {
 			var selector = e.target.getAttribute('data-toogle');
 			var testId = e.target.closest('section').parentNode.getAttribute('data-id');
@@ -55,25 +55,16 @@ define({
 		});
 
 		self.testsHtml.find('.goBackButton').on('click', function(e) {
-			var nodes = e.target.parentNode.childNodes;
-
-			[].forEach.call(nodes,function(element){
-
-				if($(element).hasClass('active')){
-					
-					$(element).toggleClass('active');
-				}
-			});
-
-			self.content.find('#tests').toggleClass('active');
+			self.content.find('#tests').removeClass('active');
+			self.content.find('#tests>div').removeClass('active');
 		});
 
 		self.on('Tests:Cleared',function(testId, testName) {
 			myStorage.clear();
 
-			self.testsHtml.find('.active').toggleClass('active');
-			self.testsHtml.find('.answers').toggleClass('active');
-			
+			self.testsHtml.find('.reward').removeClass('active');
+			self.testsHtml.find('.answers').addClass('active');
+
 			console.log('Тесты сброшены');
 		});
 
@@ -85,13 +76,14 @@ define({
 			console.log('Квест "' + ((testId - 1)) + " из " + testName + '" завершен');
 			testData[testName].questions[(testId - 1)].status = true;
 			myStorage.setItem("tests",JSON.stringify(testData));
-			
-			self.testsHtml.find('#'+domTestId+' .answers').toggleClass('active');
-			self.testsHtml.find('#'+domTestId+' .reward').toggleClass('active');
+			console.log('Квест ID "' + domTestId );
+			self.testsHtml.find('#'+domTestId+' .answers').removeClass('active');
+			self.testsHtml.find('#'+domTestId+' .reward').addClass('active');
 
 			self.checkTestComplite(testData[testName],domTestId);
 
 			self.buildDonePoints();
+			self.testBreadcrumbsRender(testName);
 
 		});
 
@@ -109,8 +101,8 @@ define({
 	activateQuestion: function(questionName){
 		var self = this;
 		console.log(self)
-		self.testsHtml.find('#'+questionName).toggleClass('active');
-		self.content.find('#tests').toggleClass('active');
+		self.content.find('#'+questionName).addClass('active');
+		self.content.find('#tests').addClass('active');
 	},
 
 	checkTestComplite: function(testData, lastTestId){

@@ -5,7 +5,8 @@ require.config({
 		'backbone': 'backbone/backbone',
 		'text': 'text/text',
 		'underscore': 'underscore/underscore',
-		'handlebars': 'handlebars/handlebars'
+		'handlebars': 'handlebars/handlebars',
+		'parallax': 'parallax/deploy/parallax.min'
 	},
 	shim: {
 		'backbone': {
@@ -22,7 +23,8 @@ require([
 	'jquery',
 	'text',
 	'backbone',
-	'underscore'
+	'underscore',
+	"parallax"
 ], function(handlebars) {
 	Handlebars = handlebars;
 	/*------------------ Handlebars Helpers------------------*/
@@ -235,9 +237,11 @@ require([
 	
 	router.on('route:reset', function() {
 	    console.log("reset");
-	    // app.trigger('Tests:Cleared');
-	    // localStorage.clear();
-	    router.navigate("#lessons/Уроки Валентина Серова",{trigger:true});
+	    app.trigger('Tests:Cleared');
+	    localStorage.clear();
+	    setTimeout(function(){
+	      router.navigate("#lessons/Уроки Валентина Серова",{trigger:true});
+	    },200);
 	})
 	
 	// Start Backbone history a necessary step for bookmarkable URL's
