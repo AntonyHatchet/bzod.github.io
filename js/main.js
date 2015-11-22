@@ -185,7 +185,7 @@ require([
 	
 	router.on('route:gallery', function(actions) {
 	
-	    app.route('gallery', ['accordion', 'redline', 'mainmenu','reader', 'transformer3D','video']);
+	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','video']);
 	})
 	
 	router.on('route:activateQuestion', function(quest) {

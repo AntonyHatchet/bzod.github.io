@@ -103,6 +103,8 @@ ul.accordion {
       #preloader{
         margin-left: 98px;
         width: calc(100% - 98px);
+        position: absolute;
+        top: 0;
       }
 
       & div.image {

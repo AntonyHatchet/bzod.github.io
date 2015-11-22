@@ -46,7 +46,7 @@ define({
 		this.trigger('Preload:End');
 	},
 
-	preloadImage: function(){
+	preloadImage: function(timer){
 		var self = this;
 		var images = this.content.find("img");
 //		console.log("all images on the page", images);
@@ -78,7 +78,7 @@ define({
 					}, 15);
 				// }
 		    }
-		}, 250);
+		}, timer);
 
 		images.on("load", function (event) {
 			counter ++;

@@ -3,6 +3,7 @@ define({
 
 		this.content = this.html;
 
+		var preloader = this.renderPreloader();
 		var menu = this.renderMenu();
 		var accordion = this.renderAccordion();
 		var video = this.renderVideo('video');
@@ -12,14 +13,14 @@ define({
 		var transformer3D = this.renderTransformer3D([accordion,reader,video]);
 
 		this.content.append(transformer3D); 
+		this.content.find('#accordion li.active').append(preloader); 
 
 		$('body').html('').append(this.content, redline, menu);
 
+		this.preloadImage(150);
 		this.subscribe();
 	},
 	subscribe: function() {
 		var self = this;
-		
-
 	}
 });
