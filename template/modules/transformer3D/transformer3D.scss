@@ -4,7 +4,6 @@
   height: 100%;
   margin: auto;
   position: relative;
-  @include perspective(1000px);
   background-color: #717171;
 
   #cube {
@@ -12,20 +11,52 @@
     height: 100%;
     position: absolute;
     @include transform-style(preserve-3d);
-    @include transform(translateZ( -24.15em ));
-    @include transition(transform 1s);
+    @include transition(transform 3s);
 
-    &.show-front  { 
-      @include transform(translateZ( -24.15em ) rotateY(    0deg )); 
+    &.show-front  {
+      .front {
+        transform: perspective(882px) translateZ(-409px) rotateX(0deg);
+
+      }
+
+      .top {
+        transform: perspective(882px) translateZ(-409px)  rotateX(90deg);
+      }
+
+      .bottom {
+        transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
+        opacity:0;
+      }
     }
-    &.show-back   { 
-      @include transform(translateZ( -24.15em ) rotateX( -180deg ));
-       }
-    &.show-top    { 
-      @include transform(translateZ( -24.15em ) rotateX(  -90deg ));
-       }
-    &.show-bottom { 
-      @include transform(translateZ( -24.15em ) rotateX(   90deg )); 
+
+    &.show-top    {
+      .front {
+        transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
+      }
+
+      .top {
+        transform: perspective(882px) translateZ(-409px)  rotateX(0deg);
+      }
+
+      .bottom {
+        transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
+        opacity:0;
+      }
+    }
+
+    &.show-bottom {
+      .front {
+        transform: perspective(882px) translateZ(-409px) rotateX(90deg);
+      }
+
+      .top {
+        transform: perspective(882px) translateZ(-409px) rotateX(180deg);
+        opacity:0;
+      }
+
+      .bottom {
+        transform: perspective(882px) translateZ(-409px) rotateX(0deg);
+      }
     }
 
     figure  {
@@ -36,19 +67,81 @@
     display: block;
     position: absolute;
     @include backface-visibility(hidden);
+    @include transition(transform 1s);
     }
 
-    .front  { 
-      @include transform(rotateY(   0deg ) translateZ( 24.15em )); 
+    .top {
+      transform-origin:50% 50% -410px;
+      transform: perspective(882px)  translateZ(-409px)  rotateX(90deg);
     }
-    .back   { 
-      @include transform(rotateX( 180deg ) translateZ( 24.15em )); 
+    .front {
+      transform-origin:50% 50% -410px;
+      transform: perspective(882px)  translateZ(-409px) rotateX(0deg);
     }
-    .top    { 
-      @include transform(rotateX(  90deg ) translateZ( 24.15em ));
-       }
-    .bottom { 
-      @include transform(rotateX( -90deg ) translateZ( 24.15em )); 
+    .bottom {
+      transform-origin:50% 50% -410px;
+      transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
+    }
+
+    @media screen and (max-height:768px) {
+
+      .top {
+        transform-origin:50% 50% -314px;
+        transform: perspective(882px)  translateZ(-314px)  rotateX(90deg);
+      }
+      .front {
+        transform-origin:50% 50% -280px;
+        transform: perspective(882px)  translateZ(-280px) rotateX(0deg);
+      }
+      .bottom {
+        transform-origin:50% 50% -314px;
+        transform: perspective(882px) translateZ(-314px) rotateX(-90deg);
+      }
+
+      &.show-front  {
+        .front {
+          transform: perspective(882px) translateZ(-280px) rotateX(0deg);
+        }
+
+        .top {
+          transform: perspective(882px) translateZ(-314px)  rotateX(90deg);
+        }
+
+        .bottom {
+          transform: perspective(882px) translateZ(-314px) rotateX(-90deg);
+          opacity:0;
+        }
+      }
+
+      &.show-top    {
+        .front {
+          transform: perspective(882px) translateZ(-280px) rotateX(-90deg);
+        }
+
+        .top {
+          transform: perspective(882px) translateZ(-314px)  rotateX(0deg);
+        }
+
+        .bottom {
+          transform: perspective(882px) translateZ(-314px) rotateX(-180deg);
+          opacity:0;
+        }
+      }
+
+      &.show-bottom {
+        .front {
+          transform: perspective(882px) translateZ(-280px) rotateX(90deg);
+        }
+
+        .top {
+          transform: perspective(882px) translateZ(-314px) rotateX(180deg);
+          opacity:0;
+        }
+
+        .bottom {
+          transform: perspective(882px) translateZ(-314px) rotateX(0deg);
+        }
+      }
     }
   }
 }
