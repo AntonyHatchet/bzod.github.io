@@ -62,7 +62,7 @@ define({
 			   	self.renderProgress(j);
 		   	}else
 		    if (j === 99) {
-			    if(counter === images.length){
+			    // if(counter === images.length){
 			        width = '4px';
 					self.preloaderHtml.find('.text').animate({
 						opacity : 0.5
@@ -76,9 +76,9 @@ define({
 					setTimeout(function(){
 						self.clearInterval();
 					}, 15);
-				}
+				// }
 		    }
-		}, 60);
+		}, 250);
 
 		images.on("load", function (event) {
 			counter ++;

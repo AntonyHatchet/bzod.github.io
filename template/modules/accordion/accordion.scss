@@ -20,6 +20,18 @@ ul.accordion {
     border-left: 2px solid #333333;
     border-right: 1px solid #fff;
     transition: all 500ms ease;
+    
+    &:nth-child(1){
+      z-index:0;
+    } 
+
+    &:nth-child(2){
+      z-index:1;
+    }
+
+    &:nth-child(3){
+      z-index:2;
+    }
 
     p{
       transform: rotate(-90deg);
@@ -35,7 +47,7 @@ ul.accordion {
     div.image {
       display: block;
       overflow: hidden;
-      width: 100%;
+      width: 90vw;
       height: 100%;
       margin-left: 95px;
       &.opened{
@@ -86,6 +98,7 @@ ul.accordion {
       width: calc(100% - 197px);
       background-image: url(../../../img/open-eye.png);
       background-position: 25px 5%;
+      background-color: #474747;
 
       #preloader{
         margin-left: 98px;
@@ -99,7 +112,7 @@ ul.accordion {
           display: block;
         }
 
-              table{
+/*              table{
         width: calc(100% - 94px);
         height: 100%;
         position:absolute;
@@ -176,7 +189,7 @@ ul.accordion {
             }
           }
         }
-      }
+      }*/
       }
     }
   }
