@@ -16,6 +16,7 @@ define({
 		});
 
 		this.checkImageProgress();
+		this.animateButtons();
 	},
 	checkImageProgress: function(){
 		var self = this;
@@ -45,5 +46,37 @@ define({
 		var self = this;
 
 		return self.find('li.active').attr('data-href');
+	},
+	animateButtons: function(){
+		var self = this.accordionHtml;
+
+		var firstElement = self.find('.animationPolyOne');
+		var secondElement = self.find('.animationPolyTwo');
+		var therdElement = self.find('.animationPolyThree');
+
+		function zoomfirst(opacity){
+		  	$(firstElement).css('opacity','0.35');
+		};
+		function zoomsecond(opacity){
+			$(secondElement).css('opacity','0.15');
+		};
+		function zoomtherd(opacity){
+			$(therdElement).css('opacity','0.05');
+		};
+
+		function zoomOut(){
+			$(firstElement).css('opacity','0');
+			$(secondElement).css('opacity','0');
+			$(therdElement).css('opacity','0');
+		};
+
+		var timerPoints = setTimeout(function tick() {
+			zoomOut();
+			setTimeout(zoomfirst,1000);
+			setTimeout(zoomsecond,1250);
+			setTimeout(zoomtherd,1500);
+			setTimeout(zoomOut, 1750);
+		  timerPoints = setTimeout(tick, 10000);
+		}, 10000);
 	}
 });

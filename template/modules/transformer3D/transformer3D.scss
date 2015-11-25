@@ -14,131 +14,131 @@
     @include transition(transform 3s);
 
     &.show-front  {
-      .front {
+      .frontSide {
         transform: perspective(882px) translateZ(-409px) rotateX(0deg);
 
       }
 
-      .top {
+      .topSide {
         transform: perspective(882px) translateZ(-409px)  rotateX(90deg);
       }
 
-      .bottom {
+      .bottomSide {
         transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
         opacity:0;
       }
     }
 
     &.show-top    {
-      .front {
+      .frontSide {
         transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
       }
 
-      .top {
+      .topSide {
         transform: perspective(882px) translateZ(-409px)  rotateX(0deg);
       }
 
-      .bottom {
+      .bottomSide {
         transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
         opacity:0;
       }
     }
 
     &.show-bottom {
-      .front {
+      .frontSide {
         transform: perspective(882px) translateZ(-409px) rotateX(90deg);
       }
 
-      .top {
+      .topSide {
         transform: perspective(882px) translateZ(-409px) rotateX(180deg);
         opacity:0;
       }
 
-      .bottom {
+      .bottomSide {
         transform: perspective(882px) translateZ(-409px) rotateX(0deg);
       }
     }
 
     figure  {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    min-width: 1024px;
-    display: block;
-    position: absolute;
-    @include backface-visibility(hidden);
-    @include transition(transform 1s);
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      min-width: 1024px;
+      display: block;
+      position: absolute;
+      @include backface-visibility(hidden);
+      @include transition(transform 1s);
     }
 
-    .top {
+    .topSide {
       transform-origin:50% 50% -410px;
       transform: perspective(882px)  translateZ(-409px)  rotateX(90deg);
     }
-    .front {
+    .frontSide {
       transform-origin:50% 50% -410px;
       transform: perspective(882px)  translateZ(-409px) rotateX(0deg);
     }
-    .bottom {
+    .bottomSide {
       transform-origin:50% 50% -410px;
       transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
     }
 
     @media screen and (max-height:768px) {
 
-      .top {
+      .topSide {
         transform-origin:50% 50% -314px;
         transform: perspective(882px)  translateZ(-314px)  rotateX(90deg);
       }
-      .front {
+      .frontSide {
         transform-origin:50% 50% -280px;
         transform: perspective(882px)  translateZ(-280px) rotateX(0deg);
       }
-      .bottom {
+      .bottomSide {
         transform-origin:50% 50% -314px;
         transform: perspective(882px) translateZ(-314px) rotateX(-90deg);
       }
 
       &.show-front  {
-        .front {
+        .frontSide {
           transform: perspective(882px) translateZ(-280px) rotateX(0deg);
         }
 
-        .top {
+        .topSide {
           transform: perspective(882px) translateZ(-314px)  rotateX(90deg);
         }
 
-        .bottom {
+        .bottomSide {
           transform: perspective(882px) translateZ(-314px) rotateX(-90deg);
           opacity:0;
         }
       }
 
       &.show-top    {
-        .front {
+        .frontSide {
           transform: perspective(882px) translateZ(-280px) rotateX(-90deg);
         }
 
-        .top {
+        .topSide {
           transform: perspective(882px) translateZ(-314px)  rotateX(0deg);
         }
 
-        .bottom {
+        .bottomSide {
           transform: perspective(882px) translateZ(-314px) rotateX(-180deg);
           opacity:0;
         }
       }
 
       &.show-bottom {
-        .front {
+        .frontSide {
           transform: perspective(882px) translateZ(-280px) rotateX(90deg);
         }
 
-        .top {
+        .topSide {
           transform: perspective(882px) translateZ(-314px) rotateX(180deg);
           opacity:0;
         }
 
-        .bottom {
+        .bottomSide {
           transform: perspective(882px) translateZ(-314px) rotateX(0deg);
         }
       }
