@@ -13,11 +13,11 @@ define({
 		var transformer3D = this.renderTransformer3D([accordion,reader,video]);
 
 		this.content.append(transformer3D); 
-		//this.content.find('#accordion li.active').append(preloader); 
+		this.content.find('#accordion li.active').append(preloader); 
 
 		$('body').html('').append(this.content, redline, menu);
 
-		//this.preloadImage(15);
+		this.preloadImage(90);
 		this.subscribe();
 	},
 	subscribe: function() {

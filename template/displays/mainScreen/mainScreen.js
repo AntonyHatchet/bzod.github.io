@@ -5,7 +5,7 @@ define({
 		var preloader = this.renderPreloader();
 
 		$('body').html('').append(preloader, this.content);
-		this.preloadImage(220);
+		this.preloadImage(150);
 		this.subscribe();
 	},
 	subscribe: function() {
