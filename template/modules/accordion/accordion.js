@@ -15,6 +15,11 @@ define({
 			that.breadcrumbsRender(link);
 		});
 
+		self.find('a').hover(function(e){
+			console.log($(e.target).closest( ".circle" ))
+			$(e.target).closest( ".circle" ).toggleClass('hover')
+		});
+
 		this.checkImageProgress();
 		this.animateButtons();
 	},
