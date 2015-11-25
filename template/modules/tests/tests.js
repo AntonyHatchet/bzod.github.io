@@ -44,7 +44,7 @@ define({
 		var myStorage = localStorage;
 		self.testsHtml.find('.imgContainer').on('click', function(e) {
 			var selector = e.target.getAttribute('data-toogle');
-			var testId = e.target.closest('section').parentNode.getAttribute('data-id');
+			var testId = $(e.target).closest('section').parent().data('id');
 
 			self.testsHtml.find(e.target.parentNode.querySelector('.'+selector)).toggleClass('active');
 

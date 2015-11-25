@@ -16,7 +16,6 @@ define({
 		});
 
 		self.find('a').hover(function(e){
-			console.log($(e.target).closest( ".circle" ))
 			$(e.target).closest( ".circle" ).toggleClass('hover')
 		});
 
