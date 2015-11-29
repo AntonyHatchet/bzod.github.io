@@ -77,15 +77,21 @@ define({
 		$(verticalBar).addClass('verticalBar');
 
 		tests.questions.forEach(function(element){
-			 console.log(element);
+			 
+
+//console.log(element);
 				var test = new Span(element.name);
 				if(element.status){
-					console.log("links true",element);
+					
+
+//console.log("links true",element);
 					$(test).addClass('white');
 					links.push(test);
 				}else {
 
-					console.log("links false",test);
+					
+
+//console.log("links false",test);
 					links.push(test);
 				}
 		});
@@ -115,6 +121,8 @@ define({
 			self.find(".selectSection").removeClass().addClass($(element.target).attr('id') + " selectSection");
 			$(element.target).toggleClass('pushed');
 		}
-		console.log($(element.target).attr('id'))
+		
+
+//console.log($(element.target).attr('id'))
 	}
 });

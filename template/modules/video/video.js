@@ -12,9 +12,13 @@ define({
 			'text!../../../content/video/' + videoName + '.json'
 		], function(json) {
 
-			console.log('Видео "' + videoName + '" загружено 1');
+			
+
+//console.log('Видео "' + videoName + '" загружено 1');
 			self[videoName] = JSON.parse(json);
-			console.log('Видео "' + videoName + '" загружено 2');
+			
+
+//console.log('Видео "' + videoName + '" загружено 2');
 			self.createVideoPage(self,videoName);
 		});
 	},

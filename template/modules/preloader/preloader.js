@@ -38,7 +38,9 @@ define({
 	},
 
 	clearInterval: function(){
-		console.log('clearInterval');
+		
+
+//console.log('clearInterval');
 		this.preloaderHtml.find('.animate-75-100-b, .animate-50-75-b, .animate-25-50-b, .animate-0-25-b').css("transform","rotate(90deg)");
 		this.preloaderHtml.find('.text').html('<span>0</span>%');
 		this.preloaderHtml.find('.loader-image-4').css("display","none");
@@ -49,7 +51,9 @@ define({
 	preloadImage: function(timer){
 		var self = this;
 		var images = this.content.find("img");
-//		console.log("all images on the page", images);
+//		
+
+//console.log("all images on the page", images);
 		var counter = 0;
 		var procent = 100/images.length;
 
@@ -86,7 +90,9 @@ define({
 
 		// images.on("load", function (event) {
 		// 	counter ++;
-		// 	console.log('image loaded');
+		// 	
+
+//console.log('image loaded');
 		// 	self.renderProgress((counter*procent));
 		// 	if( counter >= images.length ) {
 		// 		width = '4px';

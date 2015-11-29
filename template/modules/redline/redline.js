@@ -19,20 +19,28 @@ define({
 		var tests = localStorage.getItem('tests');
 		var tests = JSON.parse(tests);
 
-		console.log('checkProgress tests',tests);
+		
+
+//console.log('checkProgress tests',tests);
 		var testCounter = 0;
 		//Вход в цикл
 		_.keys(tests).forEach(function(test,counter,arr){
-			console.log("forEach checkProgress",tests[test])
+			
+
+//console.log("forEach checkProgress",tests[test])
 			testCounter++
 
 			if(tests[test].statusGeneral){
 
-			 	console.log("Success", counter,testCounter,(counter + 1) );
+			 	
+
+//console.log("Success", counter,testCounter,(counter + 1) );
 			 	self.animateLine((testCounter * 100)/arr.length);
 			}else{
 
-				console.log("False");
+				
+
+//console.log("False");
 			}
 		});
 		//Выход из цикла

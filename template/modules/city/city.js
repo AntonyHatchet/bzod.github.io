@@ -1,28 +1,32 @@
 define({
 
-	renderCity: function(cityName) {
-		this.loadCityInfo(cityName);
+	renderCity: function(locationName) {
+		this.loadAllCityInfo(locationName);
 		return this.cityHtml;
 	},
 
-	loadCityInfo: function(cityName){
+	loadAllCityInfo: function(locationName){
 		var self = this;
 		var myStorage = localStorage;
 		require([
-			'text!../../../content/city/'+ cityName +'.json'
+			'text!../../../content/city/'+ locationName +'.json'
 		], function(json) {
 			if (!json){
-				console.log("JSON GONE WRONG");
+				
+
+//console.log("JSON GONE WRONG");
 			} else {
-				self[cityName] = JSON.parse(json);
-				self.createCityPage(self,cityName);
+				self.city={};
+				self.city[locationName] = JSON.parse(json);
+				self.createCityPage(self,locationName);
 			}
 
 		});
 	},
 
-	createCityPage: function(self,cityName){
-		var city = self[cityName];
+	createCityPage: function(self,locationName){
+		var city = self.city[locationName];
+		console.log(self.city[locationName]);
 		var page = self.renderHandlebarsTemplate("#cityTemplate", city);
 		self.cityHtml.html(page);
 	},

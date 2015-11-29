@@ -22,9 +22,9 @@ define({
 
 		self.content.find(".point").on('click', function(e) {
 			var cityName = 	$(this).data("id");
+			
+			self.activateQuestion(cityName)
 			console.log("Click on point! ", cityName);
-			var city = self.renderCity(cityName);
-			$('#antiquityInspirationMap').append(city);
 		});
 
 		setTimeout(function(){

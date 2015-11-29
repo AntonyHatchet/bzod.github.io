@@ -13,7 +13,9 @@ define({
 			'text!../../../content/tests/' + testName + '.json'
 		], function(json) {
 
-			console.log('Тест "' + testName + '" загружен');
+			
+
+//console.log('Тест "' + testName + '" загружен');
 			self.tests[testName] = JSON.parse(json);
 
 			if(myStorage.getItem("tests")){
@@ -65,18 +67,26 @@ define({
 			self.testsHtml.find('.reward').removeClass('active');
 			self.testsHtml.find('.answers').addClass('active');
 
-			console.log('Тесты сброшены');
+			
+
+//console.log('Тесты сброшены');
 		});
 
 		self.on('Quest:Passed', function(testId, testName) {
 			var testData = JSON.parse(myStorage.getItem('tests'));
-			console.log('testId:',testId,'testName: ', testName, 'testData: ',testData)
+			
+
+//console.log('testId:',testId,'testName: ', testName, 'testData: ',testData)
 			var domTestId = testData[testName].questions[(testId - 1)].id;
 
-			console.log('Квест "' + ((testId - 1)) + " из " + testName + '" завершен');
+			
+
+//console.log('Квест "' + ((testId - 1)) + " из " + testName + '" завершен');
 			testData[testName].questions[(testId - 1)].status = true;
 			myStorage.setItem("tests",JSON.stringify(testData));
-			console.log('Квест ID "' + domTestId );
+			
+
+//console.log('Квест ID "' + domTestId );
 			self.testsHtml.find('#'+domTestId+' .answers').removeClass('active');
 			self.testsHtml.find('#'+domTestId+' .reward').addClass('active');
 
@@ -100,7 +110,9 @@ define({
 
 	activateQuestion: function(questionName){
 		var self = this;
-		console.log(self)
+		
+
+//console.log(self)
 		self.content.find('#'+questionName).addClass('active');
 		self.content.find('#tests').addClass('active');
 	},
@@ -112,16 +124,22 @@ define({
 
 			if(quest.status){
 
-				console.log("Вопрос " + quest.name + " пройден");
+				
+
+//console.log("Вопрос " + quest.name + " пройден");
 				compleatedQuest++
 			}else{
 
-				console.log("Вопрос " + quest.name + " не пройден")
+				
+
+//console.log("Вопрос " + quest.name + " не пройден")
 			}
 		});
 		if(compleatedQuest === (testData.questions.length)){
 			self.trigger('Test:Passed', testData, lastTestId);
-			console.log("Все вопросы пройдены");
+			
+
+//console.log("Все вопросы пройдены");
 		}
 
 	}

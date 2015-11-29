@@ -5,7 +5,9 @@ define({
 	},
 	fillTransformer3D: function(pages) {
 		var self = this;
-		console.log('Transformer3D', self);
+		
+
+//console.log('Transformer3D', self);
 
 		this.transformer3DHtml.find('.frontSide').html(pages[0]);
 		this.transformer3DHtml.find('.topSide').html(pages[1]);

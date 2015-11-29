@@ -12,7 +12,9 @@ define({
 			require([
 				'text!../../../content/books/' + bookName + '.json'
 			], function(json) {
-				console.log('Книга "' + bookName + '" загружена');
+				
+
+//console.log('Книга "' + bookName + '" загружена');
 				var book = JSON.parse(json);
 				self.books[bookName]={};
 				self.books[bookName].length = book.pages.length;
@@ -24,7 +26,9 @@ define({
 	printBookPages: function(book){
 		var self = this;
 		var bookPages = self.books[book]
-		console.log("printPages",self.books)
+		
+
+//console.log("printPages",self.books)
 
 		self.readerHtml.html(bookPages.content);
 		self.subscribeReader(bookPages.length);
@@ -32,7 +36,9 @@ define({
 
 	subscribeReader: function(pagesLength){
 		var self = this;
-		console.log('subscribeReader');
+		
+
+//console.log('subscribeReader');
 		//Управление боковыми стрелками. Присваиваем предыдущую и следующую страницу.
 		self.previousPage = self.readerHtml.find('.left').previousPage = 0;
 		self.nextPage = self.readerHtml.find('.right').nextPage = 2;

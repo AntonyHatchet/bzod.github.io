@@ -163,9 +163,7 @@ require([
 	    routes: {
 	        "": "defaultRoute",
 	        "lessons/:name":"gallery",
-	        "quest/:name":"activateQuestion",
 	        "map/:test/:name":"map",
-	        "city/:name":"city",
 	        "reset":"reset",
 	        "book/:name/:rusName":"reader",
 	        "video/:name/:rusName":"video",
@@ -186,16 +184,6 @@ require([
 	router.on('route:gallery', function(actions) {
 	
 	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','video']);
-	})
-	
-	router.on('route:activateQuestion', function(quest) {
-	
-		console.log('Переход к тесту',quest);
-	    router.navigate("#map/Игры/Уроки Валентина Серова");
-	    setTimeout(function(){
-	        app.removeCityPage();
-	        app.activateQuestion(quest);
-	    },200);
 	})
 	
 	router.on('route:map', function(actions) {

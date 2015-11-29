@@ -37,12 +37,16 @@ define({
 					self.accordionHtml.find("#"+test[element].name).addClass("opened");
 				}else{
 
-					console.log("False");
+					
+
+//console.log("False");
 				}
 			});
 		}else{
 
-			console.log("Not an object!")
+			
+
+//console.log("Not an object!")
 		}
 		//Выход из цикла
 	},
@@ -58,14 +62,14 @@ define({
 		var secondElement = self.find('.animationPolyTwo');
 		var therdElement = self.find('.animationPolyThree');
 
-		function zoomfirst(opacity){
-		  	$(firstElement).css('opacity','0.35');
+		function zoomFirst(opacity){
+		  	$(firstElement).css('opacity','0.55');
 		};
-		function zoomsecond(opacity){
-			$(secondElement).css('opacity','0.15');
+		function zoomSecond(opacity){
+			$(secondElement).css('opacity','0.35');
 		};
-		function zoomtherd(opacity){
-			$(therdElement).css('opacity','0.05');
+		function zoomTherd(opacity){
+			$(therdElement).css('opacity','0.15');
 		};
 
 		function zoomOut(){
@@ -76,10 +80,10 @@ define({
 
 		var timerPoints = setTimeout(function tick() {
 			zoomOut();
-			setTimeout(zoomfirst,1000);
-			setTimeout(zoomsecond,1250);
-			setTimeout(zoomtherd,1500);
-			setTimeout(zoomOut, 1750);
+			setTimeout(zoomFirst,1000);
+			setTimeout(zoomSecond,1150);
+			setTimeout(zoomTherd,1300);
+			setTimeout(zoomOut, 1800);
 		  timerPoints = setTimeout(tick, 10000);
 		}, 10000);
 	}
