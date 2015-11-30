@@ -6,6 +6,7 @@
 		  }
 		</style>
 		<a class="goBackButton"></a>
+		<a class="goNext"></a>
 		{{#each questions}}
 			<div id={{id}} data-id={{dataId}}>
 				<section class="first" data-count="0">
@@ -14,7 +15,6 @@
 					<p>{{cityEntry.aditionalSubtitle}}</p>
 					<img class="god" src={{cityEntry.godImg}}>
 					<p class="question">{{cityEntry.text}}</p>
-					<a class="goNext"></a>
 				</section>
 				{{#each cityBloks}}
 					<section class="bloks" data-count={{math @index "+" 1}} >

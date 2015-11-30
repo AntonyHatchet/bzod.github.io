@@ -57,8 +57,17 @@ define({
 		});
 
 		self.testsHtml.find('.goBackButton').on('click', function(e) {
-			self.content.find('#tests').removeClass('active');
-			self.content.find('#tests>div').removeClass('active');
+			var tests = self.content.find('#tests');
+
+			$('#antiquityInspirationMap').animate({
+	          scrollTop: 0
+	        }, 1000);
+			tests.delay(1000).animate({ "left": "100vw" }, 1000 );
+
+			setTimeout(function(){
+				tests.removeClass('active');
+				self.content.find('#tests>div').removeClass('active');
+			},2000);
 		});
 
 		self.on('Tests:Cleared',function(testId, testName) {
@@ -114,9 +123,20 @@ define({
 
 //console.log(self)
 		self.content.find('#'+questionName).addClass('active');
-		self.content.find('#tests').addClass('active');
+		self.content.find('#tests').addClass('active').animate({ "left": "0" }, 1200 );
+		self.showNextBlock();
 	},
+	showNextBlock: function(){
+		var self = this;
 
+		self.content.find('.goNext').on('click',function(){
+			var height = document.documentElement.clientHeight + document.getElementById('antiquityInspirationMap').scrollTop;
+			console.log(height);
+			$('#antiquityInspirationMap').animate({
+	          scrollTop: height
+	        }, 1000);
+		});
+	},
 	checkTestComplite: function(testData, lastTestId){
 		var self = this;
 		var compleatedQuest = 0;

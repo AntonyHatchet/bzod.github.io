@@ -35,8 +35,9 @@
 
 #antiquityInspirationMap{
 	padding-bottom: 105px;
-	overflow: hidden;
-  width: 100%;
+	overflow-x: hidden;
+	position: relative;
+  	width: 100%;
 	height: 100%;
 	z-index: 1;
 
