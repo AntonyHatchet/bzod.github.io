@@ -5,8 +5,8 @@ define({
 		var menu = this.renderMenu();
 		var test = this.renderTest('antiquityInspiration');
 
-		this.content.append(test);
-		$('body').html('').append(this.content, menu);
+		//this.content.append(test);
+		$('body').html('').append(this.content, menu,test);
 
 		self.on('Test:Loaded', function() {
 			this.subscribe();

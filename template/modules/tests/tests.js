@@ -48,8 +48,8 @@ define({
 			var selector = e.target.getAttribute('data-toogle');
 			var testId = $(e.target).closest('section').parent().data('id');
 
-			self.testsHtml.find(e.target.parentNode.querySelector('.'+selector)).toggleClass('active');
-
+			self.testsHtml.find(e.target.parentNode.parentNode.querySelector('.'+selector)).addClass('active');
+			self.testsHtml.find(e.target.parentNode).addClass('active');
 			if (selector === 'rightHover') {
 
 				self.trigger('Quest:Passed', testId, testName);
@@ -57,16 +57,16 @@ define({
 		});
 
 		self.testsHtml.find('.goBackButton').on('click', function(e) {
-			var tests = self.content.find('#tests');
+			var tests = document.getElementById('tests');
 
-			$('#antiquityInspirationMap').animate({
+			$('html,body').animate({
 	          scrollTop: 0
 	        }, 1000);
-			tests.delay(1000).animate({ "left": "100vw" }, 1000 );
+			$(tests).delay(1000).animate({ "left": "100vw" }, 1000 );
 
 			setTimeout(function(){
-				tests.removeClass('active');
-				self.content.find('#tests>div').removeClass('active');
+				$(tests).removeClass('active');
+				$('#tests>div').removeClass('active');
 			},2000);
 		});
 
@@ -112,6 +112,12 @@ define({
 			testData[testName].statusGeneral = true;
 			myStorage.setItem('tests',JSON.stringify(testData));
 
+			setTimeout(function(){
+				
+			},3000)
+			$('html,body').animate({
+	          scrollTop: 0
+	        }, 1000);
 			self.testsHtml.find('#finishTest').toggleClass('active');
 			self.testsHtml.find('#'+lastTestId).toggleClass('unActive');
 		});
@@ -119,20 +125,18 @@ define({
 
 	activateQuestion: function(questionName){
 		var self = this;
-		
 
-//console.log(self)
-		self.content.find('#'+questionName).addClass('active');
-		self.content.find('#tests').addClass('active').animate({ "left": "0" }, 1200 );
+		self.testsHtml.find('#'+questionName).addClass('active');
+		$('#tests').addClass('active').animate({ "left": "0" }, 1200 );
 		self.showNextBlock();
 	},
 	showNextBlock: function(){
 		var self = this;
 
-		self.content.find('.goNext').on('click',function(){
-			var height = document.documentElement.clientHeight + document.getElementById('antiquityInspirationMap').scrollTop;
-			console.log(height);
-			$('#antiquityInspirationMap').animate({
+		self.testsHtml.find('.goNext').on('click',function(){
+			var height = document.documentElement.clientHeight + window.pageYOffset;
+			
+			$("html,body").animate({
 	          scrollTop: height
 	        }, 1000);
 		});

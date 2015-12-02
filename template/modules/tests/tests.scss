@@ -156,10 +156,68 @@
 			    text-align: center;
 
 			    .imgContainer{
+			    	position: relative;
 			    	display: inline-block;
 
-			    	img{
+			    	.img{
 			    		width: 75%;
+			    		height: 365px;
+			    		background-color: #444444;
+			    		&.active{
+			    			img{
+			    				opacity:1;
+			    			}
+			    		}
+			    		a{
+		    			    background-image: url(../../../img/tests/y.png);
+						    width: 71px;
+						    height: 71px;
+						    position: absolute;
+						    bottom: 15%;
+						    left: 30%;
+						    display: none;
+						    cursor: pointer;
+			    		}
+			    		&:hover:not(.active){
+			    			a{
+							    display: block;
+
+							    &:hover{
+							    	background-image: url(../../../img/tests/yHover.png);
+							    }
+			    			}
+			    			img{
+			    				opacity:1;
+			    			}
+			    		}
+			    		img{
+			    			height: 100%;
+			    			width: 100%;
+				    		cursor: pointer;
+				    		opacity: 0.5;
+			    		}
+			    	}
+			    	div:not(.img){
+	    		        position: absolute;
+					    display: none;
+					    bottom: 0;
+					    left: 0;
+					    padding: 0 5%;
+					    text-align: left;
+					    width: 75%;
+					    background-color: rgba(0,0,0,0.5);
+					    font-size: 14px;
+
+					    i{
+				    	    background-image: url(../../../img/tests/x.png);
+						    background-repeat: no-repeat;
+						    width: 56px;
+						    height: 55px;
+						    top: -200%;
+						    display: block;
+						    position: absolute;
+						    left: 38%;
+					    }
 			    	}
 			    }
 

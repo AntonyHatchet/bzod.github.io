@@ -36,19 +36,19 @@
 				{
 					"wrong":{
 						"img":"img/tests/antiq/athens/quests/2.jpg",
-						"text":"text"
+						"text":"Голова Афины Лемнии, мраморная копия со статуи, сделанной Фидием в V веке до н.э."
 					}
 				},
 				{
 					"wrong":{
 						"img":"img/tests/antiq/athens/quests/3.jpg",
-						"text":"text"
+						"text":"Эта головка богини сделана в IV веке до н. э."
 					}
 				},
 				{
 					"right":{
 						"img":"img/tests/antiq/athens/quests/1.jpg",
-						"text":"text"
+						"text":"Эта статуя «Коры» была найдена археологами на Акрополе в «персидском мусоре». Она датируется концом VI в. до н.э."
 					}
 				}
 			],

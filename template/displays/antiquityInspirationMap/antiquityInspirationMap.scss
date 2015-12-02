@@ -34,13 +34,11 @@
 
 
 #antiquityInspirationMap{
-	padding-bottom: 105px;
 	overflow-x: hidden;
 	position: relative;
   	width: 100%;
-	height: 100%;
+	height: calc(100% - 105px);
 	z-index: 1;
-
 	a{
 		cursor: pointer;
 	}
