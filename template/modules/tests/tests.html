@@ -1,27 +1,49 @@
 <div id="tests">
 	<script id="testTemplate" type="text/x-handlebars-template">
-		<a href="#antiquityInspirationMap" class="goBackButton"></a>
+		<style>
+		  #tests {
+			background-image:url({{background}});
+		  }
+		</style>
+		<a class="goBackButton"></a>
+		<a class="goNext"></a>
 		{{#each questions}}
 			<div id={{id}} data-id={{dataId}}>
-				<section class="left">
+				<section class="first" data-count="0">
 					<h1>{{name}}</h1>
-					<img class="god" src={{godImg}}>
-					<p class="question">{{text}}</p>
-					<!--<button class="readMore"></button>-->
-					<p class="aditionalText">{{aditionalText}}</p>
+					<p class="subtitle">{{cityEntry.subtitle}}</p>
+					<p>{{cityEntry.aditionalSubtitle}}</p>
+					<img class="god" src={{cityEntry.godImg}}>
+					<p class="question">{{cityEntry.text}}</p>
 				</section>
-				<section class='right'>
-					{{#if status}}
-						<div class="reward active">
-					{{else}}
-						<div class="reward">
-					{{/if}}
-							<img src={{reward}}>
-							<div class="rewardText">
-								<p class="rewardHeader">{{rewardHeader}}</p>
-								<p>{{rewardText}}</p>
+				{{#each cityBloks}}
+					<section class="bloks" data-count={{math @index "+" 1}} >
+						{{#if left.image}}
+							<div class="left">
+								<img class="bloksImage" src={{left.image}}>
 							</div>
-						</div>
+							<div class="right">
+								<h1>{{right.header}}</h1>
+								{{#each right.text}}
+									<p>{{this}}</p>
+								{{/each}}
+							</div>
+						{{else}}
+							<div class="right">
+								<img class="bloksImage" src={{right.image}}>
+							</div>
+							<div class="left">
+								<h1>{{left.header}}</h1>
+								{{#each left.text}}
+									<p>{{this}}</p>
+								{{/each}}
+							</div>
+						{{/if}}
+					</section>
+				{{/each}}
+				<section class='questions'>
+					<h1>Внимание вопрос</h1>
+					<p>{{question}}</p>
 					{{#if status}}
 						<div class="answers">
 					{{else}}
@@ -30,13 +52,30 @@
 						{{#each answers}}
 							{{#if wrong}}
 								<div class="imgContainer">
-									<img src={{wrong}} class="wrong" data-toogle="wrongHover">
-									<div class="wrongHover"></div>
+									<div class="img">
+										<img src={{wrong.img}} class="false" data-toogle="wrongHover">
+										<a data-toogle="wrongHover"></a>
+									</div>
+									<div class="imageCover wrongHover">
+										<i></i>
+										<div class="text">
+											<p>Нет</p>
+											<p>{{wrong.text}}</p>
+										</div>
+									</div>
 								</div>
 							{{else}}
 								<div class="imgContainer">
-									<img src={{right}} class="right" data-toogle="rightHover">
-									<div class="rightHover"></div>
+									<div class="img">
+										<img src={{right.img}} class="true" data-toogle="rightHover">
+										<a data-toogle="rightHover"></a>
+									</div>
+									<div class="imageCover rightHover">
+										<div class="text">
+											<p>Правильно</p>
+											<p>{{right.text}}</p>
+										</div>
+									</div>
 								</div>
 							{{/if}}
 						{{/each}}
@@ -59,7 +98,7 @@
 					</li>
 				{{/each}}
 			</ul>
-			<a href="#gallery">Собрать картину</a>
+			<a href="#lessons/Уроки Валентина Серова">Собрать картину</a>
 		</div>
 	</script>
 </div>

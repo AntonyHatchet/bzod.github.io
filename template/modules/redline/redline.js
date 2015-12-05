@@ -7,38 +7,24 @@ define({
 	},
 
 	subscribeRedline: function(self) {
-
-		this.checkProgress();
-    	self.on('Test:Passed', function() {
- 			this.checkProgress();
-    	});
-	},
-
-	checkProgress: function(){
 		var self = this;
-		var tests = localStorage.getItem('tests');
-		var tests = JSON.parse(tests);
+		var counter = 0;
 
-		console.log('checkProgress tests',tests);
-		var testCounter = 0;
-		//Вход в цикл
-		_.keys(tests).forEach(function(test,counter,arr){
-			console.log("forEach checkProgress",tests[test])
-			testCounter++
-
-			if(tests[test].statusGeneral){
-
-			 	console.log("Success", counter,testCounter,(counter + 1) );
-			 	self.animateLine((testCounter * 100)/arr.length);
-			}else{
-
-				console.log("False");
-			}
+		self.on('Preload:End', function(){
+			setInterval(function () {
+					counter++;
+					if(counter === 1){
+						self.animateLine(counter);
+					}else if(counter == 100){
+						self.trigger('RedLine:Passed');
+						self.clearInterval();
+					}
+			},400);
 		});
-		//Выход из цикла
 	},
 
 	animateLine: function(count){
-		var line = this.redlineHtml.find('.loaded').css('width',count+'%');
+
+		var line = $(this.redlineHtml.find('.loaded')).animate({'width':'100%'}, 19000);
 	}
 });

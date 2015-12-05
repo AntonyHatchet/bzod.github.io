@@ -15,7 +15,17 @@ define({
 			that.breadcrumbsRender(link);
 		});
 
+		self.find('a').hover(function(e){
+			$(e.target).closest( ".circle" ).toggleClass('hover')
+		});
+
+		this.on('RedLine:Passed',function(){
+			var elements = self.find('li');
+			console.log('Alert',elements)
+		});
+
 		this.checkImageProgress();
+		this.animateButtons();
 	},
 	checkImageProgress: function(){
 		var self = this;
@@ -32,12 +42,16 @@ define({
 					self.accordionHtml.find("#"+test[element].name).addClass("opened");
 				}else{
 
-					console.log("False");
+
+
+//console.log("False");
 				}
 			});
 		}else{
 
-			console.log("Not an object!")
+
+
+//console.log("Not an object!")
 		}
 		//Выход из цикла
 	},
@@ -45,5 +59,37 @@ define({
 		var self = this;
 
 		return self.find('li.active').attr('data-href');
+	},
+	animateButtons: function(){
+		var self = this.accordionHtml;
+
+		var firstElement = self.find('.animationPolyOne');
+		var secondElement = self.find('.animationPolyTwo');
+		var therdElement = self.find('.animationPolyThree');
+
+		function zoomFirst(opacity){
+		  	$(firstElement).css('opacity','0.55');
+		};
+		function zoomSecond(opacity){
+			$(secondElement).css('opacity','0.35');
+		};
+		function zoomTherd(opacity){
+			$(therdElement).css('opacity','0.15');
+		};
+
+		function zoomOut(){
+			$(firstElement).css('opacity','0');
+			$(secondElement).css('opacity','0');
+			$(therdElement).css('opacity','0');
+		};
+
+		var timerPoints = setTimeout(function tick() {
+			zoomOut();
+			setTimeout(zoomFirst,1000);
+			setTimeout(zoomSecond,1150);
+			setTimeout(zoomTherd,1300);
+			setTimeout(zoomOut, 1800);
+		  timerPoints = setTimeout(tick, 10000);
+		}, 10000);
 	}
 });

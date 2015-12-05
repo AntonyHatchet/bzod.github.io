@@ -5,16 +5,14 @@ define({
 		return this.mainmenuHtml;
 	},
 	subscribeMenu: function(self) {
-
+		var that = this;
 		self.find('.leftSide .icon').on('click', function() {
 
 			self.find('.leftSide .leftMenu').toggleClass('hide');
 		});
 
-		self.find('#reloadButton').on('click', function(e) {
-
-			self.trigger('Tests:Cleared');
-			localStorage.clear();
+		self.find('.rightSide *').on('click', function(element) {
+			that.controllButtons(self,element);
 		});
 	},
 	breadcrumbsRender: function(ways){
@@ -37,13 +35,19 @@ define({
 		var angleRight = new Span("");
 
 		$(angleRight).addClass('divider fa fa-angle-right')
-		console.log(currentWays,currentDir);
 
 		self.mainmenuHtml.find('.breadcrumbs').html('').append(currentDir,angleRight,currentWays);
 	},
 	testBreadcrumbsRender: function(testName){
 		var self = this;
-		var tests = JSON.parse(localStorage.getItem('tests'));
+		var tests;
+
+		if(localStorage.tests){
+			tests = JSON.parse(localStorage.tests)[testName];
+		}else{
+			tests = self.tests[testName];
+		}
+
 		var links = [];
 		var Span = function(content){
 
@@ -52,37 +56,73 @@ define({
 
 			return this.span
 		}
-		var currentDir = new Span(getCurrentDir());
+		var currentDir = splitLink(getCurrentDir())//new Span(getCurrentDir());
 		var angleRight = new Span("");
+		var verticalBar = new Span(" | ");
 
 		function getCurrentDir(){
 			var dir = decodeURI(Backbone.history.getFragment());
 					dir = dir.substring(dir.indexOf("/")+1);
-					return dir
+					return dir;
 		};
 
-		$(angleRight).addClass('divider fa fa-angle-right')
+		function splitLink(link){
+			var firstName = new Span(link.substring(0,link.indexOf("/")));
+			var secondName = new Span(link.substring(link.indexOf("/") + 1));
 
-		tests[testName].questions.forEach(function(element){
-			 console.log(element);
+			return [firstName,secondName]
+		}
+
+		$(angleRight).addClass('divider fa fa-angle-right');
+		$(verticalBar).addClass('verticalBar');
+
+		tests.questions.forEach(function(element){
+			 
+
+//console.log(element);
 				var test = new Span(element.name);
 				if(element.status){
-					console.log("links true",element);
+					
+
+//console.log("links true",element);
 					$(test).addClass('white');
 					links.push(test);
 				}else {
 
-					console.log("links false",test);
+					
+
+//console.log("links false",test);
 					links.push(test);
 				}
 		});
-		//
-		// function fullLink(currentDir,tests){
-		//
-		// 	var link = currentDir + currentWays;
-		// 	return link
-		// }
 
-		self.mainmenuHtml.find('.breadcrumbs').html('').append(currentDir,angleRight,links);
+		self.mainmenuHtml.find('.breadcrumbs').html('').append(currentDir[0],angleRight,currentDir[1],verticalBar,links);
+	},
+	controllButtons: function(self,element) {
+		if($(element.target).attr('id')){
+
+			switch ($(element.target).attr('id')) {
+				case "reloadButton":
+					self.find(".selectSection p").html('Обнулить результат?');
+					self.find("#succesMenuButton").attr('href','#reset');
+					break;
+				case "turnOfSound":
+					self.find(".selectSection p").html('Изменить настройки звука?');
+					self.find("#succesMenuButton").removeAttr('href');
+					break;
+				case "goMenu":
+					self.find(".selectSection p").html('Вернуться на портал?');
+					self.find("#succesMenuButton").attr('href','');
+					break;
+				default:
+
+			}
+			self.find(".pushed").toggleClass('pushed');
+			self.find(".selectSection").removeClass().addClass($(element.target).attr('id') + " selectSection");
+			$(element.target).toggleClass('pushed');
+		}
+		
+
+//console.log($(element.target).attr('id'))
 	}
 });

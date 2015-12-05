@@ -5,7 +5,8 @@ require.config({
 		'backbone': 'backbone/backbone',
 		'text': 'text/text',
 		'underscore': 'underscore/underscore',
-		'handlebars': 'handlebars/handlebars'
+		'handlebars': 'handlebars/handlebars',
+		'parallax': 'parallax/deploy/parallax.min'
 	},
 	shim: {
 		'backbone': {
@@ -22,7 +23,8 @@ require([
 	'jquery',
 	'text',
 	'backbone',
-	'underscore'
+	'underscore',
+	"parallax"
 ], function(handlebars) {
 	Handlebars = handlebars;
 	/*------------------ Handlebars Helpers------------------*/
@@ -118,7 +120,7 @@ require([
 			var self = this;
 			//Загружаем модули.
 			modulesList.forEach(function(module, i){
-				if (!_.include(self.loadedModules, module)) {
+				// if (!_.include(self.loadedModules, module)) {
 					require([
 						'../../template/modules/' + module + '/' + module ,
 						'text!../../template/modules/' + module + '/' + module + '.html'
@@ -132,10 +134,10 @@ require([
 							self.trigger('Module:Load', modulesList);
 						}
 					});
-				}else if (modulesList.length - 1 == i){
-					console.log('modulesList.length', modulesList.length)
-					self.trigger('Module:Load', modulesList);
-				}
+				// }else if (modulesList.length - 1 == i){
+				// 	console.log('modulesList.length', modulesList.length)
+				// 	self.trigger('Module:Load', modulesList);
+				// }
 			});
 		},
 	
@@ -150,7 +152,7 @@ require([
 	
 		renderHandlebarsTemplate: function(selector,data) {
 			console.log('Создаем шаблон Handlebars', selector, data);
-	
+			
 			var template = Handlebars.compile($(selector).html());
 			return template(data);
 		}
@@ -161,8 +163,8 @@ require([
 	    routes: {
 	        "": "defaultRoute",
 	        "lessons/:name":"gallery",
-	        "quest/:name":"activateQuestion",
-	        "antiquityInspirationMap":"antiquityInspirationMap",
+	        "map/:test/:name":"map",
+	        "reset":"reset",
 	        "book/:name/:rusName":"reader",
 	        "video/:name/:rusName":"video",
 	        "goFront":"goFront",
@@ -175,35 +177,35 @@ require([
 	
 	router.on('route:defaultRoute', function(actions) {
 	
-		  console.log('Переход к mainScreen');
+		console.log('Переход к mainScreen');
 	    app.route('mainScreen', ['preloader']);
 	})
 	
 	router.on('route:gallery', function(actions) {
 	
-		  console.log('Переход к gallery');
-	    app.route('gallery', ['accordion', 'redline', 'mainmenu','reader', 'transformer3D','video']);
+	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','video']);
 	})
 	
-	router.on('route:activateQuestion', function(quest) {
-	
-		  console.log('Переход к тесту',quest);
-	    app.activateQuestion(quest);
-	})
-	
-	router.on('route:antiquityInspirationMap', function(actions) {
+	router.on('route:map', function(actions) {
 	
 	    console.log('Переход к antiquityInspirationMap');
-	    app.route('antiquityInspirationMap', ['redline', 'mainmenu','reader', 'transformer3D', 'tests']);
+	    app.route('antiquityInspirationMap', ['redline', 'mainmenu','reader', 'transformer3D', 'tests', 'city']);
+	})
+	
+	router.on('route:city', function(name) {
+	  console.log("Переход на страницу информации о городе ", name);
+	  //router.navigate("#map/Игры/Уроки Валентина Серова");
 	})
 	
 	router.on('route:reader', function(name,breadcrumbs) {
 	
 	    console.log('Переход в книгу', name,breadcrumbs);
 	    router.navigate("#lessons/Уроки Валентина Серова");
-	    app.printBookPages(name);
-	    app.breadcrumbsRender(breadcrumbs);
-	    app.goTop();
+	    setTimeout(function(){
+	      app.printBookPages(name);
+	      app.breadcrumbsRender(breadcrumbs);
+	      app.goTop();
+	    },200);
 	})
 	
 	router.on('route:goFront', function(actions) {
@@ -214,10 +216,20 @@ require([
 	})
 	
 	router.on('route:video', function(name,breadcrumbs) {
-	
-	    app.goBottom();
 	    router.navigate("#lessons/Уроки Валентина Серова");
-	    app.breadcrumbsRender(breadcrumbs);
+	    setTimeout(function(){
+	        app.goBottom();
+	        app.breadcrumbsRender(breadcrumbs);
+	    },200);
+	})
+	
+	router.on('route:reset', function() {
+	    console.log("reset");
+	    app.trigger('Tests:Cleared');
+	    localStorage.clear();
+	    setTimeout(function(){
+	      router.navigate("#lessons/Уроки Валентина Серова",{trigger:true});
+	    },200);
 	})
 	
 	// Start Backbone history a necessary step for bookmarkable URL's

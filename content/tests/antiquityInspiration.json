@@ -1,87 +1,220 @@
 {
 	"questions":[
 		{
-			"id":"olimpia",
-			"dataId":0,
-			"name":"Олимпия",
-			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
-			"godImg":"img/tests/zeus.png",
-			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
-			"answers":[
-				{"wrong":"img/tests/wrong1.png"},
-				{"right":"img/tests/right.png"},
-				{"wrong":"img/tests/wrong2.png"}
-			],
-			"status": false,
-			"reward":"img/tests/reward1.jpg",
-			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-			"rewardHeader":"Neque porro quisquam"
-		},{
 			"id":"delphi",
 			"dataId":1,
 			"name":"Дельфы",
-			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
-			"godImg":"img/tests/zeus.png",
-			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
-			"answers":[
-				{"wrong":"img/tests/wrong1.png"},
-				{"wrong":"img/tests/wrong2.png"},
-				{"right":"img/tests/right.png"}
+			"reward":"img/tests/wrong2.png",
+			"cityEntry":{
+				"subtitle":"«Да ты – чурбан, коли Афин не видывал!» - ",
+				"aditionalSubtitle":"так говорили древние греки. По крайней мере те, кто жил в Афинах",
+				"godImg":"img/tests/antiq/afina.png",
+				"text":"Главная достопримечательность Афин – Акрополь, священный холм с храмом богини Афины"
+			},
+			"cityBloks":[
+				{
+					"left":{
+						"image":"img/tests/antiq/athens/1.jpg"
+					},
+					"right":{
+						"header":"Акрополь",
+						"text":["Парфенон, «храм Богини Девы», построен в 5 веке до нашей эры после победы афинян над персами.","«Храм Парфенона нечто такое, о чем можно и не говорить — это настоящее действительное совершенство», - написал Серов жене из Афин.","В афинских музеях художник  нашел то, что давно хотел увидеть. В его альбомах много рисунков, сделанных в музейных залах","Загляни в туда вслед за Валентином Серовым!"]
+					}
+				},
+				{
+					"left":{
+						"header":"Музей Акрополя",
+						"text":["В Музее Акрополя можно увидеть находки археологов - мраморные скульптуры девушек, которые украшали священный холм в 6 веке до н.э., еще до строительства Парфенона. Этот период в развитии греческого искусства называют «архаикой». «Архаический» значит «древний».","В 480 году до нашей эры Афины захватило персидское войско. Почти все граждане Афин в тот момент покинули город, а вернувшись, нашли храмы разрушенными, а сокровища разграбленными. Осквернённые святыни афиняне собрали и закопали. Скульптуры девушек были найдены археологами  в этом «персидском мусоре» в конце 19 века."]
+					},
+					"right":{
+						"image":"img/tests/antiq/athens/2.jpg"
+					}
+				}
 			],
-			"status": false,
-			"reward":"img/tests/reward1.jpg",
-			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-			"rewardHeader":"Neque porro quisquam"
+			"question":"Выбери из трех скульптур «архаическую», т.е. самую древнюю.",
+			"answers":[
+				{
+					"wrong":{
+						"img":"img/tests/antiq/athens/quests/2.jpg",
+						"text":"Голова Афины Лемнии, мраморная копия со статуи, сделанной Фидием в V веке до н.э."
+					}
+				},
+				{
+					"wrong":{
+						"img":"img/tests/antiq/athens/quests/3.jpg",
+						"text":"Эта головка богини сделана в IV веке до н. э."
+					}
+				},
+				{
+					"right":{
+						"img":"img/tests/antiq/athens/quests/1.jpg",
+						"text":"Эта статуя «Коры» была найдена археологами на Акрополе в «персидском мусоре». Она датируется концом VI в. до н.э."
+					}
+				}
+			],
+			"status": false
 		},{
 			"id":"athens",
 			"dataId":2,
 			"name":"Афины",
-			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
-			"godImg":"img/tests/zeus.png",
-			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
-			"answers":[
-				{"wrong":"img/tests/wrong1.png"},
-				{"wrong":"img/tests/wrong2.png"},
-				{"right":"img/tests/right.png"}
+			"reward":"img/tests/wrong2.png",
+			"cityEntry":{
+				"subtitle":"«Да ты – чурбан, коли Афин не видывал!» - ",
+				"aditionalSubtitle":"так говорили древние греки. По крайней мере те, кто жил в Афинах",
+				"godImg":"img/tests/antiq/afina.png",
+				"text":"Главная достопримечательность Афин – Акрополь, священный холм с храмом богини Афины"
+			},
+			"cityBloks":[
+				{
+					"left":{
+						"image":"img/tests/antiq/athens/1.jpg"
+					},
+					"right":{
+						"header":"Акрополь",
+						"text":["Парфенон, «храм Богини Девы», построен в 5 веке до нашей эры после победы афинян над персами.","«Храм Парфенона нечто такое, о чем можно и не говорить — это настоящее действительное совершенство», - написал Серов жене из Афин.","В афинских музеях художник  нашел то, что давно хотел увидеть. В его альбомах много рисунков, сделанных в музейных залах","Загляни в туда вслед за Валентином Серовым!"]
+					}
+				},
+				{
+					"left":{
+						"header":"Музей Акрополя",
+						"text":["В Музее Акрополя можно увидеть находки археологов - мраморные скульптуры девушек, которые украшали священный холм в 6 веке до н.э., еще до строительства Парфенона. Этот период в развитии греческого искусства называют «архаикой». «Архаический» значит «древний».","В 480 году до нашей эры Афины захватило персидское войско. Почти все граждане Афин в тот момент покинули город, а вернувшись, нашли храмы разрушенными, а сокровища разграбленными. Осквернённые святыни афиняне собрали и закопали. Скульптуры девушек были найдены археологами  в этом «персидском мусоре» в конце 19 века."]
+					},
+					"right":{
+						"image":"img/tests/antiq/athens/2.jpg"
+					}
+				}
 			],
-			"status": false,
-			"reward":"img/tests/reward1.jpg",
-			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-			"rewardHeader":"Neque porro quisquam"
-		},{
-			"id":"crete",
-			"dataId":3,
-			"name":"Крит",
-			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
-			"godImg":"img/tests/zeus.png",
-			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
+			"question":"Выбери из трех скульптур «архаическую», т.е. самую древнюю.",
 			"answers":[
-				{"wrong":"img/tests/wrong1.png"},
-				{"wrong":"img/tests/wrong2.png"},
-				{"right":"img/tests/right.png"}
+				{
+					"wrong":{
+						"img":"img/tests/antiq/athens/quests/2.jpg",
+						"text":"text"
+					}
+				},
+				{
+					"wrong":{
+						"img":"img/tests/antiq/athens/quests/3.jpg",
+						"text":"text"
+					}
+				},
+				{
+					"right":{
+						"img":"img/tests/antiq/athens/quests/1.jpg",
+						"text":"text"
+					}
+				}
 			],
-			"status": false,
-			"reward":"img/tests/reward1.jpg",
-			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-			"rewardHeader":"Neque porro quisquam"
+			"status": false
 		},{
 			"id":"korfu",
-			"dataId":4,
+			"dataId":3,
 			"name":"Корфу",
-			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
-			"godImg":"img/tests/zeus.png",
-			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
-			"answers":[
-				{"wrong":"img/tests/wrong1.png"},
-				{"wrong":"img/tests/wrong2.png"},
-				{"right":"img/tests/right.png"}
+			"reward":"img/tests/wrong2.png",
+			"cityEntry":{
+				"subtitle":"«Да ты – чурбан, коли Афин не видывал!» - ",
+				"aditionalSubtitle":"так говорили древние греки. По крайней мере те, кто жил в Афинах",
+				"godImg":"img/tests/antiq/afina.png",
+				"text":"Главная достопримечательность Афин – Акрополь, священный холм с храмом богини Афины"
+			},
+			"cityBloks":[
+				{
+					"left":{
+						"image":"img/tests/antiq/athens/1.jpg"
+					},
+					"right":{
+						"header":"Акрополь",
+						"text":["Парфенон, «храм Богини Девы», построен в 5 веке до нашей эры после победы афинян над персами.","«Храм Парфенона нечто такое, о чем можно и не говорить — это настоящее действительное совершенство», - написал Серов жене из Афин.","В афинских музеях художник  нашел то, что давно хотел увидеть. В его альбомах много рисунков, сделанных в музейных залах","Загляни в туда вслед за Валентином Серовым!"]
+					}
+				},
+				{
+					"left":{
+						"header":"Музей Акрополя",
+						"text":["В Музее Акрополя можно увидеть находки археологов - мраморные скульптуры девушек, которые украшали священный холм в 6 веке до н.э., еще до строительства Парфенона. Этот период в развитии греческого искусства называют «архаикой». «Архаический» значит «древний».","В 480 году до нашей эры Афины захватило персидское войско. Почти все граждане Афин в тот момент покинули город, а вернувшись, нашли храмы разрушенными, а сокровища разграбленными. Осквернённые святыни афиняне собрали и закопали. Скульптуры девушек были найдены археологами  в этом «персидском мусоре» в конце 19 века."]
+					},
+					"right":{
+						"image":"img/tests/antiq/athens/2.jpg"
+					}
+				}
 			],
-			"status": false,
-			"reward":"img/tests/reward1.jpg",
-			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-			"rewardHeader":"Neque porro quisquam"
+			"question":"Выбери из трех скульптур «архаическую», т.е. самую древнюю.",
+			"answers":[
+				{
+					"wrong":{
+						"img":"img/tests/antiq/athens/quests/2.jpg",
+						"text":"text"
+					}
+				},
+				{
+					"wrong":{
+						"img":"img/tests/antiq/athens/quests/3.jpg",
+						"text":"text"
+					}
+				},
+				{
+					"right":{
+						"img":"img/tests/antiq/athens/quests/1.jpg",
+						"text":"text"
+					}
+				}
+			],
+			"status": false
+		},{
+			"id":"crete",
+			"dataId":4,
+			"name":"Крит",
+			"reward":"img/tests/wrong2.png",
+			"cityEntry":{
+				"subtitle":"«Да ты – чурбан, коли Афин не видывал!» - ",
+				"aditionalSubtitle":"так говорили древние греки. По крайней мере те, кто жил в Афинах",
+				"godImg":"img/tests/antiq/afina.png",
+				"text":"Главная достопримечательность Афин – Акрополь, священный холм с храмом богини Афины"
+			},
+			"cityBloks":[
+				{
+					"left":{
+						"image":"img/tests/antiq/athens/1.jpg"
+					},
+					"right":{
+						"header":"Акрополь",
+						"text":["Парфенон, «храм Богини Девы», построен в 5 веке до нашей эры после победы афинян над персами.","«Храм Парфенона нечто такое, о чем можно и не говорить — это настоящее действительное совершенство», - написал Серов жене из Афин.","В афинских музеях художник  нашел то, что давно хотел увидеть. В его альбомах много рисунков, сделанных в музейных залах","Загляни в туда вслед за Валентином Серовым!"]
+					}
+				},
+				{
+					"left":{
+						"header":"Музей Акрополя",
+						"text":["В Музее Акрополя можно увидеть находки археологов - мраморные скульптуры девушек, которые украшали священный холм в 6 веке до н.э., еще до строительства Парфенона. Этот период в развитии греческого искусства называют «архаикой». «Архаический» значит «древний».","В 480 году до нашей эры Афины захватило персидское войско. Почти все граждане Афин в тот момент покинули город, а вернувшись, нашли храмы разрушенными, а сокровища разграбленными. Осквернённые святыни афиняне собрали и закопали. Скульптуры девушек были найдены археологами  в этом «персидском мусоре» в конце 19 века."]
+					},
+					"right":{
+						"image":"img/tests/antiq/athens/2.jpg"
+					}
+				}
+			],
+			"question":"Выбери из трех скульптур «архаическую», т.е. самую древнюю.",
+			"answers":[
+				{
+					"wrong":{
+						"img":"img/tests/antiq/athens/quests/2.jpg",
+						"text":"text"
+					}
+				},
+				{
+					"wrong":{
+						"img":"img/tests/antiq/athens/quests/3.jpg",
+						"text":"text"
+					}
+				},
+				{
+					"right":{
+						"img":"img/tests/antiq/athens/quests/1.jpg",
+						"text":"text"
+					}
+				}
+			],
+			"status": false
 		}
 	],
+	"background":"../../../img/tests/antiq/background.jpg",
 	"statusGeneral":false,
 	"rewardGeneral": "img/content/damaEnd.jpg",
 	"name":"antiquityInspiration",

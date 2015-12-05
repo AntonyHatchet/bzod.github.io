@@ -1,37 +1,154 @@
+@import "../../../scss/partials/mixins/animation.scss";
 .container {
   width: 100%;
   height: 100%;
   margin: auto;
   position: relative;
-  perspective: 1000px;
   background-color: #717171;
 
   #cube {
     width: 100%;
     height: 100%;
     position: absolute;
-    transform-style: preserve-3d;
-    transform: translateZ( -24.15em );
-    transition: transform 1s;
+    @include transform-style(preserve-3d);
+    @include transition(transform 3s);
 
-    &.show-front  { transform: translateZ( -24.15em ) rotateY(    0deg ); }
-    &.show-back   { transform: translateZ( -24.15em ) rotateX( -180deg ); }
-    &.show-top    { transform: translateZ( -24.15em ) rotateX(  -90deg ); }
-    &.show-bottom { transform: translateZ( -24.15em ) rotateX(   90deg ); }
+    &.show-front  {
+      .frontSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(0deg);
+        top:0\9;
+      }
 
-    figure  {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    min-width: 1024px;
-    display: block;
-    position: absolute;
-    backface-visibility:hidden;
+      .topSide {
+        transform: perspective(882px) translateZ(-409px)  rotateX(90deg);
+        top:-100%\9;
+      }
+
+      .bottomSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
+        opacity:0;
+        top: calc(100% + 150px)\9;
+      }
     }
 
-    .front  { transform: rotateY(   0deg ) translateZ( 24.15em ); }
-    .back   { transform: rotateX( 180deg ) translateZ( 24.15em ); }
-    .top    { transform: rotateX(  90deg ) translateZ( 24.15em ); }
-    .bottom { transform: rotateX( -90deg ) translateZ( 24.15em ); }
+    &.show-top    {
+      .frontSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
+        top: calc(100% + 150px)\9;
+      }
+
+      .topSide {
+        transform: perspective(882px) translateZ(-409px)  rotateX(0deg);
+        top:0\9;
+      }
+
+      .bottomSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
+        opacity:0;
+        top: calc(100% + 150px)\9;
+      }
+    }
+
+    &.show-bottom {
+      .frontSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(90deg);
+        top:-100%\9;
+      }
+
+      .topSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(180deg);
+        opacity:0;
+      }
+
+      .bottomSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(0deg);
+        top:0\9;
+      }
+    }
+
+    figure  {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      min-width: 1024px;
+      display: block;
+      position: absolute;
+      @include backface-visibility(hidden);
+      @include transition(transform 1s);
+    }
+
+    .topSide {
+      transform-origin:50% 50% -410px;
+      transform: perspective(882px)  translateZ(-409px)  rotateX(90deg);
+    }
+    .frontSide {
+      transform-origin:50% 50% -410px;
+      transform: perspective(882px)  translateZ(-409px) rotateX(0deg);
+    }
+    .bottomSide {
+      transform-origin:50% 50% -410px;
+      transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
+    }
+
+    @media screen and (max-height:768px) {
+
+      .topSide {
+        transform-origin:50% 50% -314px;
+        transform: perspective(882px)  translateZ(-314px)  rotateX(90deg);
+      }
+      .frontSide {
+        transform-origin:50% 50% -280px;
+        transform: perspective(882px)  translateZ(-280px) rotateX(0deg);
+      }
+      .bottomSide {
+        transform-origin:50% 50% -314px;
+        transform: perspective(882px) translateZ(-314px) rotateX(-90deg);
+      }
+
+      &.show-front  {
+        .frontSide {
+          transform: perspective(882px) translateZ(-280px) rotateX(0deg);
+        }
+
+        .topSide {
+          transform: perspective(882px) translateZ(-314px)  rotateX(90deg);
+        }
+
+        .bottomSide {
+          transform: perspective(882px) translateZ(-314px) rotateX(-90deg);
+          opacity:0;
+        }
+      }
+
+      &.show-top    {
+        .frontSide {
+          transform: perspective(882px) translateZ(-280px) rotateX(-90deg);
+        }
+
+        .topSide {
+          transform: perspective(882px) translateZ(-314px)  rotateX(0deg);
+        }
+
+        .bottomSide {
+          transform: perspective(882px) translateZ(-314px) rotateX(-180deg);
+          opacity:0;
+        }
+      }
+
+      &.show-bottom {
+        .frontSide {
+          transform: perspective(882px) translateZ(-280px) rotateX(90deg);
+        }
+
+        .topSide {
+          transform: perspective(882px) translateZ(-314px) rotateX(180deg);
+          opacity:0;
+        }
+
+        .bottomSide {
+          transform: perspective(882px) translateZ(-314px) rotateX(0deg);
+        }
+      }
+    }
   }
 }

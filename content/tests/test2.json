@@ -1,22 +1,6 @@
 {
 	"questions":[
 		{
-			"id":"olimpia2",
-			"dataId":0,
-			"name":"Олимпия",
-			"text":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
-			"godImg":"img/tests/zeus.png",
-			"aditionalText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ?",
-			"answers":[
-				{"wrong":"img/tests/wrong1.png"},
-				{"right":"img/tests/right.png"},
-				{"wrong":"img/tests/wrong2.png"}
-			],
-			"status": false,
-			"reward":"img/tests/reward1.jpg",
-			"rewardText":"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-			"rewardHeader":"Neque porro quisquam"
-		},{
 			"id":"delphi2",
 			"dataId":1,
 			"name":"Дельфы",
