@@ -16,11 +16,16 @@ define({
 		});
 
 		self.find('a').hover(function(e){
+<<<<<<< HEAD
 			$(e.target).closest(".circle").toggleClass('hover');
+=======
+			$(e.target).closest( ".circle" ).toggleClass('hover')
+>>>>>>> be10bb60a31ce7f9716b37f8657390e69fb47ef6
 		});
 
 		this.on('RedLine:Passed',function(){
 			var elements = self.find('li');
+<<<<<<< HEAD
 			var currentActive;
 
 			[].forEach.call(elements,function(li){
@@ -38,16 +43,22 @@ define({
 			});
 
 			that.changeActiveBlock(elements,elements[(currentActive)]);
+=======
+			console.log('Alert',elements)
+>>>>>>> be10bb60a31ce7f9716b37f8657390e69fb47ef6
 		});
 
 		this.checkImageProgress();
 		this.animateButtons();
+<<<<<<< HEAD
 	},
 	changeActiveBlock: function(allElement,mustActivateLi){
 
 		$(allElement).removeClass('active');
 		$(mustActivateLi).addClass('active');
 		this.trigger('Accordeon:Listed');
+=======
+>>>>>>> be10bb60a31ce7f9716b37f8657390e69fb47ef6
 	},
 	checkImageProgress: function(){
 		var self = this;

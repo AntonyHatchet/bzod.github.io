@@ -7,6 +7,7 @@ define({
 	},
 
 	subscribeRedline: function(self) {
+<<<<<<< HEAD
 		var self = this;
 
 		self.on('Preload:End', function(){
@@ -43,5 +44,26 @@ define({
 	refreshLine: function(){
 		$('.loaded').stop().css('width', '0');
 		this.trigger('Refresh:Line');
+=======
+		var self = this;
+		var counter = 0;
+
+		self.on('Preload:End', function(){
+			setInterval(function () {
+					counter++;
+					if(counter === 1){
+						self.animateLine(counter);
+					}else if(counter == 100){
+						self.trigger('RedLine:Passed');
+						self.clearInterval();
+					}
+			},400);
+		});
+	},
+
+	animateLine: function(count){
+
+		var line = $(this.redlineHtml.find('.loaded')).animate({'width':'100%'}, 19000);
+>>>>>>> be10bb60a31ce7f9716b37f8657390e69fb47ef6
 	}
 });
