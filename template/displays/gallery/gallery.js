@@ -12,15 +12,20 @@ define({
 
 		var transformer3D = this.renderTransformer3D([accordion,reader,video]);
 
-		this.content.append(transformer3D); 
-		this.content.find('#accordion li.active').append(preloader); 
+		this.content.append(transformer3D);
+		this.content.find('#accordion li').append(redline); 
+		this.content.find('#accordion li.active').append(preloader);
 
-		$('body').html('').append(this.content, redline, menu);
+		$('body').html('').append(this.content, menu);
 
 		this.preloadImage(90);
-		this.subscribe();
+		this.subscribe(redline);
 	},
-	subscribe: function() {
+	subscribe: function(redline) {
 		var self = this;
+
+		this.on('Accordeon:Listed',function(){
+			self.refreshLine(); 
+		});
 	}
 });

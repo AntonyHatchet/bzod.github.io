@@ -22,10 +22,10 @@ ul.accordion {
     border-left: 2px solid #333333;
     border-right: 1px solid #fff;
     transition: all 500ms ease;
-    
+
     &:nth-child(1){
       z-index:0;
-    } 
+    }
 
     &:nth-child(2){
       z-index:1;
@@ -148,4 +148,14 @@ ul.accordion {
       }
     }
   }
+}
+@media screen and (max-height:768px) {
+    ul.accordion li div.image .circle {
+      height: 45%;
+      width: 25%;
+      &.bottom{
+        right: 15%;
+      }
+  }
+
 }

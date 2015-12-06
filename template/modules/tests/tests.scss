@@ -197,26 +197,36 @@
 				    		opacity: 0.5;
 			    		}
 			    	}
-			    	div:not(.img){
+			    	.imageCover{
 	    		        position: absolute;
 					    display: none;
 					    bottom: 0;
 					    left: 0;
 					    padding: 0 5%;
 					    text-align: left;
+					    height: 365px;
 					    width: 75%;
 					    background-color: rgba(0,0,0,0.5);
 					    font-size: 14px;
+					    background-image: url(../../../img/tests/antiq/athens/quests/cover.png);
+				        background-repeat: no-repeat;
+    					background-size: contain;
 
 					    i{
 				    	    background-image: url(../../../img/tests/x.png);
 						    background-repeat: no-repeat;
 						    width: 56px;
 						    height: 55px;
-						    top: -200%;
+						    top: 35%;
 						    display: block;
 						    position: absolute;
 						    left: 38%;
+					    }
+
+					    .text{
+					    	position: absolute;
+					    	bottom: 0;
+					    	padding-right: 15px;
 					    }
 			    	}
 			    }
@@ -262,6 +272,9 @@
 	}
 }
 @media screen and (max-height:768px) {
+  #tests{
+    height: 2976px;
+  }
 	#tests>div section.left .god{
 		width: 200px;
 		margin-left: calc(50% - 100.5px);
@@ -270,4 +283,10 @@
 		padding-top: 0;
 		height: 99%;
 	}
+  #tests>div section.first{
+    padding-top: 5%;
+  }
+  #tests>div section.first p:last-of-type {
+    padding: 0px 35%;
+  }
 }

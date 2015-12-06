@@ -38,7 +38,7 @@ define({
 	},
 
 	clearInterval: function(){
-		
+
 
 //console.log('clearInterval');
 		this.preloaderHtml.find('.animate-75-100-b, .animate-50-75-b, .animate-25-50-b, .animate-0-25-b').css("transform","rotate(90deg)");
@@ -51,7 +51,7 @@ define({
 	preloadImage: function(timer){
 		var self = this;
 		var images = this.content.find("img");
-//		
+//
 
 //console.log("all images on the page", images);
 		var counter = 0;
@@ -87,28 +87,5 @@ define({
 		images.on("load", function (event) {
 			counter ++;
 		});
-
-		// images.on("load", function (event) {
-		// 	counter ++;
-		// 	
-
-//console.log('image loaded');
-		// 	self.renderProgress((counter*procent));
-		// 	if( counter >= images.length ) {
-		// 		width = '4px';
-		// 		self.preloaderHtml.find('.text').animate({
-		// 			opacity : 0.5
-		// 		}, 'slow');
-		// 		self.preloaderHtml.find('.loader-spiner').animate({
-		// 			borderLeftWidth: width,
-		// 			borderTopWidth: width,
-		// 			borderRightWidth: width,
-		// 			borderBottomWidth: width
-		// 		}, 1300 );
-		// 		setTimeout(function(){
-		// 			self.clearInterval();
-		// 		}, 1500);
-		// 	}
-		// });
 	}
 });

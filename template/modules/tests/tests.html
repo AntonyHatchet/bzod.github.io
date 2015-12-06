@@ -56,10 +56,12 @@
 										<img src={{wrong.img}} class="false" data-toogle="wrongHover">
 										<a data-toogle="wrongHover"></a>
 									</div>
-									<div class="wrongHover">
+									<div class="imageCover wrongHover">
 										<i></i>
-										<p>Нет</p>
-										<p>{{wrong.text}}</p>
+										<div class="text">
+											<p>Нет</p>
+											<p>{{wrong.text}}</p>
+										</div>
 									</div>
 								</div>
 							{{else}}
@@ -68,9 +70,11 @@
 										<img src={{right.img}} class="true" data-toogle="rightHover">
 										<a data-toogle="rightHover"></a>
 									</div>
-									<div class="rightHover">
-										<p>Правильно</p>
-										<p>{{right.text}}</p>
+									<div class="imageCover rightHover">
+										<div class="text">
+											<p>Правильно</p>
+											<p>{{right.text}}</p>
+										</div>
 									</div>
 								</div>
 							{{/if}}

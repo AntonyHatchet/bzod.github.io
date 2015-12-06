@@ -7,20 +7,47 @@ define({
 		var that = this;
 
 		self.find('li').on('click', function(e) {
-			var link = $(e.target).closest('li').attr('data-href')
+			var link = $(e.target).closest('li').attr('data-href');
 
 			self.find('li.active').toggleClass('active');
 			self.find($(e.target).closest('li')).toggleClass('active');
-
+			that.trigger('Accordeon:Listed');
 			that.breadcrumbsRender(link);
 		});
 
 		self.find('a').hover(function(e){
-			$(e.target).closest( ".circle" ).toggleClass('hover')
+			$(e.target).closest(".circle").toggleClass('hover');
+		});
+
+		this.on('RedLine:Passed',function(){
+			var elements = self.find('li');
+			var currentActive;
+
+			[].forEach.call(elements,function(li){
+
+				if(li.matches('.active')){
+
+					if((_.indexOf(elements, li) +1 ) == elements.length){
+
+						currentActive = 0;
+					}else{
+
+						currentActive = (_.indexOf(elements, li) + 1);
+					}
+				}
+			});
+
+			that.changeActiveBlock(elements,elements[(currentActive)]);
 		});
 
 		this.checkImageProgress();
 		this.animateButtons();
+	},
+	changeActiveBlock: function(allElement,mustActivateLi){
+
+		$(allElement).removeClass('active');
+		$(mustActivateLi).addClass('active');
+		this.trigger('Accordeon:Listed');
 	},
 	checkImageProgress: function(){
 		var self = this;
@@ -37,14 +64,14 @@ define({
 					self.accordionHtml.find("#"+test[element].name).addClass("opened");
 				}else{
 
-					
+
 
 //console.log("False");
 				}
 			});
 		}else{
 
-			
+
 
 //console.log("Not an object!")
 		}
