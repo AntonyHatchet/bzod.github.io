@@ -1,10 +1,6 @@
 /*!
 
-<<<<<<< HEAD
  handlebars v4.0.5
-=======
- handlebars v4.0.4
->>>>>>> be10bb60a31ce7f9716b37f8657390e69fb47ef6
 
 Copyright (C) 2011-2015 by Yehuda Katz
 
@@ -2141,102 +2137,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _interopRequireDefault = __webpack_require__(1)['default'];
 
 	exports.__esModule = true;
-<<<<<<< HEAD
-=======
-	exports.HandlebarsEnvironment = HandlebarsEnvironment;
-
-	var _utils = __webpack_require__(13);
-
-	var _exception = __webpack_require__(12);
-
-	var _exception2 = _interopRequireDefault(_exception);
-
-	var _helpers = __webpack_require__(19);
-
-	var _decorators = __webpack_require__(20);
-
-	var _logger = __webpack_require__(21);
-
-	var _logger2 = _interopRequireDefault(_logger);
-
-	var VERSION = '4.0.4';
-	exports.VERSION = VERSION;
-	var COMPILER_REVISION = 7;
-
-	exports.COMPILER_REVISION = COMPILER_REVISION;
-	var REVISION_CHANGES = {
-	  1: '<= 1.0.rc.2', // 1.0.rc.2 is actually rev2 but doesn't report it
-	  2: '== 1.0.0-rc.3',
-	  3: '== 1.0.0-rc.4',
-	  4: '== 1.x.x',
-	  5: '== 2.0.0-alpha.x',
-	  6: '>= 2.0.0-beta.1',
-	  7: '>= 4.0.0'
-	};
-
-	exports.REVISION_CHANGES = REVISION_CHANGES;
-	var objectType = '[object Object]';
-
-	function HandlebarsEnvironment(helpers, partials, decorators) {
-	  this.helpers = helpers || {};
-	  this.partials = partials || {};
-	  this.decorators = decorators || {};
-
-	  _helpers.registerDefaultHelpers(this);
-	  _decorators.registerDefaultDecorators(this);
-	}
-
-	HandlebarsEnvironment.prototype = {
-	  constructor: HandlebarsEnvironment,
-
-	  logger: _logger2['default'],
-	  log: _logger2['default'].log,
-
-	  registerHelper: function registerHelper(name, fn) {
-	    if (_utils.toString.call(name) === objectType) {
-	      if (fn) {
-	        throw new _exception2['default']('Arg not supported with multiple helpers');
-	      }
-	      _utils.extend(this.helpers, name);
-	    } else {
-	      this.helpers[name] = fn;
-	    }
-	  },
-	  unregisterHelper: function unregisterHelper(name) {
-	    delete this.helpers[name];
-	  },
-
-	  registerPartial: function registerPartial(name, partial) {
-	    if (_utils.toString.call(name) === objectType) {
-	      _utils.extend(this.partials, name);
-	    } else {
-	      if (typeof partial === 'undefined') {
-	        throw new _exception2['default']('Attempting to register a partial called "' + name + '" as undefined');
-	      }
-	      this.partials[name] = partial;
-	    }
-	  },
-	  unregisterPartial: function unregisterPartial(name) {
-	    delete this.partials[name];
-	  },
-
-	  registerDecorator: function registerDecorator(name, fn) {
-	    if (_utils.toString.call(name) === objectType) {
-	      if (fn) {
-	        throw new _exception2['default']('Arg not supported with multiple decorators');
-	      }
-	      _utils.extend(this.decorators, name);
-	    } else {
-	      this.decorators[name] = fn;
-	    }
-	  },
-	  unregisterDecorator: function unregisterDecorator(name) {
-	    delete this.decorators[name];
-	  }
-	};
-
-	var log = _logger2['default'].log;
->>>>>>> be10bb60a31ce7f9716b37f8657390e69fb47ef6
 
 	var _visitor = __webpack_require__(25);
 
@@ -3080,7 +2980,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    transformLiteralToPath(sexpr);
 	    var type = this.classifySexpr(sexpr);
 
-<<<<<<< HEAD
 	    if (type === 'simple') {
 	      this.simpleSexpr(sexpr);
 	    } else if (type === 'helper') {
@@ -3093,88 +2992,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var path = sexpr.path,
 	        name = path.parts[0],
 	        isBlock = program != null || inverse != null;
-=======
-	                    break;
-	                case 23:
-	                    return 48;
-	                    break;
-	                case 24:
-	                    return 73;
-	                    break;
-	                case 25:
-	                    return 72;
-	                    break;
-	                case 26:
-	                    return 72;
-	                    break;
-	                case 27:
-	                    return 87;
-	                    break;
-	                case 28:
-	                    // ignore whitespace
-	                    break;
-	                case 29:
-	                    this.popState();return 54;
-	                    break;
-	                case 30:
-	                    this.popState();return 33;
-	                    break;
-	                case 31:
-	                    yy_.yytext = strip(1, 2).replace(/\\"/g, '"');return 80;
-	                    break;
-	                case 32:
-	                    yy_.yytext = strip(1, 2).replace(/\\'/g, "'");return 80;
-	                    break;
-	                case 33:
-	                    return 85;
-	                    break;
-	                case 34:
-	                    return 82;
-	                    break;
-	                case 35:
-	                    return 82;
-	                    break;
-	                case 36:
-	                    return 83;
-	                    break;
-	                case 37:
-	                    return 84;
-	                    break;
-	                case 38:
-	                    return 81;
-	                    break;
-	                case 39:
-	                    return 75;
-	                    break;
-	                case 40:
-	                    return 77;
-	                    break;
-	                case 41:
-	                    return 72;
-	                    break;
-	                case 42:
-	                    yy_.yytext = yy_.yytext.replace(/\\([\\\]])/g, '$1');return 72;
-	                    break;
-	                case 43:
-	                    return 'INVALID';
-	                    break;
-	                case 44:
-	                    return 5;
-	                    break;
-	            }
-	        };
-	        lexer.rules = [/^(?:[^\x00]*?(?=(\{\{)))/, /^(?:[^\x00]+)/, /^(?:[^\x00]{2,}?(?=(\{\{|\\\{\{|\\\\\{\{|$)))/, /^(?:\{\{\{\{(?=[^\/]))/, /^(?:\{\{\{\{\/[^\s!"#%-,\.\/;->@\[-\^`\{-~]+(?=[=}\s\/.])\}\}\}\})/, /^(?:[^\x00]*?(?=(\{\{\{\{)))/, /^(?:[\s\S]*?--(~)?\}\})/, /^(?:\()/, /^(?:\))/, /^(?:\{\{\{\{)/, /^(?:\}\}\}\})/, /^(?:\{\{(~)?>)/, /^(?:\{\{(~)?#>)/, /^(?:\{\{(~)?#\*?)/, /^(?:\{\{(~)?\/)/, /^(?:\{\{(~)?\^\s*(~)?\}\})/, /^(?:\{\{(~)?\s*else\s*(~)?\}\})/, /^(?:\{\{(~)?\^)/, /^(?:\{\{(~)?\s*else\b)/, /^(?:\{\{(~)?\{)/, /^(?:\{\{(~)?&)/, /^(?:\{\{(~)?!--)/, /^(?:\{\{(~)?![\s\S]*?\}\})/, /^(?:\{\{(~)?\*?)/, /^(?:=)/, /^(?:\.\.)/, /^(?:\.(?=([=~}\s\/.)|])))/, /^(?:[\/.])/, /^(?:\s+)/, /^(?:\}(~)?\}\})/, /^(?:(~)?\}\})/, /^(?:"(\\["]|[^"])*")/, /^(?:'(\\[']|[^'])*')/, /^(?:@)/, /^(?:true(?=([~}\s)])))/, /^(?:false(?=([~}\s)])))/, /^(?:undefined(?=([~}\s)])))/, /^(?:null(?=([~}\s)])))/, /^(?:-?[0-9]+(?:\.[0-9]+)?(?=([~}\s)])))/, /^(?:as\s+\|)/, /^(?:\|)/, /^(?:([^\s!"#%-,\.\/;->@\[-\^`\{-~]+(?=([=~}\s\/.)|]))))/, /^(?:\[(\\\]|[^\]])*\])/, /^(?:.)/, /^(?:$)/];
-	        lexer.conditions = { "mu": { "rules": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44], "inclusive": false }, "emu": { "rules": [2], "inclusive": false }, "com": { "rules": [6], "inclusive": false }, "raw": { "rules": [3, 4, 5], "inclusive": false }, "INITIAL": { "rules": [0, 1, 44], "inclusive": true } };
-	        return lexer;
-	    })();
-	    parser.lexer = lexer;
-	    function Parser() {
-	        this.yy = {};
-	    }Parser.prototype = parser;parser.Parser = Parser;
-	    return new Parser();
-	})();exports.__esModule = true;
-	exports['default'] = handlebars;
->>>>>>> be10bb60a31ce7f9716b37f8657390e69fb47ef6
 
 	    this.opcode('getContext', path.depth);
 

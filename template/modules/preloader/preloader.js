@@ -77,7 +77,6 @@ define({
 						borderRightWidth: width,
 						borderBottomWidth: width
 					}, 13 );
-					self.trigger('Preload:End');
 					setTimeout(function(){
 						self.clearInterval();
 					}, 15);
@@ -88,31 +87,5 @@ define({
 		images.on("load", function (event) {
 			counter ++;
 		});
-<<<<<<< HEAD
-=======
-
-		// images.on("load", function (event) {
-		// 	counter ++;
-		//
-
-//console.log('image loaded');
-		// 	self.renderProgress((counter*procent));
-		// 	if( counter >= images.length ) {
-		// 		width = '4px';
-		// 		self.preloaderHtml.find('.text').animate({
-		// 			opacity : 0.5
-		// 		}, 'slow');
-		// 		self.preloaderHtml.find('.loader-spiner').animate({
-		// 			borderLeftWidth: width,
-		// 			borderTopWidth: width,
-		// 			borderRightWidth: width,
-		// 			borderBottomWidth: width
-		// 		}, 1300 );
-		// 		setTimeout(function(){
-		// 			self.clearInterval();
-		// 		}, 1500);
-		// 	}
-		// });
->>>>>>> be10bb60a31ce7f9716b37f8657390e69fb47ef6
 	}
 });

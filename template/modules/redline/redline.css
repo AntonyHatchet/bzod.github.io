@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 .redLine{position:absolute;bottom:0;height:6px;padding-left:96px;width:100%}.redLine .loaded{background-color:red;width:0;height:100%}@media screen and (max-height:768px){.redLine{position:absolute;bottom:0;height:6px;padding-left:96px;width:100%}}
-=======
-#redLine{position:absolute;bottom:105px;height:6px;width:100%}#redLine .loaded{background-color:red;width:0;height:100%}@media screen and (max-height:768px){#redLine{position:absolute;bottom:0;height:6px;padding-left:96px;width:100%}}
->>>>>>> be10bb60a31ce7f9716b37f8657390e69fb47ef6
