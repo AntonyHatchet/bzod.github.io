@@ -149,6 +149,19 @@ ul.accordion {
     }
   }
 }
+@media screen and (max-height:900px) {
+
+  ul.accordion li div.image .circle {
+    height: 36%;
+    width: 26%;
+  }
+
+  ul.accordion li div.image .circle.bottom {
+    right: 16%;
+  }
+
+}
+
 @media screen and (max-height:768px) {
     ul.accordion li div.image .circle {
       height: 45%;

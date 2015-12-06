@@ -32,9 +32,8 @@ define({
 				if(counter == 100){
 					self.trigger('RedLine:Passed');
 					clearInterval(interval);
-				}else{
-					console.log('counter* = '+ counter);
 				}
+				
 				self.on('Refresh:Line', function(){
 					clearInterval(interval);
 				});
