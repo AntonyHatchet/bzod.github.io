@@ -111,12 +111,13 @@ define({
 			var testData = JSON.parse(myStorage.getItem('tests'));
 			testData[testName].statusGeneral = true;
 			myStorage.setItem('tests',JSON.stringify(testData));
-
-			$('html,body').animate({
-	          scrollTop: 0
-	        }, 1000);
 			self.testsHtml.find('#finishTest').toggleClass('active');
-			self.testsHtml.find('#'+lastTestId).toggleClass('unActive');
+
+			setTimeout(function(){
+				$('html,body').animate({
+		          scrollTop: window.pageYOffset + document.documentElement.clientHeight 
+		        }, 1000);
+			}, 200);
 		});
 	},
 
@@ -131,18 +132,19 @@ define({
 		var self = this;
 
 		self.testsHtml.find('.goNext').on('click',function(){
+			$("html,body").stop();
 			var height = document.documentElement.clientHeight + window.pageYOffset;
 			var maxHeight = document.getElementById('tests').clientHeight;
 			
 			$("html,body").animate({
 	          scrollTop: height
-	        }, 1000);
+	        }, 500);
 
 	        setTimeout(function(){
 	        	if((maxHeight - window.pageYOffset) === document.documentElement.clientHeight){
 	        		$(self.testsHtml.find('.goNext')).css('display','none');
 	        	}
-	        },1000);
+	        },500);
 		});
 	},
 	checkTestComplite: function(testData, lastTestId){

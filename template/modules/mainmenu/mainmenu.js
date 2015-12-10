@@ -99,9 +99,9 @@ define({
 		self.mainmenuHtml.find('.breadcrumbs').html('').append(currentDir[0],angleRight,currentDir[1],verticalBar,links);
 	},
 	controllButtons: function(self,element) {
-		if($(element.target).attr('id')){
+		if($(element.target).data('id')){
 
-			switch ($(element.target).attr('id')) {
+			switch ($(element.target).data('id')) {
 				case "reloadButton":
 					self.find(".selectSection p").html('Обнулить результат?');
 					self.find("#succesMenuButton").attr('href','#reset');
@@ -118,7 +118,7 @@ define({
 
 			}
 			self.find(".pushed").toggleClass('pushed');
-			self.find(".selectSection").removeClass().addClass($(element.target).attr('id') + " selectSection");
+			self.find(".selectSection").removeClass().addClass($(element.target).data('id') + " selectSection");
 			$(element.target).toggleClass('pushed');
 		}
 		

@@ -1,19 +1,13 @@
 <div id="tests">
 	<script id="testTemplate" type="text/x-handlebars-template">
-		<style>
-		  #tests {
-			background-image:url({{background}});
-		  }
-		</style>
 		<a class="goBackButton"></a>
 		<a class="goNext"></a>
 		{{#each questions}}
-			<div id={{id}} data-id={{dataId}}>
+			<div id={{id}} data-id={{dataId}} style=background-image:url({{background}})>
 				<section class="first" data-count="0">
 					<h1>{{name}}</h1>
 					<p class="subtitle">{{cityEntry.subtitle}}</p>
 					<p>{{cityEntry.aditionalSubtitle}}</p>
-					<img class="god" src={{cityEntry.godImg}}>
 					<p class="question">{{cityEntry.text}}</p>
 				</section>
 				{{#each cityBloks}}

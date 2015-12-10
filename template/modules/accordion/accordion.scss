@@ -149,7 +149,7 @@ ul.accordion {
     }
   }
 }
-@media screen and (max-height:900px) {
+@media screen and (max-height:924px) {
 
   ul.accordion li div.image .circle {
     height: 36%;
@@ -158,6 +158,14 @@ ul.accordion {
 
   ul.accordion li div.image .circle.bottom {
     right: 16%;
+  }
+
+}
+
+@media screen and (max-height:900px) {
+
+  #video div a {
+    margin: 10% 25%;
   }
 
 }
