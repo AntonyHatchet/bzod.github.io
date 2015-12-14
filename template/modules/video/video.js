@@ -28,5 +28,10 @@ define({
 		var page = self.renderHandlebarsTemplate("#videoTemplate",video);
 		
 		self.videoHtml.html(page);
+
+		//Кнопки перехода
+		self.videoHtml.find('a').hover(function(e){
+			$(e.target).closest(".circle").toggleClass('hover');
+		});
 	},
 });

@@ -114,6 +114,9 @@ define({
 					self.find(".selectSection p").html('Вернуться на портал?');
 					self.find("#succesMenuButton").attr('href','');
 					break;
+				case "aboutButton":
+					this.trigger('Get:About');
+					break;
 				default:
 
 			}

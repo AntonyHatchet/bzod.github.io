@@ -50,42 +50,34 @@ define({
 
 	preloadImage: function(timer){
 		var self = this;
-		var images = this.content.find("img");
-//
+		var images = self.content.find("img");
 
-//console.log("all images on the page", images);
 		var counter = 0;
 		var procent = 100/images.length;
 
-
-		var j = 0;
-
-		setInterval(function () {
-		    j++;
-			if (j <= 98) {
-			   	self.renderProgress(j);
-		   	}else
-		    if (j === 99) {
-			    // if(counter === images.length){
-			        width = '4px';
-					self.preloaderHtml.find('.text').animate({
-						opacity : 0.5
-					}, 'slow');
-					self.preloaderHtml.find('.loader-spiner').animate({
-						borderLeftWidth: width,
-						borderTopWidth: width,
-						borderRightWidth: width,
-						borderBottomWidth: width
-					}, 13 );
-					setTimeout(function(){
-						self.clearInterval();
-					}, 15);
-				// }
-		    }
-		}, timer);
-
 		images.on("load", function (event) {
 			counter ++;
+			self.renderProgress((counter*procent));
+			if( counter >= images.length ) {
+				width = '4px';
+				self.preloaderHtml.find('.text').animate({
+					opacity : 0.5
+				}, 'slow');
+				self.preloaderHtml.find('.loader-spiner').animate({
+					borderLeftWidth: width,
+					borderTopWidth: width,
+					borderRightWidth: width,
+					borderBottomWidth: width
+				}, 1300 );
+				setTimeout(function(){
+					self.clearInterval();
+				}, 1500);
+			}
+		});
+
+		//Загружаем изображения
+		[].forEach.call(images,function(elem){
+			elem.src = elem.src;
 		});
 	}
 });

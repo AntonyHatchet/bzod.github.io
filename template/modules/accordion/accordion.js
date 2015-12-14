@@ -5,7 +5,7 @@ define({
 	},
 	subscribeAccordion: function(self) {
 		var that = this;
-
+		//Переключение колонок
 		self.find('li').on('click', function(e) {
 			var link = $(e.target).closest('li').attr('data-href');
 
@@ -14,11 +14,11 @@ define({
 			that.trigger('Accordeon:Listed');
 			that.breadcrumbsRender(link);
 		});
-
+		//Кнопки перехода
 		self.find('a').hover(function(e){
 			$(e.target).closest(".circle").toggleClass('hover');
 		});
-
+		//Автопереход колонок
 		this.on('RedLine:Passed',function(){
 			var elements = self.find('li');
 			var currentActive;

@@ -183,13 +183,13 @@ require([
 	
 	router.on('route:gallery', function(actions) {
 	
-	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','video']);
+	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','video','about']);
 	})
 	
 	router.on('route:map', function(actions) {
 	
 	    console.log('Переход к antiquityInspirationMap');
-	    app.route('antiquityInspirationMap', ['redline', 'mainmenu','reader', 'transformer3D', 'tests', 'city']);
+	    app.route('antiquityInspirationMap', ['redline', 'mainmenu','reader', 'transformer3D', 'tests', 'city','about']);
 	})
 	
 	router.on('route:city', function(name) {

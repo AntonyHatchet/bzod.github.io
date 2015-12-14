@@ -9,6 +9,7 @@ define({
 		var video = this.renderVideo('video');
 		var reader = this.renderReader(['antiq','history','story']);
 		var redline = this.renderRedline();
+		var about = this.renderAbout();
 
 		var transformer3D = this.renderTransformer3D([accordion,reader,video]);
 
@@ -16,12 +17,12 @@ define({
 		this.content.find('#accordion li').append(redline); 
 		this.content.find('#accordion li.active').append(preloader);
 
-		$('body').html('').append(this.content, menu);
+		$('body').html('').append(this.content, menu,about);
 
-		this.preloadImage(90);
-		this.subscribe(redline);
+		this.preloadImage();
+		this.subscribe();
 	},
-	subscribe: function(redline) {
+	subscribe: function() {
 		var self = this;
 
 		this.on('Accordeon:Listed',function(){
