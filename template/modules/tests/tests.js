@@ -1,44 +1,43 @@
 define({
 
 	renderTest: function(testName) {
+		console.log("Going render test");
 		this.loadTest(testName);
 		return this.testsHtml;
 	},
 
-	loadTest: function(testName){
+	loadTest: function(tests){
 		var self = this;
 		var myStorage = localStorage;
+
 		self.tests = {};
-		require([
-			'text!../../../content/tests/' + testName + '.json'
-		], function(json) {
 
-
-
-//console.log('Тест "' + testName + '" загружен');
-			self.tests[testName] = JSON.parse(json);
-
-			if(myStorage.getItem("tests")){
-
-				self.tests = JSON.parse(myStorage.getItem('tests'));
-			}
-			self.trigger('Test:Loaded');
-			self.printTestPages(self,testName);
-		});
-	},
-
-	printTestPages: function(self,testName){
-		var myStorage = localStorage;
-		var test = self.tests[testName];
-		var page = self.renderHandlebarsTemplate("#testTemplate",test);
-
-		if(!myStorage.getItem("tests")){
-
-			myStorage.setItem("tests",JSON.stringify(self.tests));
+		if(myStorage.getItem("tests")){
+			self.tests = JSON.parse(myStorage.getItem('tests'));
 		}
 
-		self.testsHtml.html(page);
+		tests.forEach(function(testName,i){
+			require([
+				'text!../../../content/tests/' + testName + '.json'
+			], function(json) {
+				var test = JSON.parse(json);
+				self.tests[testName]={};
+				self.tests[testName]=test;
+				self.tests[testName].template = self.renderHandlebarsTemplate("#testTemplate", test);
+			});
+		})
+	},
+
+	printTestPages: function(testName){
+		var self = this;
+
+		if(!localStorage.getItem("tests")){
+			localStorage.setItem("tests",JSON.stringify(self.tests));
+		}
+
+		self.testsHtml.html(self.tests[testName].template);
 		self.subscribeTest(testName);
+		self.buildDonePoints(testName);
 	},
 
 	subscribeTest: function(testName){
@@ -62,11 +61,14 @@ define({
 			$('html,body').animate({
 	          scrollTop: 0
 	        }, 1000);
+
 			$(tests).delay(1000).animate({ "left": "100vw" }, 1000 );
 			$(self.testsHtml.find('.goNext')).css('display','block');
+
 			setTimeout(function(){
 				$(tests).removeClass('active');
 				$('#tests>div').removeClass('active');
+				$("html,body").css("overflow-y","hidden");
 			},2000);
 		});
 
@@ -84,11 +86,10 @@ define({
 		self.on('Quest:Passed', function(testId, testName) {
 			var testData = JSON.parse(myStorage.getItem('tests'));
 
+			console.log('testId:',testId,' testName: ', testName, ' testData: ',testData[testName])
+			console.log(' testData questions: ',testData[testName].questions)
 
-//console.log('testId:',testId,'testName: ', testName, 'testData: ',testData)
 			var domTestId = testData[testName].questions[(testId - 1)].id;
-
-
 
 //console.log('Квест "' + ((testId - 1)) + " из " + testName + '" завершен');
 			testData[testName].questions[(testId - 1)].status = true;
@@ -101,21 +102,27 @@ define({
 
 			self.checkTestComplite(testData[testName],domTestId);
 
-			self.buildDonePoints();
-			self.testBreadcrumbsRender(testName);
+			self.buildDonePoints(testName);
+			self.testBreadcrumbsRender("Игра",testData[testName].testName,testName);
 
 		});
 
-		self.on('Test:Passed', function(testId, lastTestId) {
+		self.on('Test:Passed', function(lastTestId) {
 			// Записываем данные о прохождении всех вопросов в LS
 			var testData = JSON.parse(myStorage.getItem('tests'));
+			var pageHeight = self.testsHtml.find("#"+lastTestId).height();
+
+			console.log("Test passed",lastTestId,"pageHeight",pageHeight);
+
 			testData[testName].statusGeneral = true;
+
 			myStorage.setItem('tests',JSON.stringify(testData));
-			self.testsHtml.find('#finishTest').toggleClass('active');
+
+			self.testsHtml.find('#finishTest').addClass('active').css("top",pageHeight);
 
 			setTimeout(function(){
 				$('html,body').animate({
-		          scrollTop: window.pageYOffset + document.documentElement.clientHeight 
+		          scrollTop: window.pageYOffset + document.documentElement.clientHeight
 		        }, 1000);
 			}, 200);
 		});
@@ -126,16 +133,21 @@ define({
 
 		self.testsHtml.find('#'+questionName).addClass('active');
 		$('#tests').addClass('active').animate({ "left": "0" }, 1200 );
-		self.showNextBlock();
+		setTimeout(function(){
+	        	$("html,body").css("overflow-y","scroll");
+	        },1200);
+		self.showNextBlock(questionName);
 	},
-	showNextBlock: function(){
+	showNextBlock: function(questionName){
 		var self = this;
 
 		self.testsHtml.find('.goNext').on('click',function(){
-			$("html,body").stop();
-			var height = document.documentElement.clientHeight + window.pageYOffset;
-			var maxHeight = document.getElementById('tests').clientHeight;
 			
+			$("html,body").stop();
+
+			var height = document.documentElement.clientHeight + window.pageYOffset;
+			var maxHeight = document.getElementById(questionName).clientHeight;
+
 			$("html,body").animate({
 	          scrollTop: height
 	        }, 500);
@@ -166,10 +178,8 @@ define({
 			}
 		});
 		if(compleatedQuest === (testData.questions.length)){
-			self.trigger('Test:Passed', testData, lastTestId);
+			self.trigger('Test:Passed', lastTestId);
 
-
-//console.log("Все вопросы пройдены");
 		}
 
 	}

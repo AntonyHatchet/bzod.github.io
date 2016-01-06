@@ -67,14 +67,104 @@ require([
 	/*------------------ App ------------------*/
 	App = Backbone.View.extend({
 		el: $('#app'),
+		events: {
+	    "click a":"open"
+	  },
+	  open: function(e){
+	    e.preventDefault();
+	
+			var url = $(e.target).closest("a").attr("href");
+	
+			switch (url){
+				case "#lessons":
+					$("html,body").css("overflow-y","hidden");
+					Backbone.history.navigate("#lessons", {trigger:true});
+					break;
+				case "#book/history":
+	
+					app.stopLine();
+					app.printBookPages("history");
+					app.breadcrumbsRender("Уроки Валентина Серова","Картины по Русской истории");
+					app.goTop();
+					Backbone.history.navigate(url, {trigger:false,replace:true});
+					break;
+				case "#book/story":
+	
+					app.stopLine();
+					app.printBookPages("story");
+					app.breadcrumbsRender("Уроки Валентина Серова","Иллюстрации басен Крылова");
+					app.goTop();
+					Backbone.history.navigate(url, {trigger:false,replace:true});
+					break;
+				case "#book/antiq":
+	
+					app.stopLine();
+					app.printBookPages("antiq");
+					app.breadcrumbsRender("Уроки Валентина Серова","Вдохновение античностью");
+					app.goTop();
+					Backbone.history.navigate(url, {trigger:false,replace:true});
+					break;
+				case "#video/antiq":
+	
+			    app.stopLine();
+			    app.printVideo("antiq");
+			    app.goBottom();
+			    app.breadcrumbsRender("Уроки Валентина Серова","Вдохновение античностью");
+					Backbone.history.navigate(url, {trigger:false,replace:true});
+					break;
+				case "#video/story":
+	
+					app.stopLine();
+					app.printVideo("story");
+					app.goBottom();
+					app.breadcrumbsRender("Уроки Валентина Серова","Иллюстрации басен Крылова");
+					break;
+				case "#video/history":
+	
+					app.stopLine();
+					app.printVideo("history");
+					app.goBottom();
+					app.breadcrumbsRender("Уроки Валентина Серова","Картины по Русской истории");
+					break;
+				case "#games/antiq":
+					app.printMap("antiq");
+					app.printTestPages("antiq");
+				 	app.goBack();
+		     		app.testBreadcrumbsRender("Игра","Вдохновение античностью","antiq");
+					Backbone.history.navigate(url, {trigger:false,replace:true});
+					break;
+				case "#games/story":
+					app.printMap("story");
+					app.printTestPages("story");
+				    app.goBack();
+		      		app.testBreadcrumbsRender("Игра","Басни Крылова","story");
+					Backbone.history.navigate(url, {trigger:false,replace:true});
+					break;
+				case "#games/history":
+					app.printMap("history");
+					app.printTestPages("history");
+				    app.goBack();
+		      		app.testBreadcrumbsRender("Игра","Картины по Русской истории","history");
+					Backbone.history.navigate(url, {trigger:false,replace:true});
+					break;
+				case "#goFront":
+	
+					app.goFront();
+					app.breadcrumbsRender(app.getActiveTab());
+					app.breadcrumbsRender("Уроки Валентина Серова");
+					Backbone.history.navigate("#lessons", {trigger:false,replace:true});
+					break;
+				case "#reset":
+	
+					app.trigger('Tests:Cleared');
+			    	localStorage.clear();
+					Backbone.history.navigate("#lessons", {trigger:true});
+					break;
+			}
+	  },
 		initialize: function() {
 			var self = this;
 			this.loadedModules = [];
-	
-			/*Таким образом динамически загружается контент и модули. Здесь размещено для инициализации приложения*/
-			//this.route('mainScreen', ['preloader']);
-			//this.route('gallery', ['mainmenu','reader']);
-			//this.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D', 'tests']);
 	
 			this.on('Display:Load', function(displayName) {
 				self.render();
@@ -152,7 +242,7 @@ require([
 	
 		renderHandlebarsTemplate: function(selector,data) {
 			console.log('Создаем шаблон Handlebars', selector, data);
-			
+	
 			var template = Handlebars.compile($(selector).html());
 			return template(data);
 		}
@@ -162,73 +252,57 @@ require([
 	var AppRouter = Backbone.Router.extend({
 	    routes: {
 	        "": "defaultRoute",
-	        "lessons/:name":"gallery",
-	        "map/:test/:name":"map",
-	        "reset":"reset",
-	        "book/:name/:rusName":"reader",
-	        "video/:name/:rusName":"video",
-	        "goFront":"goFront",
-	        "goBottom":"goBottom"
+	        "lessons":"gallery",
+	        "games/:test":"games",
+	        "book/:name":"reader",
+	        "video/:name":"video"
 	        // matches http://example.com/#anything-here
 	    }
 	});
 	// Initiate the router
 	var router = new AppRouter;
 	
-	router.on('route:defaultRoute', function(actions) {
-	
-		console.log('Переход к mainScreen');
+	router.on('route:defaultRoute', function() {
 	    app.route('mainScreen', ['preloader']);
 	})
 	
-	router.on('route:gallery', function(actions) {
+	router.on('route:gallery', function() {
+	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','maps','video','about','tests']);
 	
-	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','video','about']);
-	})
-	
-	router.on('route:map', function(actions) {
-	
-	    console.log('Переход к antiquityInspirationMap');
-	    app.route('antiquityInspirationMap', ['redline', 'mainmenu','reader', 'transformer3D', 'tests', 'city','about']);
-	})
-	
-	router.on('route:city', function(name) {
-	  console.log("Переход на страницу информации о городе ", name);
-	  //router.navigate("#map/Игры/Уроки Валентина Серова");
-	})
-	
-	router.on('route:reader', function(name,breadcrumbs) {
-	
-	    console.log('Переход в книгу', name,breadcrumbs);
-	    router.navigate("#lessons/Уроки Валентина Серова");
 	    setTimeout(function(){
-	      app.printBookPages(name);
-	      app.breadcrumbsRender(breadcrumbs);
-	      app.goTop();
+	      app.breadcrumbsRender("Уроки Валентина Серова",app.getActiveTab());
 	    },200);
 	})
 	
-	router.on('route:goFront', function(actions) {
+	router.on('route:games', function() {
+	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','maps','video','about','tests']);
 	
-	    app.goFront();
-	    router.navigate("#lessons/Уроки Валентина Серова");
-	    app.breadcrumbsRender(app.getActiveTab());
+	    setTimeout(function(){
+	      app.breadcrumbsRender("Уроки Валентина Серова",app.getActiveTab());
+	    },200);
 	})
 	
-	router.on('route:video', function(name,breadcrumbs) {
-	    router.navigate("#lessons/Уроки Валентина Серова");
+	router.on('route:reader', function() {
+	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','maps','video','about','tests']);
+	
 	    setTimeout(function(){
-	        app.goBottom();
-	        app.breadcrumbsRender(breadcrumbs);
+	      app.breadcrumbsRender("Уроки Валентина Серова",app.getActiveTab());
+	    },200);
+	})
+	
+	router.on('route:video', function() {
+	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','maps','video','about','tests']);
+	
+	    setTimeout(function(){
+	      app.breadcrumbsRender("Уроки Валентина Серова",app.getActiveTab());
 	    },200);
 	})
 	
 	router.on('route:reset', function() {
-	    console.log("reset");
-	    app.trigger('Tests:Cleared');
-	    localStorage.clear();
+	    app.route('gallery', ['preloader','accordion', 'redline', 'mainmenu','reader', 'transformer3D','maps','video','about','tests']);
+	
 	    setTimeout(function(){
-	      router.navigate("#lessons/Уроки Валентина Серова",{trigger:true});
+	      app.breadcrumbsRender("Уроки Валентина Серова",app.getActiveTab());
 	    },200);
 	})
 	

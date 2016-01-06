@@ -15,7 +15,7 @@ ul.accordion {
     width: 98px;
     height: 100%;
     position: relative;
-    background-image: url(../../../img/closed-eye.png);
+    background-image: url(../../../img/controll/closed-eye.png);
     background-color: #C41230;
     background-repeat: no-repeat;
     background-position: 20px 5%;
@@ -61,8 +61,8 @@ ul.accordion {
 
       .circle{
         position: absolute;
-        height: 33%;
-        width: 18%;
+        height: 310px;
+        width: 310px;
         background-color: rgba(81,81,81,0);
         border-radius: 100%;
         &.hover{
@@ -128,7 +128,7 @@ ul.accordion {
 
     &.active{
       width: calc(100% - 197px);
-      background-image: url(../../../img/open-eye.png);
+      background-image: url(../../../img/controll/open-eye.png);
       background-position: 25px 5%;
       background-color: #474747;
 
@@ -151,29 +151,14 @@ ul.accordion {
 }
 @media screen and (max-height:924px) {
 
-  ul.accordion li div.image .circle {
-    height: 36%;
-    width: 26%;
-  }
-
   ul.accordion li div.image .circle.bottom {
     right: 16%;
   }
 
 }
 
-@media screen and (max-height:900px) {
-
-  #video div a {
-    margin: 10% 25%;
-  }
-
-}
-
 @media screen and (max-height:768px) {
     ul.accordion li div.image .circle {
-      height: 45%;
-      width: 25%;
       &.bottom{
         right: 15%;
       }

@@ -10,16 +10,16 @@
 				<div class="overlay"></div>
 				<div class="menu">
 					<div class="container">
-						<a href="#" class="item icon icon-game">Игры</a>
-						<a href="#" class="item active">Вдохновение античностью</a>
-						<a href="#" class="item">Иллюстрация басен крылова</a>
-						<a href="#" class="item">Картины русской истории</a>
-						<a href="#" class="item icon icon-library">Библиотека</a>
+						<a class="item icon icon-game">Игры</a>
+						<a href="#games/antiq" class="item active">Вдохновение античностью</a>
+						<a href="#games/story" class="item">Иллюстрация басен крылова</a>
+						<a href="#games/history" class="item">Картины русской истории</a>
+						<a class="item icon icon-library">Библиотека</a>
 						<div class="divider blue"></div>
-						<a href="#" class="item">Мифология.Путешествия</a>
-						<a href="#" class="item">Басни Крылова</a>
-						<a href="#" class="item">История Петра 1</a>
-						<a href="#" class="item icon icon-bonus">Бонус</a>
+						<a href="#book/antiq" class="item">Мифология.Путешествия</a>
+						<a href="#book/story" class="item">Басни Крылова</a>
+						<a href="#book/history" class="item">История Петра 1</a>
+						<!-- <a href="#" class="item icon icon-bonus">Бонус</a> -->
 						<div class="divider pink"></div>
 					</div>
 				</div>
@@ -33,21 +33,24 @@
 				<a data-id="revertMenuButton" id="revertMenuButton">Нет</a>
 			</div>
 			<button data-id="reloadButton" id="reloadButton">
-				<img data-id="reloadButton" src="img/reload.png">
+				<img data-id="reloadButton" src="img/controll/reload.png">
 			</button>
 			<button data-id="turnOfSound" id="turnOfSound">
-				<img data-id="turnOfSound" src="img/volume.png">
+				<img data-id="turnOfSound" id="soundImage" src="img/controll/volume.png">
 			</button>
 			<button>
-				<img src="img/help.png">
+				<img src="img/controll/help.png">
 			</button>
 			<button data-id="aboutButton" id="aboutButton">О проекте</button>
 			<button data-id="goMenu" id="goMenu">
-				<img data-id="goMenu" src="img/menu.png">
+				<img data-id="goMenu" src="img/controll/menu.png">
 			</button>
 		</td>
 	</tr>
 	<tr id="copyRight">
 		<td colspan="3">Copyright 2015</td>
 	</tr>
+	<audio id="audio" autoplay loop>
+		<source src="audio/sound.mp3" type="audio/mpeg">
+	</audio>
 </table>

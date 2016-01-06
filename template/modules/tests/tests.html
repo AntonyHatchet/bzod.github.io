@@ -1,4 +1,5 @@
 <div id="tests">
+</div>
 	<script id="testTemplate" type="text/x-handlebars-template">
 		<a class="goBackButton"></a>
 		<a class="goNext"></a>
@@ -77,11 +78,11 @@
 				</section>
 			</div>
 		{{/each}}
-		<div id="finishTest" class="finishTest">
+		<div id="finishTest" class="finishTest finishTest{{name}}">
 			<h1>Поздравляем:)</h1>
 			<p>Вы прошли этап игры</p>
 			<p class="testName">{{testName}}</p>
-			<p>Все артефакты собранны и вы можетье увидеть готовое полотно.</p>
+			<p>{{finishTestText}}</p>
 			<ul>
 				{{#each questions}}
 					<li>
@@ -92,7 +93,7 @@
 					</li>
 				{{/each}}
 			</ul>
-			<a href="#lessons/Уроки Валентина Серова">Собрать картину</a>
+			<a href="#lessons">Собрать картину</a>
+		</div>
 		</div>
 	</script>
-</div>

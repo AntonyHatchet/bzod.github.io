@@ -1,5 +1,7 @@
-<div id="video">
+<div id="videoContainer">
 	<script id="videoTemplate" type="text/x-handlebars-template">
+		{{#each videos}}
+		<div class="video" id="video-{{id}}" >
 		<div class="circle top">
 			<a href="#goFront" class="goFront">
 				<svg id="goTopButton" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="130.82" width="154.7" version="1.1" xmlns:i="&amp;ns_ai;" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -53,5 +55,7 @@
 					</svg>
 				</a>
 			</div>
+			</div>
+			{{/each}}
 	</script>
 </div>

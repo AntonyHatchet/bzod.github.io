@@ -3,6 +3,21 @@
 	height: 100%;
 	overflow: hidden;
 
+	video{
+	    position: fixed;
+	    top: 50%;
+	    left: 50%;
+	    min-width: 100%;
+	    min-height: 100%;
+	    width: auto;
+	    height: auto;
+	    -ms-transform: translateX(-50%) translateY(-50%);
+	    -moz-transform: translateX(-50%) translateY(-50%);
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+	    background-size: cover;
+	}
+
 	.imgContainer{
 		position: relative;
 		min-width: 1024px;
@@ -29,35 +44,35 @@
 			}
 
 
-			&:nth-child(1) img{
+			&:nth-of-type(1) img{
 				opacity: 1;
 			}
-			&:nth-child(2) img{
+			&:nth-of-type(2) img{
 				transition: opacity 1.88s ease;
 			}
-			&:nth-child(3) img{
+			&:nth-of-type(3) img{
 				transition: opacity 0.92s ease;
 			}
-			&:nth-child(4) img{
+			&:nth-of-type(4) img{
 				transition: opacity 1.16s ease;
 			}
-			&:nth-child(5) img{
+			&:nth-of-type(5) img{
 				transition: opacity 1.93s ease;
 			}
-			&:nth-child(6) img{
+			&:nth-of-type(6) img{
 				transition: opacity 1.16s ease;
 			}
-			&:nth-child(7) img{
+			&:nth-of-type(7) img{
 				transition: opacity 1.93s ease;
 			}
-			&:nth-child(8) img{
+			&:nth-of-type(8) img{
 				transition: opacity 3s ease;
 			}
-			&:nth-child(9) img{
+			&:nth-of-type(9) img{
 				transition: opacity 1.09s ease;
 			}
-			&:nth-child(10) img{
-				transition: opacity 2s ease;
+			&:nth-of-type(10) img{
+				transition: all 2s ease;
 			}
 		}
 

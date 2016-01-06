@@ -12,10 +12,11 @@ define({
 		});
 
 		self.find('.rightSide *').on('click', function(element) {
+			console.log("rightSide");
 			that.controllButtons(self,element);
 		});
 	},
-	breadcrumbsRender: function(ways){
+	breadcrumbsRender: function(current,ways){
 		var self = this;
 		var Span = function(content){
 
@@ -25,20 +26,17 @@ define({
 			return this.span
 		}
 
-		function getCurrentDir(){
-			var dir = decodeURI(Backbone.history.getFragment());
-					dir = dir.substring(dir.indexOf("/")+1);
-					return dir
-		};
-		var currentDir = new Span(getCurrentDir());
+		var currentDir = new Span(current);
 		var currentWays = new Span(ways);
 		var angleRight = new Span("");
+
 
 		$(angleRight).addClass('divider fa fa-angle-right')
 
 		self.mainmenuHtml.find('.breadcrumbs').html('').append(currentDir,angleRight,currentWays);
 	},
-	testBreadcrumbsRender: function(testName){
+
+	testBreadcrumbsRender: function(game,page,testName){
 		var self = this;
 		var tests;
 
@@ -49,14 +47,14 @@ define({
 		}
 
 		var links = [];
-		var Span = function(content){
 
+		var Span = function(content){
 			this.span = document.createElement('span');
 			this.span.textContent = content
-
 			return this.span
 		}
-		var currentDir = splitLink(getCurrentDir())//new Span(getCurrentDir());
+
+		var currentDir = [game,page]//new Span(getCurrentDir());
 		var angleRight = new Span("");
 		var verticalBar = new Span(" | ");
 
@@ -68,8 +66,8 @@ define({
 
 		function splitLink(link){
 			var firstName = new Span(link.substring(0,link.indexOf("/")));
-			var secondName = new Span(link.substring(link.indexOf("/") + 1));
-
+			var secondName = link.substring(link.indexOf("/") + 1);
+			secondName = new Span(secondName.substring(0, secondName.indexOf("/")));
 			return [firstName,secondName]
 		}
 
@@ -77,28 +75,23 @@ define({
 		$(verticalBar).addClass('verticalBar');
 
 		tests.questions.forEach(function(element){
-			 
 
-//console.log(element);
 				var test = new Span(element.name);
 				if(element.status){
-					
-
-//console.log("links true",element);
+					//console.log("links true",element);
 					$(test).addClass('white');
 					links.push(test);
 				}else {
-
-					
-
-//console.log("links false",test);
 					links.push(test);
 				}
 		});
 
 		self.mainmenuHtml.find('.breadcrumbs').html('').append(currentDir[0],angleRight,currentDir[1],verticalBar,links);
 	},
+
 	controllButtons: function(self,element) {
+		var that = this;
+
 		if($(element.target).data('id')){
 
 			switch ($(element.target).data('id')) {
@@ -109,6 +102,10 @@ define({
 				case "turnOfSound":
 					self.find(".selectSection p").html('Изменить настройки звука?');
 					self.find("#succesMenuButton").removeAttr('href');
+
+					var listener = document.getElementById("succesMenuButton");
+					listener.addEventListener('click',that.audioControll);
+
 					break;
 				case "goMenu":
 					self.find(".selectSection p").html('Вернуться на портал?');
@@ -124,8 +121,18 @@ define({
 			self.find(".selectSection").removeClass().addClass($(element.target).data('id') + " selectSection");
 			$(element.target).toggleClass('pushed');
 		}
-		
-
-//console.log($(element.target).attr('id'))
+	},
+	audioControll: function(){
+		var audio = document.getElementById('audio');
+		var img = document.getElementById('soundImage');
+		if(this.audioState == 0){
+				$(img).attr('src','img/volume.png');
+		    audio.play();
+				this.audioState = 1;
+		}else {
+				$(img).attr('src','img/volume-x.png');
+		    audio.pause();
+				this.audioState = 0;
+		}
 	}
 });

@@ -5,19 +5,21 @@ define({
 	},
 	subscribeAccordion: function(self) {
 		var that = this;
+
 		//Переключение колонок
 		self.find('li').on('click', function(e) {
 			var link = $(e.target).closest('li').attr('data-href');
-
 			self.find('li.active').toggleClass('active');
 			self.find($(e.target).closest('li')).toggleClass('active');
 			that.trigger('Accordeon:Listed');
-			that.breadcrumbsRender(link);
+			that.breadcrumbsRender("Уроки Валентина Серова",link);
 		});
+
 		//Кнопки перехода
 		self.find('a').hover(function(e){
 			$(e.target).closest(".circle").toggleClass('hover');
 		});
+
 		//Автопереход колонок
 		this.on('RedLine:Passed',function(){
 			var elements = self.find('li');
@@ -38,6 +40,7 @@ define({
 			});
 
 			that.changeActiveBlock(elements,elements[(currentActive)]);
+			app.breadcrumbsRender("Уроки Валентина Серова",app.getActiveTab());
 		});
 
 		this.checkImageProgress();
@@ -54,19 +57,19 @@ define({
 		var test = JSON.parse(localStorage.getItem("tests"));
 
 		//Вход в цикл
-
+		console.log("ПРоверяем тест на выполнение");
 		if(test){
 			_.keys(test).forEach(function(element){
 
+				console.log("Проверяем тест "+element+" на выполнение");
+
 				if(test[element].statusGeneral){
+
+					console.log("Проверяем тест "+element+" пройден");
+					console.log("Тест",test[element]);
 
 					self.accordionHtml.find("#"+test[element].name +" img").attr("src",test[element].rewardGeneral);
 					self.accordionHtml.find("#"+test[element].name).addClass("opened");
-				}else{
-
-
-
-//console.log("False");
 				}
 			});
 		}else{
@@ -80,7 +83,7 @@ define({
 	getActiveTab: function(){
 		var self = this;
 
-		return self.find('li.active').attr('data-href');
+		return $('li.active').attr('data-href');
 	},
 	animateButtons: function(){
 		var self = this.accordionHtml;

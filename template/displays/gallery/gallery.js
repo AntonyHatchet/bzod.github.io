@@ -6,18 +6,20 @@ define({
 		var preloader = this.renderPreloader();
 		var menu = this.renderMenu();
 		var accordion = this.renderAccordion();
-		var video = this.renderVideo('video');
+		var video = this.renderVideo('videos');
 		var reader = this.renderReader(['antiq','history','story']);
 		var redline = this.renderRedline();
 		var about = this.renderAbout();
+		var tests = this.renderTest(['antiq', 'story', 'history']);
+		var map = this.initMap();
 
-		var transformer3D = this.renderTransformer3D([accordion,reader,video]);
+		var transformer3D = this.renderTransformer3D([accordion,reader,video,map]);
 
 		this.content.append(transformer3D);
-		this.content.find('#accordion li').append(redline); 
+		this.content.find('#accordion li').append(redline);
 		this.content.find('#accordion li.active').append(preloader);
 
-		$('body').html('').append(this.content, menu,about);
+		$('body').html('').append(this.content, menu, about, tests);
 
 		this.preloadImage();
 		this.subscribe();
@@ -26,7 +28,7 @@ define({
 		var self = this;
 
 		this.on('Accordeon:Listed',function(){
-			self.refreshLine(); 
+			self.refreshLine();
 		});
 	}
 });

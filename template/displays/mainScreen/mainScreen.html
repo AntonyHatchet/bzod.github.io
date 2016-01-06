@@ -1,17 +1,20 @@
 <div id="mainScreen">
 	<ul id="scene" class="imgContainer">
-		<li class="layer" data-depth="0.00"><img src="img/main-screen/backHeadband.jpg" alt="Уроки Валентина Серова"></li>
-	  	<li class="layer" data-depth="0.00"><img src="img/main-screen/paper.png" alt="Уроки Валентина Серова"></li>
-		<li class="layer" data-depth="0.02"><img src="img/main-screen/molbert.png" data-id="1" alt="Уроки Валентина Серова"></li>
-		<li class="layer" data-depth="0.02"><img src="img/main-screen/bookshelf.png" data-id="3" alt="Уроки Валентина Серова"></li>
-		<li class="layer" data-depth="0.02"><img src="img/main-screen/table.png" data-id="3" alt="Уроки Валентина Серова"></li>
-		<li class="layer" data-depth="0.05"><img src="img/main-screen/bottles.png" data-id="2" alt="Уроки Валентина Серова"></li>
-		<li class="layer" data-depth="0.08"><img src="img/main-screen/brushes.png" data-id="2" alt="Уроки Валентина Серова"></li>
-		<li class="layer" data-depth="0.12"><img src="img/main-screen/portret.png" data-id="1" alt="Уроки Валентина Серова"></li>
-		<li class="layer" data-depth="0.15"><img class="book" src="img/main-screen/book.png" data-id="1" alt="Уроки Валентина Серова"></li>
-		<li class="layer" data-depth="0.00"><img src="img/main-screen/centerWords.png" alt="Уроки Валентина Серова"></li>
-		<nav style="opacity:0">
-			<a href="#lessons/Уроки Валентина Серова">Игры</a>
+		<video style="z-index:1;" id="video">
+			<source src="video/startVideo.mp4">
+		</video>
+		<li class="layer" style="z-index:0;" data-depth="0.00"><img src="img/main-screen/backHeadband.jpg" alt="Уроки Валентина Серова"></li>
+	  	<li class="layer" style="z-index:0;" data-depth="0.00"><img src="img/main-screen/paper.png" alt="Уроки Валентина Серова"></li>
+		<li class="layer" style="z-index:2;" data-depth="0.02"><img src="img/main-screen/molbert.png" data-id="1" alt="Уроки Валентина Серова"></li>
+		<li class="layer" style="z-index:2;" data-depth="0.02"><img src="img/main-screen/bookshelf.png" data-id="3" alt="Уроки Валентина Серова"></li>
+		<li class="layer" style="z-index:3;" data-depth="0.02"><img src="img/main-screen/table.png" data-id="3" alt="Уроки Валентина Серова"></li>
+		<li class="layer" style="z-index:4;" data-depth="0.05"><img src="img/main-screen/bottles.png" data-id="2" alt="Уроки Валентина Серова"></li>
+		<li class="layer" style="z-index:5;" data-depth="0.08"><img src="img/main-screen/brushes.png" data-id="2" alt="Уроки Валентина Серова"></li>
+		<li class="layer" style="z-index:6;" data-depth="0.12"><img src="img/main-screen/portret.png" data-id="1" alt="Уроки Валентина Серова"></li>
+		<li class="layer" style="z-index:7;" data-depth="0.15"><img class="book" src="img/main-screen/book.png" data-id="1" alt="Уроки Валентина Серова"></li>
+		<li class="layer" style="z-index:8;" data-depth="0.00"><img src="img/main-screen/centerWords.png" data-id="3" alt="Уроки Валентина Серова"></li>
+		<nav style="opacity:0;z-index:8;">
+			<a href="#lessons">Игры</a>
 		</nav>
-	</div>
+	</ul>
 </div>

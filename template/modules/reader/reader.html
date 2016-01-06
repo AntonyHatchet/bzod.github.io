@@ -1,8 +1,8 @@
 <div id="reader">
-	
+
 </div>
 <script id="pageTemplate" type="text/x-handlebars-template">
-		<span class="sliderControl left" data-controll="previousPage"><i class="fa fa-chevron-left"></i></span>
+		<span class="sliderControl left" data-controll="previousPage"></span>
 		<div id="dataContainer">
 			<a href="#goFront" class="goFront"></a>
 			{{#each this}}
@@ -27,7 +27,13 @@
 								<div class='pageNumber'><span>{{page}}</span></div>
 					    	{{else}}
 								{{#if image}}
-									<div class="imageWrapper"><img src={{image}}><p class="imageTitle">{{title}}</p></div>
+									<div class="imageWrapper">
+										<img src={{thumbnail}}>
+										<div class="imageTitleCover">
+											<p class="imageTitle">{{title}}</p>
+											<img class="openModal" data-fullImage={{image}} src="img/controll/loupe.png">
+										</div>
+									</div>
 								{{else}}
 									<p class='title'>{{title}}</p>
 									<div class='textWrapper'>
@@ -52,10 +58,15 @@
 					{{else}}
 						<li data-link={{math @index "+" 1}}>
 					{{/ifCond}}
-							<img src="img/reader/book.jpg">
+							<img src="img/controll/book.jpg">
 						</li>
 				{{/each}}
 			</ul>
 		</div>
-		<span class="sliderControl right" data-controll="nextPage"><i class="fa fa-chevron-right"></i></span>
+		<span class="sliderControl right" data-controll="nextPage"></span>
+		<div id="modal">
+			<div class="modal-body">
+				<p class="close">x</p>
+			</div>
+		</div>
 	</script>

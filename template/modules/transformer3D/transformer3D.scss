@@ -11,7 +11,7 @@
     height: 100%;
     position: absolute;
     @include transform-style(preserve-3d);
-    @include transition(transform 3s);
+    @include transition(transform 5s);
 
     &.show-front  {
       .frontSide {
@@ -26,9 +26,14 @@
 
       .bottomSide {
         transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
-        opacity:0;
         top: calc(100% + 150px)\9;
       }
+
+      .backSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
+        top: calc(100% + 150px)\9;
+      }
+
     }
 
     &.show-top    {
@@ -44,6 +49,12 @@
 
       .bottomSide {
         transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
+        opacity:0;
+        top: calc(100% + 150px)\9;
+      }
+
+      .backSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(90deg);
         opacity:0;
         top: calc(100% + 150px)\9;
       }
@@ -63,6 +74,37 @@
       .bottomSide {
         transform: perspective(882px) translateZ(-409px) rotateX(0deg);
         top:0\9;
+      }
+
+      .backSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
+        opacity:0;
+        top: calc(100% + 150px)\9;
+      }
+
+    }
+
+    &.show-back  {
+      .frontSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
+        top:0\9;
+        opacity:0;
+      }
+
+      .topSide {
+        transform: perspective(882px) translateZ(-409px)  rotateX(-90deg);
+        top:-100%\9;
+        opacity:0;
+      }
+
+      .bottomSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(90deg);
+        top: calc(100% + 150px)\9;
+      }
+
+      .backSide {
+        transform: perspective(882px) translateZ(-409px) rotateX(0deg);
+        top: calc(100%)\9;
       }
     }
 
@@ -89,6 +131,13 @@
       transform-origin:50% 50% -410px;
       transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
     }
+
+    .backSide {
+      transform-origin:50% 50% -410px;
+      transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
+    }
+
+
 
     @media screen and (max-height:768px) {
 

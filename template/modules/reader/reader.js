@@ -48,6 +48,21 @@ define({
 			self.transformer3DHtml.find('#cube').toggleClass('show-top');
 		});
 
+		//Открываем полное изображение
+		[].forEach.call(self.readerHtml.find('.openModal'),function(element){
+			
+
+			$(element).on('click', function(e) {
+
+				self.readerHtml.find('#modal').css("display","block");
+				self.readerHtml.find('#modal .modal-body').css("background-image","url("+$(e.target).data("fullimage"));
+
+				self.readerHtml.find('.close').on('click', function(e) {
+					self.readerHtml.find('#modal').css("display","none");
+				});
+			});
+		})
+
 		//Обработка события с нижнего бара
 		self.readerHtml.find('[data-link]').on('click', function(e) {
 			var pageNumber = $(e.target.closest('li')).data('link');

@@ -1,0 +1,28 @@
+{
+  "videos":[
+		{
+			"id" : "antiq",
+			"title":"ANTIQ title",
+			"source":["video/startAntic.mp4"],
+			"text":["ANTIQANTIQANTIQANTIQANTIQANTIQANTIQANTIQANTIQANTIQANTIQANTIQANTIQ"],
+			"hrefTo":"#games/antiq",
+			"hrefText":"Переход на экран карты"
+		},
+		{
+			"id" : "history",
+			"title":"HISTORY title",
+			"source":["video/startPetr.mp4"],
+			"text":["HISTORYHISTORYHISTORYHISTORYHISTORYHISTORYHISTORYHISTORYHISTORYHISTORY"],
+			"hrefTo":"#games/history",
+			"hrefText":"Переход на экран карты"
+		},
+		{
+			"id" : "story",
+			"title":"STORY title",
+			"source":["video/startBasny.mp4"],
+			"text":["STORYSTORYSTORYSTORYSTORYSTORYSTORYSTORYSTORYSTORYSTORYSTORYSTORY"],
+			"hrefTo":"#games/story",
+			"hrefText":"Переход на экран карты"
+		}
+	]
+}

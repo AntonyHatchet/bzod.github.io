@@ -1,0 +1,104 @@
+{
+  "maps":[
+    {
+      "id" : "antiq",
+      "mapImage" : "../../img/maps/antiq/antiquityInspirationMap.jpg",
+      "points" : [
+        {
+          "id": "athens",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        },
+        {
+          "id": "delphi",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        },
+        {
+          "id": "korfu",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        },
+        {
+          "id": "crete",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        }
+      ],
+      "extraObjects" : [
+        {
+          "id" : "c1 cloud",
+          "class" : "cloud",
+          "image" : "../../img/maps/antiq/cloud1.png"
+        },
+        {
+          "id" : "c2 cloud",
+          "class" : "cloud",
+          "image" : "../../img/maps/antiq/cloud2.png"
+        },
+        {
+          "id" : "c3 cloud",
+          "class" : "cloud",
+          "image" : "../../img/maps/antiq/cloud3.png"
+        },
+        {
+          "id" : "ship",
+          "class" : "shipContainer",
+          "image" : "../../img/maps/antiq/shipLeft.png"
+        }
+      ]
+    },
+    {
+      "id" : "story",
+      "mapImage" : "../../img/maps/krylov/basnyBackgound.jpg",
+      "points" : [
+        {
+          "id": "illustrationNature",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        },
+        {
+          "id": "illustrationStyle",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        },
+        {
+          "id": "illustrationText",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        },
+        {
+          "id": "illustrationDetail",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        }
+      ]
+    },
+    {
+      "id" : "history",
+      "mapImage" : "../../img/maps/history/PetrHistory.png",
+      "points" : [
+        {
+          "id": "fortunePeter",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        },
+        {
+          "id": "euroDressPeter",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        },
+        {
+          "id": "SaintPetersburg",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        },
+        {
+          "id": "deathPeter",
+          "startImage" : "../../img/maps/pointStart.png",
+          "finishImage" : "../../img/maps/pointFinish.png"
+        }
+      ]
+    }
+  ]
+}

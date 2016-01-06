@@ -7,26 +7,28 @@ define({
 
 	loadVideo: function(videoName){
 		var self = this;
-		var myStorage = localStorage;
+		self.videos = {};
 		require([
-			'text!../../../content/video/' + videoName + '.json'
-		], function(json) {
+					'text!../../../content/video/' + videoName + '.json'
+				], function(json) {
+				self.videos[videoName]={};
+				self.videos[videoName] = JSON.parse(json);
+				self.createVideoPage(self,videoName);
+			});
 
-			
+	},
 
-//console.log('Видео "' + videoName + '" загружено 1');
-			self[videoName] = JSON.parse(json);
-			
-
-//console.log('Видео "' + videoName + '" загружено 2');
-			self.createVideoPage(self,videoName);
-		});
+	printVideo : function (videoName) {
+		var self = this;
+		self.content.find(".video").css("display", "none");
+		self.content.find(".video#video-" + videoName).css("display", "block");
 	},
 
 	createVideoPage: function(self,videoName){
-		var video = self[videoName];
+		var video = self.videos[videoName];
+		console.log("VIDEO createVideoPage", video);
 		var page = self.renderHandlebarsTemplate("#videoTemplate",video);
-		
+
 		self.videoHtml.html(page);
 
 		//Кнопки перехода

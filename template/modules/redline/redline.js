@@ -6,7 +6,7 @@ define({
 		return this.redlineHtml;
 	},
 
-	subscribeRedline: function(self) {
+	subscribeRedline: function() {
 		var self = this;
 
 		self.on('Preload:End', function(){
@@ -26,21 +26,34 @@ define({
 		var counter = 0;
 
 		var interval = setInterval(function () {
-
 				counter++;
-
+				console.log("крутится, вертится шар голубой! ")
 				if(counter == 100){
+					console.log("RedLine:Passed! ")
 					self.trigger('RedLine:Passed');
 					clearInterval(interval);
 				}
-				
+
 				self.on('Refresh:Line', function(){
+					console.log("Refresh:Line")
 					clearInterval(interval);
 				});
+
+				self.on('Stop:Line', function(){
+					console.log("Останавливаем! ")
+					clearInterval(interval);
+				});
+
 		},200);
 	},
+
 	refreshLine: function(){
 		$('.loaded').stop().css('width', '0');
-		this.trigger('Refresh:Line');
+		//this.trigger('Refresh:Line');
+	},
+
+	stopLine: function(){
+		$('.loaded').stop().css('width', '0');
+		this.trigger('Stop:Line');
 	}
 });

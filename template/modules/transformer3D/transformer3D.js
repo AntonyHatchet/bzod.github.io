@@ -5,13 +5,10 @@ define({
 	},
 	fillTransformer3D: function(pages) {
 		var self = this;
-		
-
-//console.log('Transformer3D', self);
-
 		this.transformer3DHtml.find('.frontSide').html(pages[0]);
 		this.transformer3DHtml.find('.topSide').html(pages[1]);
 		this.transformer3DHtml.find('.bottomSide').html(pages[2]);
+		this.transformer3DHtml.find('.backSide').html(pages[3]);
 	},
 	goTop: function(){
 		this.transformer3DHtml.find('#cube').removeClass();
@@ -24,5 +21,9 @@ define({
 	goFront: function(){
 		this.transformer3DHtml.find('#cube').removeClass();
 		this.transformer3DHtml.find('#cube').toggleClass('show-front');
+	},
+	goBack : function (){
+		this.transformer3DHtml.find('#cube').removeClass();
+		this.transformer3DHtml.find('#cube').toggleClass('show-back');
 	}
 });
