@@ -2,7 +2,7 @@
 @import "../../../scss/partials/mixins/peterTitle.scss";
 
 #tests{
-  height:auto;
+	height:auto;
 	width: 100%;
 	min-width: 1024px;
 	position: absolute;
@@ -13,11 +13,22 @@
 	display: none;
 	z-index: 20;
 
-
+	.soundTestButton{
+	    position: fixed;
+	    top: 5%;
+	    left: 2%;
+	    height: 65px;
+	    width: 65px;
+	    z-index: 99;
+	    cursor: pointer;
+	    background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
 	.goBackButton{
-	  position: fixed;
-	  right: 5%;
-	  bottom: 15%;
+		position: fixed;
+		right: 5%;
+		bottom: 15%;
 		height: 7%;
 		width: 88px;
 		cursor: pointer;
@@ -454,21 +465,47 @@
 	}
 }
 @media screen and (max-height:768px) {
-  #tests{
-    height: 3330px;
-  }
-	#tests>div section.left .god{
-		width: 200px;
-		margin-left: calc(50% - 100.5px);
+  	#tests {
+
+  		>div{
+  			section{
+  				&.questions{
+  					padding-top: 5%;
+  				}
+  			}
+  		}
+
+		#delphi, #athens, #korfu, #crete{
+			height: 3072px;
+		};
+		#illustrationNature, #illustrationStyle, #illustrationText, #illustrationDetail{
+			height: 2304px;
+
+			.first{
+				h1{
+				    margin: 3em 0 3em;
+				}
+				p{
+				    font-size: 1.2em;
+				}
+			}
+		};
+		#fortunePeter, #euroDressPeter, #SaintPetersburg, #deathPeter{
+			height: 3072px;
+
+		};
+
+		>div.finishTest{
+			ul{
+				&:before{
+					left: 2.8%;
+				    width: 58.4%;
+				}
+
+				li{
+					height: 55%;
+				}
+			} 
+		}
 	}
-	#tests>div.active{
-		padding-top: 0;
-		height: 100%;
-	}
-  #tests>div section.first{
-    padding-top: 5%;
-  }
-  #tests>div section.first p:last-of-type {
-    padding: 0px 35%;
-  }
 }

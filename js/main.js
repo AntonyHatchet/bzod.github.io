@@ -106,10 +106,10 @@ require([
 					break;
 				case "#video/antiq":
 	
-			    app.stopLine();
-			    app.printVideo("antiq");
-			    app.goBottom();
-			    app.breadcrumbsRender("Уроки Валентина Серова","Вдохновение античностью");
+				    app.stopLine();
+				    app.printVideo("antiq");
+				    app.goBottom();
+				    app.breadcrumbsRender("Уроки Валентина Серова","Вдохновение античностью");
 					Backbone.history.navigate(url, {trigger:false,replace:true});
 					break;
 				case "#video/story":
@@ -159,6 +159,12 @@ require([
 					app.trigger('Tests:Cleared');
 			    	localStorage.clear();
 					Backbone.history.navigate("#lessons", {trigger:true});
+					break;
+				case "#sound":
+					app.audioControll();
+					break;
+				case "#fromTestToVideo":
+					app.goBottom();
 					break;
 			}
 	  },

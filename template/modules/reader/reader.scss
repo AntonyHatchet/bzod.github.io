@@ -21,7 +21,7 @@
 		    transition: all 500ms ease;
 		    background-color: rgba(0,0,0,0);
 		    background-repeat: no-repeat;
-		    background-image: url(../../../img/controll/arrowReader.png);
+		    background-image: url(../../../img/controll/button_backToGame.svg);
 		    background-size: contain;
 		    bottom: 10%;
 		    left: 47.5%;
@@ -175,10 +175,10 @@
 		    height: 10%;
 		    background-size: contain;
 		    background-repeat: no-repeat;
-			background-image: url(../../../img/controll/previousPage.png);
+			background-image: url(../../../img/controll/button_previous.svg);
 
 			&:hover{
-				background-image: url(../../../img/controll/previousPageHover.png);
+				background-image: url(../../../img/controll/button_previous_hover.svg);
 			}
 
 		}
@@ -188,10 +188,10 @@
 		    height: 10%;
 		    background-size: contain;
 		    background-repeat: no-repeat;
-			background-image: url(../../../img/controll/nextPage.png);
+			background-image: url(../../../img/controll/button_next.svg);
 
 			&:hover{
-				background-image: url(../../../img/controll/nextPageHover.png);
+				background-image: url(../../../img/controll/button_next_hover.svg);
 			}
 		}
 

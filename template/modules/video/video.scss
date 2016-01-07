@@ -19,6 +19,19 @@
 	    -webkit-transform: translateX(-50%) translateY(-50%);
 	    transform: translateX(-50%) translateY(-50%);
 	    background-size: cover;
+
+	    @media screen and (max-height:900px) {
+    		top: 40%;
+			left: 59.3%;
+		    -ms-transform: scale(0.8) translateX(-70%) translateY(-50%);
+    		-moz-transform: scale(0.8) translateX(-70%) translateY(-50%);
+    		-webkit-transform: scale(0.8) translateX(-70%) translateY(-50%);
+		    transform: scale(0.8) translateX(-70%) translateY(-50%);
+	    }
+
+	    @media screen and (max-height:768px) {
+	    	top: 47%;
+	    }
 	}
 
 	.circle{

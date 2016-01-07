@@ -7,22 +7,22 @@
         {
           "id": "athens",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         },
         {
           "id": "delphi",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         },
         {
           "id": "korfu",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         },
         {
           "id": "crete",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         }
       ],
       "extraObjects" : [
@@ -55,22 +55,22 @@
         {
           "id": "illustrationNature",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         },
         {
           "id": "illustrationStyle",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         },
         {
           "id": "illustrationText",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         },
         {
           "id": "illustrationDetail",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         }
       ]
     },
@@ -81,22 +81,22 @@
         {
           "id": "fortunePeter",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         },
         {
           "id": "euroDressPeter",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         },
         {
           "id": "SaintPetersburg",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         },
         {
           "id": "deathPeter",
           "startImage" : "../../img/maps/pointStart.png",
-          "finishImage" : "../../img/maps/pointFinish.png"
+          "finishImage" : "../../img/controll/point.svg"
         }
       ]
     }

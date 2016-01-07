@@ -9,6 +9,7 @@
 	min-width: 1024px;
 	transform: scale(0);
 	transition: all 1000ms ease;
+	z-index: 99;
 	
  	&.shown{
  		transform: scale(1);

@@ -3,6 +3,18 @@
 	height: 100%;
 	overflow: hidden;
 
+	#closeVideo{
+		color: #c41230;
+		text-transform: uppercase;
+		position: absolute;
+		bottom: 2%;
+		left: 2%;
+		font-weight: 500;
+		font-size: 18px;
+		z-index: 99;
+		cursor: pointer;
+	}
+
 	video{
 	    position: fixed;
 	    top: 50%;

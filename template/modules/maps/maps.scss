@@ -36,9 +36,22 @@
 .screenContainer{
 	overflow-x: hidden;
 	position: relative;
-  width: 100%;
+  	width: 100%;
 	height: calc(100%);
 	z-index: 1;
+
+	.fromTestToVideo{
+	    position: absolute;
+	    top: 5%;
+	    left: 2%;
+	    height: 10%;
+	    width: 5%;
+	    z-index: 99;
+	    background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-image: url(../../../img/controll/scrollTop.png);
+	}
 
 	a{
 		cursor: pointer;
@@ -125,17 +138,18 @@
 		}
 
 		.animatePoint{
-			transition: all 1s ease-in-out;
+			transition: all 2s ease;
 		}
 
 		.pointStart{
 			transform: scale(0.5);
-    	z-index: 3;
+    		z-index: 3;
 		}
 
 		.pointFinish{
 			z-index: 2;
 			transform: scale(0.5);
+			opacity: 1;
 		}
 
 		.athens{
@@ -159,7 +173,7 @@
 		}
 
 		.illustrationNature {
-			top: 7%;
+		    top: 16%;
 			left: 2%;
 		}
 

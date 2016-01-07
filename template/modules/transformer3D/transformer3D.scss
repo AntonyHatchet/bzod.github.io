@@ -14,97 +14,94 @@
     @include transition(transform 5s);
 
     &.show-front  {
+
+      .topSide {
+        transform: perspective(10000px) translateZ(-409px)  rotateX(90deg);
+        top: 100%\9;
+      }
+
       .frontSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(0deg);
+        transform: perspective(10000px) translateZ(-409px) rotateX(0deg);
         top:0\9;
       }
 
-      .topSide {
-        transform: perspective(882px) translateZ(-409px)  rotateX(90deg);
-        top:-100%\9;
-      }
-
       .bottomSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
-        top: calc(100% + 150px)\9;
+        transform: perspective(10000px) translateZ(-409px) rotateX(270deg);
+        top: 100%\9;
       }
 
       .backSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
-        top: calc(100% + 150px)\9;
+        transform: perspective(10000px) translateZ(-409px) rotateX(180deg);
+        top: 100%\9;
       }
 
     }
 
-    &.show-top    {
-      .frontSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
-        top: calc(100% + 150px)\9;
-      }
+    &.show-top {
 
       .topSide {
-        transform: perspective(882px) translateZ(-409px)  rotateX(0deg);
+        transform: perspective(10000px) translateZ(-409px) rotateX(0deg);
         top:0\9;
       }
 
+      .frontSide {
+        transform: perspective(10000px) translateZ(-409px) rotateX(-90deg);
+        top: 100%\9;
+      }
+
       .bottomSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
-        opacity:0;
-        top: calc(100% + 150px)\9;
+        transform: perspective(10000px) translateZ(-409px) rotateX(270deg);
+        top: 100%\9;
       }
 
       .backSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(90deg);
-        opacity:0;
-        top: calc(100% + 150px)\9;
+        transform: perspective(10000px) translateZ(-409px) rotateX(90deg);
+        top: 100%\9;
       }
     }
 
     &.show-bottom {
       .frontSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(90deg);
+        transform: perspective(10000px) translateZ(-409px) rotateX(90deg);
         top:-100%\9;
       }
 
       .topSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(180deg);
-        opacity:0;
+        transform: perspective(10000px) translateZ(-409px) rotateX(180deg);
+        top:-100%\9;
       }
 
       .bottomSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(0deg);
+        transform: perspective(10000px) translateZ(-409px) rotateX(360deg);
         top:0\9;
       }
 
       .backSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
-        opacity:0;
-        top: calc(100% + 150px)\9;
+        transform: perspective(10000px) translateZ(-409px) rotateX(270deg);
+        top:-100%\9;
       }
 
     }
 
     &.show-back  {
       .frontSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
-        top:0\9;
-        opacity:0;
+        transform: perspective(10000px) translateZ(-409px) rotateX(180deg);
+        top:100%\9;
       }
 
       .topSide {
-        transform: perspective(882px) translateZ(-409px)  rotateX(-90deg);
+        transform: perspective(10000px) translateZ(-409px) rotateX(270deg);
         top:-100%\9;
-        opacity:0;
       }
 
       .bottomSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(90deg);
-        top: calc(100% + 150px)\9;
+        transform: perspective(10000px) translateZ(-409px) rotateX(450deg);
+        top:-100%\9;
       }
 
       .backSide {
-        transform: perspective(882px) translateZ(-409px) rotateX(0deg);
-        top: calc(100%)\9;
+        transform: perspective(10000px) translateZ(-409px) rotateX(360deg);
+        top: 0\9;
       }
     }
 
@@ -120,83 +117,47 @@
     }
 
     .topSide {
-      transform-origin:50% 50% -410px;
-      transform: perspective(882px)  translateZ(-409px)  rotateX(90deg);
+      transform-origin:50% 50% -437px;
+
+      @media screen and (max-height:900px) {
+        transform-origin:50% 50% -397px;
+      }
+
+      @media screen and (max-height:768px) {
+        transform-origin:50% 50% -331px;
+      }
     }
     .frontSide {
-      transform-origin:50% 50% -410px;
-      transform: perspective(882px)  translateZ(-409px) rotateX(0deg);
+      transform-origin:50% 50% -437px;
+
+      @media screen and (max-height:900px) {
+        transform-origin:50% 50% -397px;
+      }
+
+      @media screen and (max-height:768px) {
+        transform-origin:50% 50% -331px;
+      }
     }
     .bottomSide {
-      transform-origin:50% 50% -410px;
-      transform: perspective(882px) translateZ(-409px) rotateX(-90deg);
-    }
+      transform-origin:50% 50% -437px;
 
+      @media screen and (max-height:900px) {
+        transform-origin:50% 50% -397px;
+      }
+
+      @media screen and (max-height:768px) {
+        transform-origin:50% 50% -331px;
+      }
+    }
     .backSide {
-      transform-origin:50% 50% -410px;
-      transform: perspective(882px) translateZ(-409px) rotateX(-180deg);
-    }
+      transform-origin:50% 50% -437px;
 
-
-
-    @media screen and (max-height:768px) {
-
-      .topSide {
-        transform-origin:50% 50% -314px;
-        transform: perspective(882px)  translateZ(-314px)  rotateX(90deg);
-      }
-      .frontSide {
-        transform-origin:50% 50% -280px;
-        transform: perspective(882px)  translateZ(-280px) rotateX(0deg);
-      }
-      .bottomSide {
-        transform-origin:50% 50% -314px;
-        transform: perspective(882px) translateZ(-314px) rotateX(-90deg);
+      @media screen and (max-height:900px) {
+        transform-origin:50% 50% -397px;
       }
 
-      &.show-front  {
-        .frontSide {
-          transform: perspective(882px) translateZ(-280px) rotateX(0deg);
-        }
-
-        .topSide {
-          transform: perspective(882px) translateZ(-314px)  rotateX(90deg);
-        }
-
-        .bottomSide {
-          transform: perspective(882px) translateZ(-314px) rotateX(-90deg);
-          opacity:0;
-        }
-      }
-
-      &.show-top    {
-        .frontSide {
-          transform: perspective(882px) translateZ(-280px) rotateX(-90deg);
-        }
-
-        .topSide {
-          transform: perspective(882px) translateZ(-314px)  rotateX(0deg);
-        }
-
-        .bottomSide {
-          transform: perspective(882px) translateZ(-314px) rotateX(-180deg);
-          opacity:0;
-        }
-      }
-
-      &.show-bottom {
-        .frontSide {
-          transform: perspective(882px) translateZ(-280px) rotateX(90deg);
-        }
-
-        .topSide {
-          transform: perspective(882px) translateZ(-314px) rotateX(180deg);
-          opacity:0;
-        }
-
-        .bottomSide {
-          transform: perspective(882px) translateZ(-314px) rotateX(0deg);
-        }
+      @media screen and (max-height:768px) {
+        transform-origin:50% 50% -331px;
       }
     }
   }

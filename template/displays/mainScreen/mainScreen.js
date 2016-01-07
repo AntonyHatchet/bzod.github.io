@@ -18,6 +18,14 @@ define({
 	startVideo: function(){
 		var self = this;
 		var video = document.getElementById('video');
+		var closeVideo = document.getElementById('closeVideo');
+
+		$(closeVideo).on('click', function(){
+			video.remove();
+			closeVideo.remove();
+			self.animate();
+		});
+
 		video.play();
 		setTimeout(function(){
 			self.animate();

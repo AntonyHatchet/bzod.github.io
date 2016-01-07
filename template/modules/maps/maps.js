@@ -133,19 +133,57 @@ define({
 
 	animatePoints: function(){
 		var self = this;
-		function zoomIn(){
-			self.content.find(".animatePoint").css("transform", "scale(1)");
+		function zoomIn(map){
+
+			[].forEach.call($(self.content.find(map + " .animatePoint")),function(element,counter){
+					animate(element,counter);
+			});
+
+			function animate(element,counter){
+
+				setTimeout(function(){
+
+					console.log(element);
+
+					$(element).css({
+						"transform":"scale(1)",
+						"opacity": 0
+					});
+				},counter * 500);
+			}
+			// self.content.find(".animatePoint").css({
+			// 	"transform":"scale(1)",
+			// 	"opacity": 0
+			// });
 		};
 
 		function zoomOut(){
-			  self.content.find(".animatePoint").css("transform", "scale(0.5)");
+			  self.content.find(".animatePoint").css({
+			  	"transform": ""
+			  });
+		};
+
+		function showPoint(){
+			  self.content.find(".animatePoint").css({
+			  	"opacity": "1"
+			  });
 		};
 
 		var timerPoints = setTimeout(function tick() {
 			zoomOut();
-			setTimeout(zoomIn,1000);
-			setTimeout(zoomOut, 2000);
-		  timerPoints = setTimeout(tick, 15000);
+			setTimeout(function(){
+				zoomIn("#map-antiq");
+			},1000);
+			setTimeout(function(){
+				zoomIn("#map-story");
+			},1000);
+			setTimeout(function(){
+				zoomIn("#map-history");
+			},1000);
+			//setTimeout(zoomIn("map-history"),1100);
+			setTimeout(zoomOut, 8000);
+			setTimeout(showPoint, 10000);
+		    timerPoints = setTimeout(tick, 15000);
 		}, 15000);
 
 	},

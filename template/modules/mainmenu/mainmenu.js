@@ -6,6 +6,7 @@ define({
 	},
 	subscribeMenu: function(self) {
 		var that = this;
+		this.audioState = 1;
 		self.find('.leftSide .icon').on('click', function() {
 
 			self.find('.leftSide .leftMenu').toggleClass('hide');
@@ -60,8 +61,8 @@ define({
 
 		function getCurrentDir(){
 			var dir = decodeURI(Backbone.history.getFragment());
-					dir = dir.substring(dir.indexOf("/")+1);
-					return dir;
+			dir = dir.substring(dir.indexOf("/")+1);
+			return dir;
 		};
 
 		function splitLink(link){
@@ -76,14 +77,14 @@ define({
 
 		tests.questions.forEach(function(element){
 
-				var test = new Span(element.name);
-				if(element.status){
-					//console.log("links true",element);
-					$(test).addClass('white');
-					links.push(test);
-				}else {
-					links.push(test);
-				}
+			var test = new Span(element.name);
+			if(element.status){
+				//console.log("links true",element);
+				$(test).addClass('white');
+				links.push(test);
+			}else {
+				links.push(test);
+			}
 		});
 
 		self.mainmenuHtml.find('.breadcrumbs').html('').append(currentDir[0],angleRight,currentDir[1],verticalBar,links);
@@ -101,11 +102,7 @@ define({
 					break;
 				case "turnOfSound":
 					self.find(".selectSection p").html('Изменить настройки звука?');
-					self.find("#succesMenuButton").removeAttr('href');
-
-					var listener = document.getElementById("succesMenuButton");
-					listener.addEventListener('click',that.audioControll);
-
+					self.find("#succesMenuButton").attr('href','#sound');
 					break;
 				case "goMenu":
 					self.find(".selectSection p").html('Вернуться на портал?');
@@ -125,14 +122,19 @@ define({
 	audioControll: function(){
 		var audio = document.getElementById('audio');
 		var img = document.getElementById('soundImage');
+
+		console.log("this.audioState",this.audioState)
+
 		if(this.audioState == 0){
-				$(img).attr('src','img/volume.png');
+			$(img).attr('src','img/controll/volume.png');
+
 		    audio.play();
-				this.audioState = 1;
+			this.audioState = 1;
 		}else {
-				$(img).attr('src','img/volume-x.png');
+			$(img).attr('src','img/controll/volume-x.png');
+
 		    audio.pause();
-				this.audioState = 0;
+			this.audioState = 0;
 		}
 	}
 });
