@@ -76,7 +76,7 @@
     },
     {
       "id" : "history",
-      "mapImage" : "../../img/maps/history/PetrHistory.png",
+      "mapImage" : "../../img/maps/history/PetrHistory.jpg",
       "points" : [
         {
           "id": "fortunePeter",
