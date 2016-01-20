@@ -217,7 +217,8 @@
 	],
 	"statusGeneral":false,
 	"rewardGeneral": "img/content/damaEnd.jpg",
+	"baseImage": "img/content/dama.jpg",
 	"name":"antiq",
-	"testName":"Вдохновение античностью",
+	"testName":"Античные мотивы",
 	"finishTestText":"Эти образы были использованы Серовым при работе над произведением \"Похищение Европы\""
 }

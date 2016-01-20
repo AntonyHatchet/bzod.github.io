@@ -68,15 +68,14 @@ define({
 					console.log("Проверяем тест "+element+" пройден");
 					console.log("Тест",test[element]);
 
-					self.accordionHtml.find("#"+test[element].name +" img").attr("src",test[element].rewardGeneral);
-					self.accordionHtml.find("#"+test[element].name).addClass("opened");
+					$("#"+test[element].name +" img").attr("src",test[element].rewardGeneral);
+					$("#"+test[element].name).addClass("opened");
+				}else{
+					$("#"+test[element].name +" img").attr("src",test[element].baseImage);
 				}
 			});
 		}else{
-
-
-
-//console.log("Not an object!")
+			console.log("Not an object!")
 		}
 		//Выход из цикла
 	},

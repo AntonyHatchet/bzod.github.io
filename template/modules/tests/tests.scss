@@ -14,8 +14,8 @@
 	z-index: 20;
 
 	.soundTestButton{
-	    position: fixed;
-	    top: 5%;
+	    position: absolute;
+	    top: 5vh;
 	    left: 2%;
 	    height: 65px;
 	    width: 65px;
@@ -259,7 +259,7 @@
 					    width: 75%;
 					    background-color: rgba(0,0,0,0.5);
 					    font-size: 14px;
-					    background-image: url(../../../img/tests/antiq/athens/quests/cover.png);
+					    background-image: url(../../../img/tests/answer_hover.png);
 				        background-repeat: no-repeat;
     					background-size: contain;
 

@@ -19,7 +19,7 @@
 					   			"link":"3"
 				   				},
 			   				{
-					   			"text":"Крит.......................................................................................................................................7",
+					   			"text":"Крит........................................................................................................................................7",
 					   			"link":"4"
 				   				}
 			   				],
@@ -37,7 +37,7 @@
 					   			"link":"7"
 									},
 			   				{
-					   			"text":"Зевс и Европа...................................................................................................................15",
+					   			"text":"Зевс и Европа....................................................................................................................15",
 					   			"link":"8"
 				   				}
 			   				],
@@ -67,16 +67,16 @@
 			},
 			"rightPage":{
 		   		"title": "АФИНЫ. Акрополь",
-		   		"thumbnail": "img/reader/aphine.jpg",
-		   		"image": "img/reader/aphine.jpg",
+		   		"thumbnail": "img/reader/antiq/aphine.jpg",
+		   		"image": "img/reader/antiq/aphine.jpg",
 		   		"page": "4"
 			}
    		},
 		{
 			"leftPage":{
 		   		"title": "Путешествие по культурной карте Древней Греции",
-		   		"thumbnail": "img/reader/delfi.jpg",
-		   		"image": "img/reader/delfi.jpg",
+		   		"thumbnail": "img/reader/antiq/delfi.jpg",
+		   		"image": "img/reader/antiq/delfi.jpg",
 		   		"page": "5"
 			},
 			"rightPage":{
@@ -93,8 +93,8 @@
 			},
 			"rightPage":{
 		   		"title": "КРИТ",
-		   		"thumbnail": "img/reader/crete.jpg",
-		   		"image": "img/reader/crete.jpg",
+		   		"thumbnail": "img/reader/antiq/crete.jpg",
+		   		"image": "img/reader/antiq/crete.jpg",
 				"page": "8"
 		   	}
    		},
@@ -106,8 +106,8 @@
 			},
 			"rightPage":{
 		   		"title": "ПОСЕЙДОН И БОЖЕСТВА МОРЯ",
-		   		"thumbnail": "img/reader/poseidon.jpg",
-		   		"image": "img/reader/poseidon.jpg",
+		   		"thumbnail": "img/reader/antiq/poseidon.jpg",
+		   		"image": "img/reader/antiq/poseidon.jpg",
 				"page": "10"
 		   	}
    		},
@@ -119,16 +119,16 @@
 			},
 			"rightPage":{
 		   		"title": "АПОЛЛОН И ОСНОВАНИЕ ДЕЛЬФИЙСКОГО ОРАКУЛА",
-		   		"thumbnail": "img/reader/apolon.jpg",
-		   		"image": "img/reader/apolon.jpg",
+		   		"thumbnail": "img/reader/antiq/apolon.jpg",
+		   		"image": "img/reader/antiq/apolon.jpg",
 				"page": "12"
 		   	}
    		},
 		{
 			"leftPage":{
 		   		"title": "Мифы Древней Греции",
-		   		"thumbnail": "img/reader/dionis.jpg",
-		   		"image": "img/reader/dionis.jpg",
+		   		"thumbnail": "img/reader/antiq/dionis.jpg",
+		   		"image": "img/reader/antiq/dionis.jpg",
 		   		"page": "13"
 			},
 			"rightPage":{
@@ -145,63 +145,10 @@
 			},
 			"rightPage":{
 		   		"title": "ЗЕВС И ЕВРОПА",
-		   		"thumbnail": "img/reader/zeus.jpg",
-		   		"image": "img/reader/zeus.jpg",
+		   		"thumbnail": "img/reader/antiq/zeus.jpg",
+		   		"image": "img/reader/antiq/zeus.jpg",
 				"page": "16"
 		   	}
-   		},
-		{
-			"leftPage":{
-		   		"title": "МИФЫ И ЛЕГЕНДЫ",
-		   		"text": ["Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...","Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...", "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...","Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor "],
-				"page": "17"
-			},
-			"rightPage":{
-		   		"title": "МИФЫ И ЛЕГЕНДЫ",
-		   		"thumbnail": "img/reader/someImage.jpg",
-		   		"image": "img/reader/someImage.jpg",
-				"page": "18"
-		   	}
-   		},
-		{
-			"leftPage":{
-		   		"title": "МИФЫ И ЛЕГЕНДЫ",
-		   		"text": ["Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...","Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...", "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...","Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor "],
-				"page": "19"
-			},
-			"rightPage":{
-		   		"title": "МИФЫ И ЛЕГЕНДЫ",
-		   		"thumbnail": "img/reader/someImage.jpg",
-		   		"image": "img/reader/someImage.jpg",
-				"page": "20"
-		   	}
-   		},
-		{
-			"leftPage":{
-		   		"title": "МИФЫ И ЛЕГЕНДЫ",
-		   		"text": ["Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...","Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...", "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...","Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor "],
-				"page": "21"
-			},
-			"rightPage":{
-		   		"title": "МИФЫ И ЛЕГЕНДЫ",
-		   		"thumbnail": "img/reader/someImage.jpg",
-		   		"image": "img/reader/someImage.jpg",
-				"page": "22"
-		   	}
-   		},
-		{
-			"leftPage":{
-		   		"title": "МИФЫ И ЛЕГЕНДЫ",
-		   		"text": ["Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...","Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...", "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...","Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor "],
-				"page": "23"
-			},
-			"rightPage":{
-		   		"title": "МИФЫ И ЛЕГЕНДЫ",
-		   		"thumbnail": "img/reader/someImage.jpg",
-		   		"image": "img/reader/someImage.jpg",
-				"page": "24"
-		   	}
    		}
-
 	]
 }

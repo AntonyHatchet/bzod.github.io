@@ -8,7 +8,6 @@ define({
 		var accordion = this.renderAccordion();
 		var video = this.renderVideo('videos');
 		var reader = this.renderReader(['antiq','history','story']);
-		var redline = this.renderRedline();
 		var about = this.renderAbout();
 		var tests = this.renderTest(['antiq', 'story', 'history']);
 		var map = this.initMap();
@@ -16,7 +15,6 @@ define({
 		var transformer3D = this.renderTransformer3D([accordion,reader,video,map]);
 
 		this.content.append(transformer3D);
-		this.content.find('#accordion li').append(redline);
 		this.content.find('#accordion li.active').append(preloader);
 
 		$('body').html('').append(this.content, menu, about, tests);

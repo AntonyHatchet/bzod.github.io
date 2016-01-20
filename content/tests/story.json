@@ -182,7 +182,8 @@
 		}
 	],
 	"statusGeneral":false,
-	"rewardGeneral": "img/content/basniEnd.png",
+	"rewardGeneral": "img/content/basniEnd.jpg",
+	"baseImage": "img/content/basni.jpg",
 	"name":"story",
 	"testName":"Басни Крылова",
 	"finishTestText":"Эти зарисовки были использованы Серовым при работе над иллюстрацией басни Крылова \"Квартет\""

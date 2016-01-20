@@ -10,7 +10,6 @@ define({
 		self.on('Map:Loaded', function() {
 			this.subscribeMap();
 			this.animatePoints();
-			this.animateClouds();
 			this.animateShip();
 		});
 
@@ -19,10 +18,12 @@ define({
 
 	printMap : function (mapName) {
 		var self = this;
-		// $(".maps").hide();
-		// $("#map-" + mapName).show();
-		self.content.find(".maps").css("display", "none");
-		self.content.find(".maps#map-" + mapName).css("display", "block");
+		self.content.find(".maps").removeClass("active");
+		self.content.find(".maps#map-" + mapName).addClass("active");
+
+		if(mapName === 'antiq'){
+			self.animateClouds();
+		}
 	},
 
 	loadMap : function(mapName){
@@ -50,7 +51,7 @@ define({
 		};
 		self.mapsHtml.html(page);
 		self.trigger('Map:Loaded');
-		self.subscribeMap(mapName);
+		self.subscribeMap();
 	},
 
 	subscribeMap: function() {
@@ -80,6 +81,30 @@ define({
 		});
 	},
 
+	refreshPoints: function(){
+		"use strict";
+		var self = this;
+		var points = $("a.done");
+
+		_.each(points, function(item, i){
+
+			var id = $(item).attr('data-id');
+			$(item).removeClass('done');
+
+			function imgGenerator(src,className,id){
+				var img = document.createElement("img");
+
+				$(img).attr('src', src);
+				$(img).attr('data-id', id);
+				$(img).addClass(className);
+
+				return img
+			};
+			$(item).empty().append(imgGenerator("../../img/maps/pointStart.png","point pointStart " + id,id),imgGenerator("../../img/controll/point.svg","point pointFinish animatePoint " + id,id));
+			self.subscribeMap();
+		});
+	},
+
 	animateClouds: function(){
 		var self = this;
 
@@ -92,12 +117,12 @@ define({
 		}
 
 		function getRandomInteger(min, max) {
-    	var rand = min - 0.5 + Math.random() * (max - min + 1)
-    	rand = Math.round(rand);
-    	return rand;
-  	}
+	    	var rand = min - 0.5 + Math.random() * (max - min + 1)
+	    	rand = Math.round(rand);
+	    	return rand;
+		}
 
-		 function moveElementTowards (element, direction){
+		function moveElementTowards (element, direction){
 			switch (direction){
 				case 'left':
 					self.content.find(element).css("top", getRandomInteger(1, 70) + "%");
@@ -122,12 +147,12 @@ define({
 			}
 		}
 
-			var timerClouds = setTimeout(function tick() {
-						elementsArray.forEach(function(item, i, arr) {
-							moveElementTowards(item, getRandomArrayElement(directionArray))
-						});
-			  timerClouds = setTimeout(tick, 120000);
-			}, 1000);
+		var timerClouds = setTimeout(function tick() {
+					elementsArray.forEach(function(item, i, arr) {
+						moveElementTowards(item, getRandomArrayElement(directionArray))
+					});
+		  timerClouds = setTimeout(tick, 120000);
+		}, 1000);
 
 	},
 
@@ -135,7 +160,7 @@ define({
 		var self = this;
 		function zoomIn(map){
 
-			[].forEach.call($(self.content.find(map + " .animatePoint")),function(element,counter){
+			[].forEach.call($(self.content.find(".active .animatePoint")),function(element,counter){
 					animate(element,counter);
 			});
 
@@ -143,23 +168,17 @@ define({
 
 				setTimeout(function(){
 
-					console.log(element);
-
 					$(element).css({
 						"transform":"scale(1)",
 						"opacity": 0
 					});
 				},counter * 500);
 			}
-			// self.content.find(".animatePoint").css({
-			// 	"transform":"scale(1)",
-			// 	"opacity": 0
-			// });
 		};
 
 		function zoomOut(){
 			  self.content.find(".animatePoint").css({
-			  	"transform": ""
+			  	"transform": "scale(0)"
 			  });
 		};
 
@@ -171,26 +190,17 @@ define({
 
 		var timerPoints = setTimeout(function tick() {
 			zoomOut();
-			setTimeout(function(){
-				zoomIn("#map-antiq");
-			},1000);
-			setTimeout(function(){
-				zoomIn("#map-story");
-			},1000);
-			setTimeout(function(){
-				zoomIn("#map-history");
-			},1000);
-			//setTimeout(zoomIn("map-history"),1100);
+			setTimeout(zoomIn, 1000);
 			setTimeout(zoomOut, 8000);
 			setTimeout(showPoint, 10000);
 		    timerPoints = setTimeout(tick, 15000);
-		}, 15000);
+		}, 1000);
 
 	},
 
 	animateShip: function (){
 		console.log("animateShip");
-	var self = this;
+		var self = this;
 		function moveRight(){
 
 				self.content.find("img.ship").remove();

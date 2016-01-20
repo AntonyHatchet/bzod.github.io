@@ -9,23 +9,27 @@ define({
 	loadTest: function(tests){
 		var self = this;
 		var myStorage = localStorage;
-
 		self.tests = {};
-
+		console.log("Self Tests",self.tests );
 		if(myStorage.getItem("tests")){
 			self.tests = JSON.parse(myStorage.getItem('tests'));
-		}
+		}else{
 
-		tests.forEach(function(testName,i){
-			require([
-				'text!../../../content/tests/' + testName + '.json'
-			], function(json) {
-				var test = JSON.parse(json);
-				self.tests[testName]={};
-				self.tests[testName]=test;
-				self.tests[testName].template = self.renderHandlebarsTemplate("#testTemplate", test);
+			tests.forEach(function(testName,i){
+				require([
+					'text!../../../content/tests/' + testName + '.json'
+				], function(json) {
+					var test = JSON.parse(json);
+					self.tests[testName]={};
+					self.tests[testName]=test;
+					self.tests[testName].template = self.renderHandlebarsTemplate("#testTemplate", test);
+					if (i === (tests.length - 1)){
+						console.log("Self Tests",self.tests );
+						localStorage.setItem("tests",JSON.stringify(self.tests));
+					}
+				});
 			});
-		})
+		}
 	},
 
 	printTestPages: function(testName){
@@ -59,20 +63,7 @@ define({
 
 		// Закрытие теста
 		self.testsHtml.find('.goBackButton').on('click', function(e) {
-			var tests = document.getElementById('tests');
-
-			$('html,body').animate({
-	          scrollTop: 0
-	        }, 1000);
-
-			$(tests).delay(1000).animate({ "left": "100vw" }, 1000 );
-			$(self.testsHtml.find('.goNext')).css('display','block');
-
-			setTimeout(function(){
-				$(tests).removeClass('active');
-				$('#tests>div').removeClass('active');
-				$("html,body").css("overflow-y","hidden");
-			},2000);
+			self.deactivateQuestion(self);
 		});	
 
 		// Изменение состояния звука в тесте
@@ -82,9 +73,11 @@ define({
 
 		// Сброс прохождения тестов
 		self.on('Tests:Cleared',function(testId, testName) {
-			myStorage.clear();
-
+			myStorage.removeItem('tests');
+			
+			$('.breadcrumbs>span.white').removeClass('white');
 			self.testsHtml.find('.reward').removeClass('active');
+			self.testsHtml.find('.imgContainer div').removeClass('active');
 			self.testsHtml.find('.answers').addClass('active');
 		});
 
@@ -130,26 +123,40 @@ define({
 			}, 200);
 		});
 	},
-
 	activateQuestion: function(questionName){
 		var self = this;
 		// Выставляем иконку звука в тест в зависимости от состояния.
-		var imgTest = document.getElementById('soundTestButton');
-
+		var soundImgTest = document.getElementById('soundTestButton');
+		console.log("Запуск теста",questionName);
 		if(self.audioState == 0){
-			console.log(questionName, "questionName","self.audioState",self.audioState,"self",self);
-			$(imgTest).css('background-image','url(img/controll/volume-test-x.png)');
+			$(soundImgTest).css('background-image','url(img/controll/volume-test-x.png)');
 		}else {
-			console.log(questionName, "questionName","self.audioState",self.audioState);
-			$(imgTest).css('background-image','url(img/controll/volume-test.png)');
+			$(soundImgTest).css('background-image','url(img/controll/volume-test.png)');
 		}
 
 		self.testsHtml.find('#'+questionName).addClass('active');
+
 		$('#tests').addClass('active').animate({ "left": "0" }, 1200 );
 		setTimeout(function(){
         	$("html,body").css("overflow-y","scroll");
         },1200);
+
 		self.showNextBlock(questionName);
+	},
+	deactivateQuestion: function(self){
+		var tests = document.getElementById('tests');
+
+		$('html,body').animate({
+          scrollTop: 0
+        }, 1000);
+		$("html,body").css("overflow-y","hidden");
+		$(tests).delay(1000).animate({ "left": "100vw" }, 1000 );
+		$(self.testsHtml.find('.goNext')).css('display','block');
+
+		setTimeout(function(){
+			$(tests).removeClass('active');
+			$('#tests>div').removeClass('active');
+		},2000);
 	},
 	showNextBlock: function(questionName){
 		var self = this;

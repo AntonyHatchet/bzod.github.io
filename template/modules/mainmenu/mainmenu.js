@@ -6,7 +6,14 @@ define({
 	},
 	subscribeMenu: function(self) {
 		var that = this;
-		this.audioState = 1;
+
+		if(localStorage.getItem('sound')){
+			this.audioState = localStorage.getItem('sound');
+		}else{
+			this.audioState = true;
+			localStorage.setItem('sound',true);
+		} 
+
 		self.find('.leftSide .icon').on('click', function() {
 
 			self.find('.leftSide .leftMenu').toggleClass('hide');
@@ -19,6 +26,8 @@ define({
 	},
 	breadcrumbsRender: function(current,ways){
 		var self = this;
+
+		this.audioControll();
 		var Span = function(content){
 
 			this.span = document.createElement('span');
@@ -123,18 +132,25 @@ define({
 		var audio = document.getElementById('audio');
 		var img = document.getElementById('soundImage');
 
+
 		console.log("this.audioState",this.audioState)
 
-		if(this.audioState == 0){
+		if(this.audioState == true){
+
 			$(img).attr('src','img/controll/volume.png');
-
 		    audio.play();
-			this.audioState = 1;
 		}else {
-			$(img).attr('src','img/controll/volume-x.png');
 
+			$(img).attr('src','img/controll/volume-x.png');
 		    audio.pause();
-			this.audioState = 0;
 		}
+	},
+	audioSwictcher: function(){
+		var state = JSON.parse(localStorage.getItem("sound"));
+		console.log(state);
+		localStorage.setItem("sound",state?false:true);
+
+		this.audioState = JSON.parse(localStorage.getItem('sound'));
+		this.audioControll();
 	}
 });
