@@ -49,33 +49,28 @@ define({
 	},
 
 	preloadImage: function(timer){
-		var self = this;
+		var self = this,
+			maps,
+			tests;
+		function checkStore(){
+			if(localStorage.getItem('maps')){
+				console.log("localStorage");
+				maps = JSON.parse(localStorage.getItem('maps'));
+				maps = maps.maps.maps;
+				tests = JSON.parse(localStorage.getItem('tests'));
+				
+				console.log("maps",maps);
+				console.log("tests",tests);
 
-		if(localStorage.getItem('tests')){
-			var maps = JSON.parse(localStorage.getItem('maps'));
-			maps = maps.maps.maps;
-			var tests = JSON.parse(localStorage.getItem('tests'));
+				cycle();
+			}else {
+				setTimeout(checkStore,1000);
+			}
+		};
 
+		checkStore();
 
-			console.log("maps",maps);
-			console.log("tests",tests);
-			
-			maps.forEach(function(map){
-				if(map.mapImage){
-					preloadImage(map.mapImage);
-				}
-			});	
-
-			_.forEach(tests, function(value, key) {
-		  		value.questions.forEach(function(test){
-					if(test.background){
-						preloadImage(test.background);
-					}
-				});
-			});
-		}
 		var images = self.content.find("img");
-
 		var counter = 0;
 		var procent = 100/images.length;
 
@@ -104,6 +99,23 @@ define({
 			elem.src = elem.src;
 		});
 
+		function cycle(){
+
+			console.log("cycle", maps,tests)
+			maps.forEach(function(map){
+				if(map.mapImage){
+					preloadImage(map.mapImage);
+				}
+			});	
+
+			_.forEach(tests, function(value, key) {
+		  		value.questions.forEach(function(test){
+					if(test.background){
+						preloadImage(test.background);
+					}
+				});
+			});
+		}
 		function preloadImage(url){
 		    var img=new Image();
 		    img.src=url;
