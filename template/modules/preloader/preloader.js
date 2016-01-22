@@ -50,6 +50,30 @@ define({
 
 	preloadImage: function(timer){
 		var self = this;
+
+		if(localStorage.getItem('tests')){
+			var maps = JSON.parse(localStorage.getItem('maps'));
+			maps = maps.maps.maps;
+			var tests = JSON.parse(localStorage.getItem('tests'));
+
+
+			console.log("maps",maps);
+			console.log("tests",tests);
+			
+			maps.forEach(function(map){
+				if(map.mapImage){
+					preloadImage(map.mapImage);
+				}
+			});	
+
+			_.forEach(tests, function(value, key) {
+		  		value.questions.forEach(function(test){
+					if(test.background){
+						preloadImage(test.background);
+					}
+				});
+			});
+		}
 		var images = self.content.find("img");
 
 		var counter = 0;
@@ -79,5 +103,12 @@ define({
 		[].forEach.call(images,function(elem){
 			elem.src = elem.src;
 		});
+
+		function preloadImage(url){
+		    var img=new Image();
+		    img.src=url;
+
+		    console.log(img);
+		}
 	}
 });

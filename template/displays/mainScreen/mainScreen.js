@@ -17,7 +17,18 @@ define({
 	},
 	startVideo: function(){
 		var self = this;
-		var video = document.getElementById('video');
+		var videobackground = new $.backgroundVideo($('#video'), {
+	      "align": "centerXY",
+	      "width": 1920,
+	      "height": 1080,
+	      "path": "video/",
+	      "filename": "startVideo",
+	      "types": ["mp4"],
+	      "preload": false,
+	      "autoplay": false,
+	      "loop": false
+	    });
+		var video = document.getElementById('video_background');
 		var closeVideo = document.getElementById('closeVideo');
 
 		$(closeVideo).on('click', function(){
@@ -31,6 +42,7 @@ define({
 			self.animate();
 		},20000);
 		setTimeout(function(){
+			closeVideo.remove();
 			video.remove();
 		},24000);
 	},

@@ -126,13 +126,13 @@ define({
 	activateQuestion: function(questionName){
 		var self = this;
 		// Выставляем иконку звука в тест в зависимости от состояния.
-		var soundImgTest = document.getElementById('soundTestButton');
-		console.log("Запуск теста",questionName);
-		if(self.audioState == 0){
-			$(soundImgTest).css('background-image','url(img/controll/volume-test-x.png)');
-		}else {
-			$(soundImgTest).css('background-image','url(img/controll/volume-test.png)');
-		}
+		// var soundImgTest = document.getElementById('soundTestButton');
+		// console.log("Запуск теста",questionName);
+		// if(self.audioState == 0){
+		// 	$(soundImgTest).css('background-image','url(img/controll/volume-test-x.png)');
+		// }else {
+		// 	$(soundImgTest).css('background-image','url(img/controll/volume-test.png)');
+		// }
 
 		self.testsHtml.find('#'+questionName).addClass('active');
 

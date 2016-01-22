@@ -6,14 +6,14 @@ define({
 	},
 	subscribeMenu: function(self) {
 		var that = this;
-
-		if(localStorage.getItem('sound')){
-			this.audioState = localStorage.getItem('sound');
-		}else{
-			this.audioState = true;
-			localStorage.setItem('sound',true);
-		} 
-
+		// Настройки звука 
+		// if(localStorage.getItem('sound')){
+		// 	this.audioState = localStorage.getItem('sound');
+		// }else{
+		// 	this.audioState = true;
+		// 	localStorage.setItem('sound',true);
+		// } 
+		this.audioState = false;
 		self.find('.leftSide .icon').on('click', function() {
 
 			self.find('.leftSide .leftMenu').toggleClass('hide');
@@ -115,7 +115,7 @@ define({
 					break;
 				case "goMenu":
 					self.find(".selectSection p").html('Вернуться на портал?');
-					self.find("#succesMenuButton").attr('href','');
+					self.find("#succesMenuButton").attr('href','www.tretyakovgallery.ru');
 					break;
 				case "aboutButton":
 					this.trigger('Get:About');
