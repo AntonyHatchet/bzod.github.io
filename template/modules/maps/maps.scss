@@ -193,8 +193,8 @@
 		}
 
 		.birthdayPeter{
-			top: 51.5%;
-			left: 7.5%;
+			top: 52%;
+			left: 5.5%;
 
 			@media screen and (max-height: 768px){
 				top: 49.5%;
@@ -269,5 +269,26 @@
 	}
 	#antiquityInspirationMap .screenContainer .korfu{
 		left: 12.5%;
+	}
+}
+
+@media screen and (max-height:600px) {
+	.screenContainer .maps .illustrationStyle {
+	    top: 12%;
+	    left: 24%;
+	}
+	.screenContainer .maps .illustrationDetail {
+	    top: 0%;
+	    left: 68.5%;
+	}
+
+	.screenContainer .maps .map {
+	    position: relative;
+	    width: 100%;
+	    height: 100%;
+	    min-width: 1024px;
+	    min-height: 768px;
+	    left: 0;
+	    top: -15.8vh;
 	}
 }

@@ -30,8 +30,9 @@ define({
 	    });
 		var video = document.getElementById('video_background');
 		var closeVideo = document.getElementById('closeVideo');
-
+		var scene = document.getElementById('scene');
 		$(closeVideo).on('click', function(){
+			scene.style.display = "block";
 			video.remove();
 			closeVideo.remove();
 			self.animate();
@@ -39,6 +40,7 @@ define({
 
 		video.play();
 		setTimeout(function(){
+			scene.style.display = "block";
 			self.animate();
 		},20000);
 		setTimeout(function(){

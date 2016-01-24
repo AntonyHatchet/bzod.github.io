@@ -59,7 +59,7 @@
 			"background":"../../../img/tests/history/task_history2.jpg",
 			"dataId":2,
 			"name":"Европейская одежда",
-			"reward":"img/tests/antiq/korfu/quests/1.jpg",
+			"reward":"img/tests/history/2/quests/1.jpg",
 			"cityEntry":{
 				"subtitle":"В январе 1700 года Петр подписал указ  «О ношении платья на манер венгерского». Чуть позже образцом было объявлено немецкое и французское платье.",
 				"aditionalSubtitle":"Сам Петр познакомился с практичным европейским костюмом еще в юности в московской Немецкой слободе. В свое первое заграничное путешествие в 1697 году он отправился в голландском костюме.",
@@ -89,7 +89,7 @@
 			"answers":[
 				{
 					"right":{
-						"img":"img/tests/antiq/korfu/quests/1.jpg",
+						"img":"img/tests/history/2/quests/1.jpg",
 						"text":"Парадный костюм Петра I выполнен по немецкому образцу. В него входят кафтан, камзол и брюки – кюлоты"
 					}
 				},
@@ -113,7 +113,7 @@
 			"background":"../../../img/tests/history/task_history3.jpg",
 			"dataId":3,
 			"name":"Основание Петербурга",
-			"reward":"img/tests/antiq/korfu/quests/3.jpg",
+			"reward":"img/tests/history/3/quests/3.jpg",
 			"cityEntry":{
 				"subtitle":"16  мая 1703 года на  Заячьем острове в устье Невы Петр собственноручно заложил новую крепость. Этот день считается днем основания новой столицы.  Петр назвал «Санкт - Питербурх», что значит «город святого Петра». ",
 				"aditionalSubtitle":"Апостол Петр, по христианскому преданию, был хранителем ключей от рая. Петербург для Петра стал ключом к Балтике. ",
@@ -143,19 +143,19 @@
 			"answers":[
 				{
 					"wrong":{
-						"img":"img/tests/history/2/quests/1.jpg",
+						"img":"img/tests/history/3/quests/1.jpg",
 						"text":"Это современный план Санкт-Петербурга"
 					}
 				},
 				{
 					"wrong":{
-						"img":"img/tests/history/2/quests/2.jpg",
+						"img":"img/tests/history/3/quests/2.jpg",
 						"text":"Это план Петербурга в 1705 году"
 					}
 				},
 				{
 					"right":{
-						"img":"img/tests/history/2/quests/3.jpg",
+						"img":"img/tests/history/3/quests/3.jpg",
 						"text":"Это генеральный план Петербурга, выполненный в 1717 году Д.Трезини"
 					}
 				}
@@ -167,7 +167,7 @@
 			"background":"../../../img/tests/history/task_history4.jpg",
 			"dataId":4,
 			"name":"Похороны Петра",
-			"reward":"img/tests/antiq/korfu/quests/1.jpg",
+			"reward":"img/tests/history/4/quests/1.jpg",
 			"cityEntry":{
 				"subtitle":"Петр умер 28 января 1725 года.  Монашеского пострига перед смертью, подобно всем московским царям он не принимал. Хоронили его по новому обряду. Набальзамированное тело императора было выставлено в траурной зале Зимнего дворца. В марте тело перенесли в Петропавловский собор. Гроб с телом символически присыпали землей и возложили на него императорскую мантию.",
 				"aditionalSubtitle":"Шесть лет он оставался в деревянной временной церкви посреди строящегося собора, окруженный гербами и знаменами. Погребение в каменном соборе состоялось только в  мае 1731 года по повелению императрицы Анны Иоанновны. ",
@@ -197,19 +197,19 @@
 			"answers":[
 				{
 					"right":{
-						"img":"img/tests/history/2/quests/1.jpg",
+						"img":"img/tests/history/4/quests/1.jpg",
 						"text":"Это - посмертная гипсовая маска Петра I, выполненная скульптором К.Б.Растрелли"
 					}
 				},
 				{
 					"wrong":{
-						"img":"img/tests/history/2/quests/2.jpg",
+						"img":"img/tests/history/4/quests/2.jpg",
 						"text":"Этот портрет Петра И.Г.Таннауэр выполнил в 1716 году"
 					}
 				},
 				{
 					"wrong":{
-						"img":"img/tests/history/2/quests/3.jpg",
+						"img":"img/tests/history/4/quests/3.jpg",
 						"text":"Ж.М.Натье. Портрет Петра I в рыцарских доспехах"
 					}
 				}

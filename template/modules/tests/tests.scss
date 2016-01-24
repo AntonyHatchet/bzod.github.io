@@ -27,8 +27,8 @@
 	}
 	.goBackButton{
 		position: fixed;
-		right: 5%;
-		bottom: 15%;
+		left: 5%;
+		top: 5%;
 		height: 7%;
 		width: 88px;
 		cursor: pointer;
@@ -510,6 +510,84 @@
 
 		>div.finishTest{
 			ul{
+				&:before{
+					left: 2.8%;
+				    width: 58.4%;
+				}
+
+				li{
+					height: 55%;
+				}
+			} 
+		}
+	}
+}
+@media screen and (max-height:600px) {
+  	#tests {
+  		>div{
+  			section{
+		  		font-size: 0.7em;
+		  		padding-top: 0%;
+  				&.questions{
+  					padding-top: 0%;
+  				}
+  			}
+
+  			&.finishTest ul {
+  				height: 345px;
+  			}
+  		}
+
+		#delphi, #athens, #korfu, #crete{
+			height: 2400px;
+
+			.first{
+				padding-top: 10%;
+				h1{
+				    margin: 3em 0 2.5em;
+				}
+				p{
+				    font-size: 1.2em;
+				    margin-bottom: 0%;
+
+				    &.question{
+				    	margin-top: 6.5%;
+				    }
+				}
+			}
+		};
+		#illustrationNature, #illustrationStyle, #illustrationText, #illustrationDetail{
+			height: 1800px;
+
+			.first{
+
+				h1{
+				    margin: 4em 0 4.5em;
+				}
+				p{
+				    font-size: 1.2em;
+
+				    &.question{
+				    	margin-top: 6.5%;
+				    }
+				}
+			}
+		};
+		#fortunePeter, #euroDressPeter, #SaintPetersburg, #deathPeter{
+			height: 2400px;
+		};
+
+		>div.finishTest{
+
+			height: 600px;
+
+			h1{
+    			font-size: 1.5em;
+			}
+
+			ul{
+
+			    margin-bottom: -15px;
 				&:before{
 					left: 2.8%;
 				    width: 58.4%;
