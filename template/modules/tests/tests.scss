@@ -166,7 +166,7 @@
 					display:block;
 				}
 			}
-		}
+		}    
 
 		section{
 			width: 100%;
@@ -225,7 +225,7 @@
 						    height: 71px;
 						    position: absolute;
 						    bottom: 15%;
-						    left: 30%;
+						    left: calc(50% - 15px);
 						    display: none;
 						    cursor: pointer;
 			    		}
@@ -255,13 +255,14 @@
 					    left: 0;
 					    padding: 0 5%;
 					    text-align: left;
+				        margin-left: 15%;
 					    height: 365px;
 					    width: 75%;
 					    background-color: rgba(0,0,0,0.5);
 					    font-size: 14px;
 					    background-image: url(../../../img/tests/answer_hover.png);
 				        background-repeat: no-repeat;
-    					background-size: contain;
+    					background-size: cover;
 
 					    i{
 				    	    background-image: url(../../../img/tests/x.png);
@@ -271,7 +272,7 @@
 						    top: 35%;
 						    display: block;
 						    position: absolute;
-						    left: 38%;
+						    left: calc(50% - 20px);
 					    }
 
 					    .text{
@@ -284,7 +285,16 @@
 
 			    .answers{
 			    	margin-top: 5%;
+			    	padding: 0 2%;
 	    	    	color: #fff;
+
+	    	    	.imgContainer{
+	    	    		width: 33%;
+
+	    	    		.img{
+	    	    			margin-left: 15%;
+	    	    		}
+	    	    	}
 			    }
 			}
 			.right{
@@ -483,16 +493,19 @@
 
 			.first{
 				h1{
-				    margin: 3em 0 3em;
+				    margin: 3em 0 2.5em;
 				}
 				p{
 				    font-size: 1.2em;
+
+				    &.question{
+				    	margin-top: 6.5%;
+				    }
 				}
 			}
 		};
 		#fortunePeter, #euroDressPeter, #SaintPetersburg, #deathPeter{
 			height: 3072px;
-
 		};
 
 		>div.finishTest{

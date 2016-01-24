@@ -1,7 +1,6 @@
 define({
 
 	renderTest: function(testName) {
-		console.log("Going render test");
 		this.loadTest(testName);
 		return this.testsHtml;
 	},
@@ -10,7 +9,7 @@ define({
 		var self = this;
 		var myStorage = localStorage;
 		self.tests = {};
-		console.log("Self Tests",self.tests );
+		
 		if(myStorage.getItem("tests")){
 			self.tests = JSON.parse(myStorage.getItem('tests'));
 		}else{
@@ -24,7 +23,6 @@ define({
 					self.tests[testName]=test;
 					self.tests[testName].template = self.renderHandlebarsTemplate("#testTemplate", test);
 					if (i === (tests.length - 1)){
-						console.log("Self Tests",self.tests );
 						localStorage.setItem("tests",JSON.stringify(self.tests));
 					}
 				});
@@ -64,17 +62,18 @@ define({
 		// Закрытие теста
 		self.testsHtml.find('.goBackButton').on('click', function(e) {
 			self.deactivateQuestion(self);
-		});	
+		});
 
 		// Изменение состояния звука в тесте
-		self.testsHtml.find('.soundTestButton').on('click', function(e) {
-			self.audioTestControll();
-		});
+		// self.testsHtml.find('.soundTestButton').on('click', function(e) {
+		// 	self.audioTestControll();
+		// });
 
 		// Сброс прохождения тестов
 		self.on('Tests:Cleared',function(testId, testName) {
 			myStorage.removeItem('tests');
-			
+			myStorage.removeItem('maps');
+
 			$('.breadcrumbs>span.white').removeClass('white');
 			self.testsHtml.find('.reward').removeClass('active');
 			self.testsHtml.find('.imgContainer div').removeClass('active');
@@ -84,10 +83,6 @@ define({
 		// Тест пройден, проверяем состояния и окрашиваем поинты и хлебные крошки.
 		self.on('Quest:Passed', function(testId, testName) {
 			var testData = JSON.parse(myStorage.getItem('tests'));
-
-			console.log('testId:',testId,' testName: ', testName, ' testData: ',testData[testName])
-			console.log(' testData questions: ',testData[testName].questions)
-
 			var domTestId = testData[testName].questions[(testId - 1)].id;
 
 			testData[testName].questions[(testId - 1)].status = true;
@@ -107,8 +102,6 @@ define({
 			// Записываем данные о прохождении всех вопросов в LS
 			var testData = JSON.parse(myStorage.getItem('tests'));
 			var pageHeight = self.testsHtml.find("#"+lastTestId).height();
-
-			console.log("Test passed",lastTestId,"pageHeight",pageHeight);
 
 			testData[testName].statusGeneral = true;
 
@@ -160,24 +153,23 @@ define({
 	},
 	showNextBlock: function(questionName){
 		var self = this;
+		var currentHeight = document.querySelector('#'+questionName+' section').clientHeight;
+		var maxHeight = document.getElementById(questionName).clientHeight;
+		
+		this.testsHtml.find('.goNext').on('click',Animate);
 
-		this.testsHtml.find('.goNext').on('click',function(){
-			
-			$("html,body").stop();
-			console.log(questionName);
-			var height = document.documentElement.clientHeight + window.pageYOffset;
-			var maxHeight = document.getElementById(questionName).clientHeight;
+		function Animate(){
 
-			$("html,body").animate({
-	          scrollTop: height
+			$("html,body").stop().animate({
+	          scrollTop: currentHeight + window.pageYOffset
 	        }, 500);
 
 	        setTimeout(function(){
-	        	if((maxHeight - window.pageYOffset) <= (document.documentElement.clientHeight + 5)){
-	        		$(self.testsHtml.find('.goNext')).unbind( "click" ).css('display','none');
+	        	if((maxHeight - window.pageYOffset) < (currentHeight + 150)){
+		    		self.testsHtml.find('.goNext').off( "click", Animate ).css('display','none');
 	        	}
 	        },500);
-		});
+		}
 	},
 	checkTestComplite: function(testData, lastTestId){
 		var self = this;
@@ -198,24 +190,26 @@ define({
 		}
 
 	},
-	audioTestControll: function(){
-		var audio = document.getElementById('audio');
-		var img = document.getElementById('soundImage');
-		var imgTest = document.getElementById('soundTestButton');
 
-		if(this.audioState == 0){
-			$(img).attr('src','img/controll/volume.png');
-			$(imgTest).css('background-image','url(img/controll/volume-test.png)');
-
-		    audio.play();
-			this.audioState = 1;
-		}else {
-			$(img).attr('src','img/controll/volume-x.png');
-			$(imgTest).css('background-image','url(img/controll/volume-test-x.png)');
-
-		    audio.pause();
-			this.audioState = 0;
-		}
-	}
+	// Управление звуком
+	// audioTestControll: function(){
+	// 	var audio = document.getElementById('audio');
+	// 	var img = document.getElementById('soundImage');
+	// 	var imgTest = document.getElementById('soundTestButton');
+	//
+	// 	if(this.audioState == 0){
+	// 		$(img).attr('src','img/controll/volume.png');
+	// 		$(imgTest).css('background-image','url(img/controll/volume-test.png)');
+	//
+	// 	    audio.play();
+	// 		this.audioState = 1;
+	// 	}else {
+	// 		$(img).attr('src','img/controll/volume-x.png');
+	// 		$(imgTest).css('background-image','url(img/controll/volume-test-x.png)');
+	//
+	// 	    audio.pause();
+	// 		this.audioState = 0;
+	// 	}
+	// }
 
 })

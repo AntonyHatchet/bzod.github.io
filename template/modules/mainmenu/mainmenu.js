@@ -6,28 +6,33 @@ define({
 	},
 	subscribeMenu: function(self) {
 		var that = this;
-		// Настройки звука 
+		// Настройки звука
 		// if(localStorage.getItem('sound')){
 		// 	this.audioState = localStorage.getItem('sound');
 		// }else{
 		// 	this.audioState = true;
 		// 	localStorage.setItem('sound',true);
-		// } 
-		this.audioState = false;
+		// }
+		//this.audioState = false;
 		self.find('.leftSide .icon').on('click', function() {
 
 			self.find('.leftSide .leftMenu').toggleClass('hide');
 		});
 
+		self.find('.menu a:not(.icon)').on('click', function(e) {
+				self.find('.menu a:not(.icon)').removeClass('active');
+				$(e.target).addClass('active');
+				self.find('.leftSide .leftMenu').toggleClass('hide');
+		});
+
 		self.find('.rightSide *').on('click', function(element) {
-			console.log("rightSide");
 			that.controllButtons(self,element);
 		});
 	},
 	breadcrumbsRender: function(current,ways){
 		var self = this;
 
-		this.audioControll();
+		//this.audioControll();
 		var Span = function(content){
 
 			this.span = document.createElement('span');
@@ -127,30 +132,31 @@ define({
 			self.find(".selectSection").removeClass().addClass($(element.target).data('id') + " selectSection");
 			$(element.target).toggleClass('pushed');
 		}
-	},
-	audioControll: function(){
-		var audio = document.getElementById('audio');
-		var img = document.getElementById('soundImage');
-
-
-		console.log("this.audioState",this.audioState)
-
-		if(this.audioState == true){
-
-			$(img).attr('src','img/controll/volume.png');
-		    audio.play();
-		}else {
-
-			$(img).attr('src','img/controll/volume-x.png');
-		    audio.pause();
-		}
-	},
-	audioSwictcher: function(){
-		var state = JSON.parse(localStorage.getItem("sound"));
-		console.log(state);
-		localStorage.setItem("sound",state?false:true);
-
-		this.audioState = JSON.parse(localStorage.getItem('sound'));
-		this.audioControll();
 	}
+	// Управление звуком
+	// audioControll: function(){
+	// 	var audio = document.getElementById('audio');
+	// 	var img = document.getElementById('soundImage');
+	//
+	//
+	// 	console.log("this.audioState",this.audioState)
+	//
+	// 	if(this.audioState == true){
+	//
+	// 		$(img).attr('src','img/controll/volume.png');
+	// 	    audio.play();
+	// 	}else {
+	//
+	// 		$(img).attr('src','img/controll/volume-x.png');
+	// 	    audio.pause();
+	// 	}
+	// },
+	// audioSwictcher: function(){
+	// 	var state = JSON.parse(localStorage.getItem("sound"));
+	// 	console.log(state);
+	// 	localStorage.setItem("sound",state?false:true);
+	//
+	// 	this.audioState = JSON.parse(localStorage.getItem('sound'));
+	// 	this.audioControll();
+	// }
 });
