@@ -212,7 +212,7 @@
 
 			    	.img{
 			    		width: 75%;
-			    		height: 365px;
+			    		height: 50vh;
 			    		background-color: #444444;
 			    		&.active{
 			    			img{
@@ -588,8 +588,9 @@
 
 			    margin-bottom: -15px;
 				&:before{
-					left: 2.8%;
+				    left: 2.9%;
 				    width: 58.4%;
+				    top: 5%;
 				}
 
 				li{
