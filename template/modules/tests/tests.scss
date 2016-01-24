@@ -43,9 +43,9 @@
 		}
 	}
 	.goNext{
-	  position: fixed;
-	  right: calc(50% - 50px);
-	  bottom: 5%;
+	  	position: fixed;
+	  	right: calc(50% - 50px);
+	  	bottom: 5%;
 		height: 7%;
 		width: 100px;
 		cursor: pointer;
@@ -182,7 +182,7 @@
 				h1{
 					text-align: center;
 				}
-			    padding-top: 12%;
+			    padding-top: 15vh;
 			    text-align: center;
 
 			    p{
@@ -337,35 +337,35 @@
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 4000px;
+    height: 400vh
   }
 
   #athens{
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 4000px;
+    height: 400vh
   }
 
   #korfu{
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 4000px;
+    height: 400vh
   }
 
   #crete{
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 4000px;
+    height: 400vh
   }
 
   #illustrationNature{
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 2936px;
+    height: 300vh;
     color: black;
     @include illustrationTitle(37%);
   }
@@ -374,7 +374,7 @@
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 2936px;
+    height: 300vh;
     color: black;
     @include illustrationTitle(30%);
   }
@@ -383,7 +383,7 @@
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 2936px;
+    height: 300vh;
     color: black;
     @include illustrationTitle(30%);
   }
@@ -392,7 +392,7 @@
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 2936px;
+    height: 300vh;
     color: black;
     @include illustrationTitle(37%);
   }
@@ -401,7 +401,7 @@
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 3915px;
+    height: 400vh;
     color: black;
     @include peterTitle(30%);
   }
@@ -410,7 +410,7 @@
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 3915px;
+    height: 400vh;
     color: black;
     @include peterTitle(30%);
   }
@@ -419,7 +419,7 @@
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 3915px;
+    height: 400vh;
     color: black;
     @include peterTitle(30%);
   }
@@ -428,7 +428,7 @@
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    height: 3915px;
+    height: 400vh;
     color: black;
     @include peterTitle(30%);
   }
@@ -441,11 +441,11 @@
 
 @media screen and (max-height:900px) {
 	#tests {
-		#delphi, #athens, #korfu, #crete{
+/*		#delphi, #athens, #korfu, #crete{
 			height: 3599px;
-		};
+		};*/
 		#illustrationNature, #illustrationStyle, #illustrationText, #illustrationDetail{
-			height: 2699px;
+			/*height: 2699px;*/
 
 			.first{
 				h1{
@@ -456,9 +456,9 @@
 				}
 			}
 		};
-		#fortunePeter, #euroDressPeter, #SaintPetersburg, #deathPeter{
+/*		#fortunePeter, #euroDressPeter, #SaintPetersburg, #deathPeter{
 			height: 3599px;
-		};
+		};*/
 
 		>div.finishTest{
 			ul{
@@ -486,10 +486,10 @@
   		}
 
 		#delphi, #athens, #korfu, #crete{
-			height: 3072px;
+			/*height: 3072px;*/
 		};
 		#illustrationNature, #illustrationStyle, #illustrationText, #illustrationDetail{
-			height: 2304px;
+			/*height: 2304px;*/
 
 			.first{
 				h1{
@@ -505,7 +505,7 @@
 			}
 		};
 		#fortunePeter, #euroDressPeter, #SaintPetersburg, #deathPeter{
-			height: 3072px;
+			/*height: 3072px;*/
 		};
 
 		>div.finishTest{
@@ -527,7 +527,6 @@
   		>div{
   			section{
 		  		font-size: 0.7em;
-		  		padding-top: 0%;
   				&.questions{
   					padding-top: 0%;
   				}
@@ -539,7 +538,7 @@
   		}
 
 		#delphi, #athens, #korfu, #crete{
-			height: 2400px;
+			/*height: 2400px;*/
 
 			.first{
 				padding-top: 10%;
@@ -557,7 +556,7 @@
 			}
 		};
 		#illustrationNature, #illustrationStyle, #illustrationText, #illustrationDetail{
-			height: 1800px;
+			/*height: 1800px;*/
 
 			.first{
 
@@ -574,7 +573,7 @@
 			}
 		};
 		#fortunePeter, #euroDressPeter, #SaintPetersburg, #deathPeter{
-			height: 2400px;
+			/*height: 2645px;*/
 		};
 
 		>div.finishTest{

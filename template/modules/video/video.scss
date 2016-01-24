@@ -13,6 +13,27 @@
 		    height: 55vh;
 		    width: 40vw;
 		}
+	    @media screen and (max-height:768px) {
+	    	.circle.bottom {
+			    width: 30vw;
+			}
+	    }
+	}
+	&#video-antiq{
+	    @media screen and (max-height:768px) {
+	    	.circle.bottom {
+			    width: 35vw;
+			    height: 65vh;
+			}
+	    }
+	}
+	&#video-story{
+	    @media screen and (max-height:768px) {
+	    	.circle.bottom {
+			    width: 35vw;
+			    height: 65vh;
+			}
+	    }
 	}
 	video{
 	    position: fixed;
@@ -30,7 +51,7 @@
 
 	    @media screen and (max-height:900px) {
     		top: 40%;
-				left: 59.3%;
+			left: 59.3%;
 		    -ms-transform: scale(0.8) translateX(-70%) translateY(-50%);
     		-moz-transform: scale(0.8) translateX(-70%) translateY(-50%);
     		-webkit-transform: scale(0.8) translateX(-70%) translateY(-50%);
