@@ -244,7 +244,7 @@
 
 		.cloud {
 			position: absolute;
-	    transition: all 120s ease-in-out;
+	   		transition: all 120s ease-in-out;
 			z-index: 1;
 		}
 
@@ -272,7 +272,7 @@
 	}
 }
 
-@media screen and (max-height:600px) {
+@media screen and (max-height:660px) {
 	.screenContainer .maps .illustrationStyle {
 	    top: 12%;
 	    left: 24%;
