@@ -9,9 +9,8 @@ define({
 		var video = this.renderVideo('videos');
 		var reader = this.renderReader(['antiq','history','story']);
 		var about = this.renderAbout();
-		var tests = this.renderTest(['antiq', 'story', 'history']);
+		var tests = this.renderTest('allTests');
 		var map = this.initMap();
-
 		var transformer3D = this.renderTransformer3D([accordion,reader,video,map]);
 
 		this.content.append(transformer3D);

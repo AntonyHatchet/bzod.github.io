@@ -7,7 +7,6 @@ define({
 
 	loadTest: function(tests){
 		var self = this;
-		var myStorage = localStorage;
 		var gameProgress = {
 			progress:0,
 			score:0,
@@ -17,56 +16,60 @@ define({
 			imgMeta:"img/controll/progress/med/beginer.jpg"
 		};
 		self.tests = {};
-		if(myStorage.getItem("tests")){
-			self.tests = JSON.parse(myStorage.getItem('tests'));
-		}else{
 
-			tests.forEach(function(testName,i){
-				require([
-					'text!../../../content/tests/' + testName + '.json'
-				], function(json) {
-					var test = JSON.parse(json);
-					self.tests[testName]={};
-					self.tests[testName]=test;
-					self.tests[testName].template = self.renderHandlebarsTemplate("#testTemplate", test);
-					if (i === (tests.length - 1)){
-						localStorage.setItem("tests",JSON.stringify(self.tests));
-						localStorage.setItem("progress",JSON.stringify(gameProgress));
-					}
-				});
-			});
-		}
+		require([
+			'text!../../../content/tests/' + tests + '.json'
+		], function(json) {
+			var test = JSON.parse(json);
+			self.tests={};
+			if(localStorage.getItem("tests")){
+				self.tests.data = JSON.parse(localStorage.getItem('tests'));
+				self.printTestPages();
+			}else{
+				self.tests.data=test;
+			}
+			self.tests.template = self.renderHandlebarsTemplate("#testTemplate", self.tests.data);
+			localStorage.setItem("tests",JSON.stringify(self.tests.data));
+			localStorage.setItem("progress",JSON.stringify(gameProgress));
+			self.printTestPages();
+		});
+
 	},
 
-	printTestPages: function(testName){
+	printTestPages: function(){
 		var self = this;
 
 		if(!localStorage.getItem("tests")){
-			localStorage.setItem("tests",JSON.stringify(self.tests));
+			localStorage.setItem("tests",JSON.stringify(self.tests.data));
 		}
 
-		self.testsHtml.html(self.tests[testName].template);
-		self.subscribeTest(testName);
-		self.buildDonePoints(testName);
+		self.testsHtml.html(self.tests.template);
+		self.buildDonePoints();
+		self.subscribeTest();
+
 	},
 
 	subscribeTest: function(testName){
 		var self = this;
-		var myStorage = localStorage;
 		var scores = 0;
 
 		//Проверка прохождения теста
-		self.testsHtml.find('.imgContainer .img').on('click', function(e) {
-			var selector = e.target.getAttribute('data-toogle');
+
+		var testImgContainer = document.querySelectorAll("#tests .imgContainer .img");
+
+		var clickFunction = function(e) {
+			e.target.removeEventListener('click', clickFunction, false);
+		    var selector = e.target.getAttribute('data-toogle');
 			var testId = $(e.target).closest('section').parent().data('id');
-			console.log("click");
+			var testName = $(e.target).closest('section').parent().parent().attr('id');
+
 			if (selector === 'rightHover') {
 				self.testsHtml.find(e.target.parentNode.parentNode.querySelector('.'+selector)).addClass('active');
 				self.testsHtml.find(e.target.parentNode.parentNode.parentNode).addClass('complete');
 				self.testsHtml.find(e.target.parentNode).addClass('active');
 				scores += 3;
 				console.log("scores + 3",scores);
-				self.trigger('Quest:Passed', testId, testName, scores);
+				questPassed(testId, testName, scores);
 				scores = 0;
 			}else{
 				self.testsHtml.find(e.target.parentNode.parentNode.querySelector('.'+selector)).addClass('active');
@@ -74,14 +77,15 @@ define({
 				scores -= 1;
 				console.log("scores - 1",scores);
 			};
-		}).on("dblclick", function(e){
-	        e.preventDefault();  //cancel system double-click event
-	        console.log("dblclick");
-	    });
+		};
+
+		for (var i = 0; i < testImgContainer.length; i++) {
+		    testImgContainer[i].addEventListener('click', clickFunction, false);
+		}
 
 		// Закрытие теста
 		self.testsHtml.find('.goBackButton').on('click', function(e) {
-			self.deactivateQuestion(self);
+			self.deactivateQuestion(e);
 		});
 
 		// Изменение состояния звука в тесте
@@ -90,53 +94,56 @@ define({
 		// });
 
 		// Сброс прохождения тестов
-		self.on('Tests:Cleared',function(testId, testName) {
-			myStorage.removeItem('tests');
-			myStorage.removeItem('maps');
-			myStorage.removeItem('progress');
 
-			$('.breadcrumbs>span.white').removeClass('white');
-			self.testsHtml.find('.reward').removeClass('active');
-			self.testsHtml.find('.imgContainer div').removeClass('active');
-			self.testsHtml.find('.answers').addClass('active');
-		});
 
 		// Тест пройден, проверяем состояния и окрашиваем поинты и хлебные крошки.
-		self.on('Quest:Passed', function(testId, testName, scores) {
-
-			var testData = JSON.parse(myStorage.getItem('tests'));
+	 	function questPassed(testId, testName, scores) {
+			console.log(testId, testName, scores);
+			var testData = JSON.parse(localStorage.getItem('tests'));
 			var domTestId = testData[testName].questions[(testId - 1)].id;
 
 			testData[testName].questions[(testId - 1)].status = true;
 
-			myStorage.setItem("tests",JSON.stringify(testData));
+			localStorage.setItem("tests",JSON.stringify(testData));
 
 			self.testsHtml.find('#'+domTestId+' .answers').removeClass('active');
 			self.testsHtml.find('#'+domTestId+' .reward').addClass('active');
-			self.checkTestComplite(testData[testName],domTestId);
+			self.checkTestComplite(testData[testName],domTestId,testName);
 			self.setProggress(scores);
 			self.buildDonePoints(testName);
 			self.testBreadcrumbsRender("Игра",testData[testName].testName,testName);
 
-		});
+		};
+	},
+	testPassed: function(lastTestId,testName) {
+		var self = this;
+		// Записываем данные о прохождении всех вопросов в LS
+		var testData = JSON.parse(localStorage.getItem('tests'));
+		var pageHeight = self.testsHtml.find("#"+lastTestId).height();
 
-		self.on('Test:Passed', function(lastTestId) {
-			// Записываем данные о прохождении всех вопросов в LS
-			var testData = JSON.parse(myStorage.getItem('tests'));
-			var pageHeight = self.testsHtml.find("#"+lastTestId).height();
+		testData[testName].statusGeneral = true;
 
-			testData[testName].statusGeneral = true;
+		localStorage.setItem('tests',JSON.stringify(testData));
 
-			myStorage.setItem('tests',JSON.stringify(testData));
+		self.testsHtml.find('#finishTest'+testName).addClass('active').css("top",pageHeight);
 
-			self.testsHtml.find('#finishTest').addClass('active').css("top",pageHeight);
+		setTimeout(function(){
+			$('html,body').animate({
+	          scrollTop: window.pageYOffset + document.documentElement.clientHeight
+	        }, 1000);
+		}, 200);
+	},
+	testCleared: function(lastTestId,testName) {
+		var self = this;
 
-			setTimeout(function(){
-				$('html,body').animate({
-		          scrollTop: window.pageYOffset + document.documentElement.clientHeight
-		        }, 1000);
-			}, 200);
-		});
+		localStorage.removeItem('tests');
+		localStorage.removeItem('maps');
+		localStorage.removeItem('progress');
+
+		$('.breadcrumbs>span.white').removeClass('white');
+		self.testsHtml.find('.reward').removeClass('active');
+		self.testsHtml.find('.imgContainer div').removeClass('active');
+		self.testsHtml.find('.answers').addClass('active');
 	},
 	activateQuestion: function(questionName){
 		var self = this;
@@ -160,7 +167,8 @@ define({
 
 		self.showNextBlock(questionName);
 	},
-	deactivateQuestion: function(self){
+	deactivateQuestion: function(element){
+		var self = this;
 		var tests = document.getElementById('tests');
 
 		$('html,body').animate({
@@ -173,14 +181,14 @@ define({
 
 		setTimeout(function(){
 			$(tests).removeClass('active');
-			$('#tests>div').removeClass('active');
+			$('#tests .test-wraper>div').removeClass('active');
 		},2000);
 	},
 	showNextBlock: function(questionName){
 		var self = this;
 		var currentHeight = document.querySelector('#'+questionName+' section').clientHeight;
 		var maxHeight = document.getElementById(questionName).clientHeight;
-		
+
 		this.testsHtml.find('.goNext').on('click',Animate);
 
 		function Animate(){
@@ -196,7 +204,7 @@ define({
 	        },500);
 		}
 	},
-	checkTestComplite: function(testData, lastTestId){
+	checkTestComplite: function(testData, lastTestId,testName){
 		var self = this;
 		var compleatedQuest = 0;
 
@@ -210,54 +218,55 @@ define({
 		});
 
 		if(compleatedQuest === (testData.questions.length)){
-			self.trigger('Test:Passed', lastTestId);
-
+			self.testPassed(lastTestId,testName);
+			self.checkImageProgress();
 		}
 
 	},
 	setProggress: function(score){
 		var tests = JSON.parse(localStorage.getItem('tests'));
 		var progressData = JSON.parse(localStorage.getItem('progress'));
-		var allQuestions =  _.flatten(_.map(tests, function(test){ 
+		var allQuestions =  _.flatten(_.map(tests, function(test){
 			return test.questions
 		}));
 		var allQuestionsLength = allQuestions.length;
-		allQuestions = _.compact(_.map(allQuestions, function(num){ 
-			return num.status 
+		allQuestions = _.compact(_.map(allQuestions, function(num){
+			return num.status
 		}));
 		var completedQuestionsLength = allQuestions.length;
-		console.log("proggressCatcher",progressData.score, "score",score, "progress",(completedQuestionsLength*100)/allQuestionsLength);
+
 		progressData.progress = Math.round((completedQuestionsLength*100)/allQuestionsLength);
+
 		switch(true){
-			case progressData.progress <= 12:
+			case progressData.score <= 12:
 				progressData.status = "Новичок";
 				progressData.comment = "У вас все еще впереди!";
 				progressData.img = "img/controll/progress/small/beginer.jpg";
 				progressData.imgMeta = "img/controll/progress/med/beginer.jpg";
 				progressData.score += score;
 				break;
-			case progressData.progress > 12 && progressData.progress <= 18:
+			case progressData.score > 12 && progressData.score <= 18:
 				progressData.status = "Ученик";
 				progressData.comment = "Неплохо, возможно, вас могли бы взять в ученики.";
 				progressData.img = "img/controll/progress/small/scholar.jpg";
 				progressData.imgMeta = "img/controll/progress/med/scholar.jpg";
 				progressData.score += score;
 				break;
-			case progressData.progress > 18 && progressData.progress <= 24:
+			case progressData.score > 18 && progressData.score <= 24:
 				progressData.status = "Подмастерье";
 				progressData.comment = "Вы здорово поработали, продолжайте в том же духе.";
 				progressData.img = "img/controll/progress/small/prentice.jpg";
 				progressData.imgMeta = "img/controll/progress/med/prentice.jpg";
 				progressData.score += score;
 				break;
-			case progressData.progress > 24 && progressData.progress <= 30:
+			case progressData.score > 24 && progressData.score <= 30:
 				progressData.status = "Мастер";
 				progressData.comment = "Вы хорошо понимаете особенности мастерства Серова.";
 				progressData.img = "img/controll/progress/small/teacher.jpg";
 				progressData.imgMeta = "img/controll/progress/med/teacher.jpg";
 				progressData.score += score;
 				break;
-			case progressData.progress > 30:
+			case progressData.score > 30:
 				progressData.status = "Учитель";
 				progressData.comment = "Вы отлично разбираетесь в особенностях творчества Серова!";
 				progressData.img = "img/controll/progress/small/master.jpg";
@@ -265,7 +274,7 @@ define({
 				progressData.score += score;
 				break;
 		}
-		console.log("proggressCatcher",progressData);
+
 		localStorage.setItem("progress",JSON.stringify(progressData));
 	}
 	// Управление звуком

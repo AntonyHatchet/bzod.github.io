@@ -65,26 +65,28 @@ define({
 	},
 
 
-	buildDonePoints: function(testName){
+	buildDonePoints: function(){
 		var data;
 		var self = this;
 		if(localStorage.tests){
 			data = JSON.parse(localStorage.tests);
 		}else{
-			data = this.tests;
+			data = this.tests.data;
 		}
-		data[testName].questions.forEach(function(item, i){
-			$(self.mapsHtml.find('.' +item.id)).attr('data-id', item.id);
-			if (item.status){
-				$(self.mapsHtml.find('.' +item.id)).addClass("done");
-				$(self.mapsHtml.find('img.' +item.id)).remove();
-				var img = $('<img/>', {
-				    class: item.id,
-				    src: '/img/maps/pointDone.png'
-				});
-				$(img).appendTo(self.mapsHtml.find(".done."+item.id+""));
-				$(self.mapsHtml.find('img.' +item.id)).addClass("done");
-			}
+		_.each(data, function(key){
+			key.questions.forEach(function(item, i){
+				$(self.mapsHtml.find('.' +item.id)).attr('data-id', item.id);
+				if (item.status){
+					$(self.mapsHtml.find('.' +item.id)).addClass("done");
+					$(self.mapsHtml.find('img.' +item.id)).remove();
+					var img = $('<img/>', {
+					    class: item.id,
+					    src: '/img/maps/pointDone.png'
+					});
+					$(img).appendTo(self.mapsHtml.find(".done."+item.id+""));
+					$(self.mapsHtml.find('img.' +item.id)).addClass("done");
+				}
+			});
 		});
 	},
 

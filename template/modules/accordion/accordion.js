@@ -15,10 +15,6 @@ define({
 			that.breadcrumbsRender("Уроки Валентина Серова",link);
 		});
 
-		that.on('Test:Passed', function(){
-			console.log('Test:Passed');
-			that.checkImageProgress();
-		});
 		//Кнопки перехода
 		self.find('a').hover(function(e){
 			$(e.target).closest(".circle").toggleClass('hover');
