@@ -18,15 +18,10 @@ define({
 		this.content.find('#accordion li.active').append(preloader);
 
 		$('body').html('').append(this.content, menu, about, tests);
-
 		this.preloadImage();
 		this.subscribe();
 	},
 	subscribe: function() {
 		var self = this;
-
-		this.on('Accordeon:Listed',function(){
-			self.refreshLine();
-		});
 	}
 });

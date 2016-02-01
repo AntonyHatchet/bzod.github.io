@@ -7,10 +7,12 @@
 		{{#each questions}}
 			<div id={{id}} data-id={{dataId}} style=background-image:url({{background}})>
 				<section class="first" data-count="0">
-					<h1>{{name}}</h1>
-					<p class="subtitle">{{cityEntry.subtitle}}</p>
-					<p>{{cityEntry.aditionalSubtitle}}</p>
-					<p class="question">{{cityEntry.text}}</p>
+                    <div class="frame">
+                        <h1>{{name}}</h1>
+                        <p class="subtitle">{{cityEntry.subtitle}}</p>
+                        <p class="text">{{cityEntry.aditionalSubtitle}}</p>
+                        <p class="question">{{cityEntry.text}}</p>
+                    </div>
 				</section>
 				{{#each cityBloks}}
 					<section class="bloks" data-count={{math @index "+" 1}} >
@@ -39,7 +41,7 @@
 				{{/each}}
 				<section class='questions'>
 					<h1>Задание</h1>
-					<p>{{question}}</p>
+					<p class="text">{{question}}</p>
 					{{#if status}}
 						<div class="answers">
 					{{else}}

@@ -2,7 +2,7 @@
 	width: 100%;
 	height: 100%;
 	font-weight: 400;
-	font-size: 1.2vw;
+	font-size: 1.1vw;
 	line-height: 1.1;
 	background: white none repeat scroll 0 0;
 
@@ -152,16 +152,24 @@
 			list-style: none;
 
 			.active{
-				img{
-					border-bottom: 2px solid #c41230;
-					height: 25px;
-				}
+                &:before {
+                  content: '';
+                  position: absolute;
+                  top: 23px;
+                  display: block;
+                  border-top: 2px solid #c41230;
+                  left: 0;
+                  right: 0;
+                }
 			}
+
+
 
 			li{
 				float: left;
 				margin:0 10px;
 				cursor: pointer;
+                position: relative;
 
 				@media screen and (max-height: 768px){
 					    margin: 0 5px;

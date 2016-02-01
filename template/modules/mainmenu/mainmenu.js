@@ -105,14 +105,12 @@ define({
 	},
 
 	controllButtons: function(self,element) {
-		var that = this;
 
 		if($(element.target).data('id')){
 
 			switch ($(element.target).data('id')) {
 				case "reloadButton":
-					self.find(".selectSection p").html('Обнулить результат?');
-					self.find("#succesMenuButton").attr('href','#reset');
+					this.fillProgressMenu(self);
 					break;
 				case "turnOfSound":
 					self.find(".selectSection p").html('Изменить настройки звука?');
@@ -128,9 +126,37 @@ define({
 				default:
 
 			}
-			self.find(".pushed").toggleClass('pushed');
-			self.find(".selectSection").removeClass().addClass($(element.target).data('id') + " selectSection");
-			$(element.target).toggleClass('pushed');
+			if($(element.target).hasClass("pushed")){
+				$(element.target).toggleClass('pushed');
+				self.find(".selectSection").removeClass().addClass("selectSection");
+			}else{
+				self.find(".pushed").removeClass('pushed');
+				self.find(".selectSection").removeClass().addClass($(element.target).data('id') + " selectSection");
+				$(element.target).addClass('pushed');
+			}
+		}
+	},
+
+	fillProgressMenu: function(self){
+		console.log('reloadButton')
+		var progressData = JSON.parse(localStorage.getItem('progress'));
+
+		self.find("#progressPercent").html(progressData.progress);
+		self.find("#progressBar").css('width',progressData.progress+'%');
+		self.find("#progressScore").html(progressData.score);
+		self.find("#progressComment").html(progressData.comment);
+		self.find("#progressImg").attr('src',progressData.img);
+		self.find("#progressStatus").html(progressData.status);
+
+		$('#descriptionMetaOg').attr("content","Ваш статус: "+ progressData.status + ". " + progressData.comment);
+		$('#titleMetaOg').attr("content","Уроки Валентина Серова");
+		$('#imgMetaOg').attr("content",progressData.imgMeta);
+		$('#descriptionMetaTw').attr("content","Ваш статус: "+ progressData.status + ". " + progressData.comment);
+		$('#titleMetaTw').attr("content","Уроки Валентина Серова");
+		$('#imgMetaTw').attr("content",progressData.imgMeta);
+
+		if(progressData.progress === 100){
+			self.find("#progressShare > div").css('pointer-events','auto');
 		}
 	}
 	// Управление звуком

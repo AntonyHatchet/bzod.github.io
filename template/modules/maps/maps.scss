@@ -118,13 +118,31 @@
 			left: 0;
 			top: 0;
 		}
+		
+		.responsive-image {
+			width:100%;
+			height:100%;
+			background-size:cover;
+		  }
+		  
+		.set-points {
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+			position:absolute;
+		}
 
 		.point{
 			position: absolute;
 			background-position: center !important;
 			background-repeat: no-repeat !important;
+			/*
 			width: 115px;
 			height: 113px;
+			*/
+			width: 5.6%;
+			height: 10%;
 			z-index: 2;
 		}
 
@@ -191,7 +209,8 @@
 			top: 1%;
 			left: 70.5%;
 		}
-
+		
+		/*
 		.birthdayPeter{
 			top: 52%;
 			left: 5.5%;
@@ -217,7 +236,7 @@
 				top: 43.5%;
 			}
 		}
-
+		
 		.euroDressPeter{
 			top: 51.5%;
 			left: 42%;
@@ -230,7 +249,7 @@
 				top: 43.5%;
 			}
 		}
-
+		
 		.SaintPetersburg{
 			top: 51.5%;
 			left: 60%;
@@ -243,7 +262,7 @@
 				top: 43.5%;
 			}
 		}
-
+		
 		.deathPeter{
 			top: 51.5%;
 			left: 80%;
@@ -255,6 +274,33 @@
 			@media screen and (max-height: 660px){
 				top: 43.5%;
 			}
+
+		}
+		*/
+		
+		.birthdayPeter{
+			top: 47%;
+			left: 5.5%;
+		}
+		
+		.fortunePeter {
+			top: 47%;
+			left: 21%;
+		}
+		
+		.euroDressPeter{
+			top: 47%;
+			left: 42%;
+		}
+		
+		.SaintPetersburg{
+			top: 47%;
+			left: 60%;
+		}
+
+		.deathPeter{
+			top: 47%;
+			left: 80%;
 		}
 
 		.cloud {
@@ -298,12 +344,11 @@
 	}
 
 	.screenContainer .maps .map {
-	    position: relative;
-	    width: 100%;
-	    height: 100%;
-	    min-width: 1024px;
-	    min-height: 768px;
-	    left: 0;
-	    top: -15.8vh;
+	    top: 0vh;
+	}
+	#map-antiq{
+		.screenContainer .maps .map {
+		    top: 0vh;
+		}
 	}
 }

@@ -14,9 +14,6 @@ define({
 		this.on('Preload:End', self.startVideo);
 		var scene = self.content.find('#scene');
 		var parallax = new Parallax(scene[0]);
-	},
-	startVideo: function(){
-		var self = this;
 		var videobackground = new $.backgroundVideo($('#video'), {
 	      "align": "centerXY",
 	      "width": 1920,
@@ -24,28 +21,33 @@ define({
 	      "path": "video/",
 	      "filename": "startVideo",
 	      "types": ["mp4"],
-	      "preload": false,
+	      "preload": true,
 	      "autoplay": false,
 	      "loop": false
 	    });
-		var video = document.getElementById('video_background');
-		var closeVideo = document.getElementById('closeVideo');
-		var scene = document.getElementById('scene');
+	},
+	startVideo: function(){
+		var self = this;
+		var video = this.content.find('#video_background');
+		var closeVideo = this.content.find('#closeVideo');
+		var scene = this.content.find('#scene');
 		$(closeVideo).on('click', function(){
-			scene.style.display = "block";
+			$(scene).css("display" ,"block");
 			video.remove();
 			closeVideo.remove();
 			self.animate();
+			$(closeVideo).off('click');
 		});
 
-		video.play();
+		$(video)[0].play();
 		setTimeout(function(){
-			scene.style.display = "block";
+			$(scene).css("display" ,"block");
 			self.animate();
 		},20000);
 		setTimeout(function(){
-			closeVideo.remove();
-			video.remove();
+			$(closeVideo).remove();
+			$(video)[0].remove();
+			self.off('Preload:End', self.startVideo);
 		},24000);
 	},
 	animate: function(){

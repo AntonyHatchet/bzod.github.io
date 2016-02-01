@@ -15,49 +15,30 @@ define({
 			that.breadcrumbsRender("Уроки Валентина Серова",link);
 		});
 
+		that.on('Test:Passed', function(){
+			console.log('Test:Passed');
+			that.checkImageProgress();
+		});
 		//Кнопки перехода
 		self.find('a').hover(function(e){
 			$(e.target).closest(".circle").toggleClass('hover');
 		});
 
-		//Автопереход колонок
-		this.on('RedLine:Passed',function(){
-			var elements = self.find('li');
-			var currentActive;
-
-			[].forEach.call(elements,function(li){
-
-				if(li.matches('.active')){
-
-					if((_.indexOf(elements, li) +1 ) == elements.length){
-
-						currentActive = 0;
-					}else{
-
-						currentActive = (_.indexOf(elements, li) + 1);
-					}
-				}
-			});
-
-			that.changeActiveBlock(elements,elements[(currentActive)]);
-			app.breadcrumbsRender("Уроки Валентина Серова",app.getActiveTab());
-		});
-
 		this.checkImageProgress();
 		this.animateButtons();
 	},
-	changeActiveBlock: function(allElement,mustActivateLi){
+	// changeActiveBlock: function(allElement,mustActivateLi){
 
-		$(allElement).removeClass('active');
-		$(mustActivateLi).addClass('active');
-		this.trigger('Accordeon:Listed');
-	},
+	// 	$(allElement).removeClass('active');
+	// 	$(mustActivateLi).addClass('active');
+	// 	this.trigger('Accordeon:Listed');
+	// },
 	checkImageProgress: function(){
 		var self = this;
 		var test = JSON.parse(localStorage.getItem("tests"));
-
+		console.log("checkImageProgress");
 		//Вход в цикл
-		console.log("ПРоверяем тест на выполнение");
+		//console.log("ПРоверяем тест на выполнение");
 		if(test){
 			_.keys(test).forEach(function(element){
 
@@ -66,23 +47,23 @@ define({
 				if(test[element].statusGeneral){
 
 					console.log("Проверяем тест "+element+" пройден");
-					console.log("Тест",test[element]);
+					//console.log("Тест",test[element]);
 
-					$("#"+test[element].name +" img").attr("src",test[element].rewardGeneral);
-					$("#"+test[element].name).addClass("opened");
+					$(self.accordionHtml.find("#"+test[element].name +" img")).attr("src",test[element].rewardGeneral);
+					$(self.accordionHtml.find("#"+test[element].name)).addClass("opened");
 				}else{
-					$("#"+test[element].name +" img").attr("src",test[element].baseImage);
+					$(self.accordionHtml.find("#"+test[element].name +" img")).attr("src",test[element].baseImage);
 				}
 			});
 		}else{
-			console.log("Not an object!")
+			//console.log("Not an object!")
 		}
 		//Выход из цикла
 	},
 	getActiveTab: function(){
 		var self = this;
 
-		return $('li.active').attr('data-href');
+		return $(self.accordionHtml.find('li.active')).attr('data-href');
 	},
 	animateButtons: function(){
 		var self = this.accordionHtml;
