@@ -68,14 +68,12 @@ define({
 				self.testsHtml.find(e.target.parentNode.parentNode.parentNode).addClass('complete');
 				self.testsHtml.find(e.target.parentNode).addClass('active');
 				scores += 3;
-				console.log("scores + 3",scores);
 				questPassed(testId, testName, scores);
 				scores = 0;
 			}else{
 				self.testsHtml.find(e.target.parentNode.parentNode.querySelector('.'+selector)).addClass('active');
 				self.testsHtml.find(e.target.parentNode).addClass('active');
 				scores -= 1;
-				console.log("scores - 1",scores);
 			};
 		};
 
@@ -109,10 +107,9 @@ define({
 			self.testsHtml.find('#'+domTestId+' .answers').removeClass('active');
 			self.testsHtml.find('#'+domTestId+' .reward').addClass('active');
 			self.checkTestComplite(testData[testName],domTestId,testName);
-			self.setProggress(scores);
-			self.buildDonePoints(testName);
+			self.buildDonePoints();
 			self.testBreadcrumbsRender("Игра",testData[testName].testName,testName);
-
+			self.setProggress(scores);
 		};
 	},
 	testPassed: function(lastTestId,testName) {
@@ -224,6 +221,7 @@ define({
 
 	},
 	setProggress: function(score){
+		console.log("setProggress score",score)
 		var tests = JSON.parse(localStorage.getItem('tests'));
 		var progressData = JSON.parse(localStorage.getItem('progress'));
 		var allQuestions =  _.flatten(_.map(tests, function(test){
@@ -236,42 +234,38 @@ define({
 		var completedQuestionsLength = allQuestions.length;
 
 		progressData.progress = Math.round((completedQuestionsLength*100)/allQuestionsLength);
-
+		progressData.score += score;
+		console.log(progressData.score);
 		switch(true){
 			case progressData.score <= 12:
 				progressData.status = "Новичок";
 				progressData.comment = "У вас все еще впереди!";
 				progressData.img = "img/controll/progress/small/beginer.jpg";
 				progressData.imgMeta = "img/controll/progress/med/beginer.jpg";
-				progressData.score += score;
 				break;
 			case progressData.score > 12 && progressData.score <= 18:
 				progressData.status = "Ученик";
 				progressData.comment = "Неплохо, возможно, вас могли бы взять в ученики.";
 				progressData.img = "img/controll/progress/small/scholar.jpg";
 				progressData.imgMeta = "img/controll/progress/med/scholar.jpg";
-				progressData.score += score;
 				break;
 			case progressData.score > 18 && progressData.score <= 24:
 				progressData.status = "Подмастерье";
 				progressData.comment = "Вы здорово поработали, продолжайте в том же духе.";
 				progressData.img = "img/controll/progress/small/prentice.jpg";
 				progressData.imgMeta = "img/controll/progress/med/prentice.jpg";
-				progressData.score += score;
 				break;
 			case progressData.score > 24 && progressData.score <= 30:
 				progressData.status = "Мастер";
 				progressData.comment = "Вы хорошо понимаете особенности мастерства Серова.";
 				progressData.img = "img/controll/progress/small/teacher.jpg";
 				progressData.imgMeta = "img/controll/progress/med/teacher.jpg";
-				progressData.score += score;
 				break;
 			case progressData.score > 30:
 				progressData.status = "Учитель";
 				progressData.comment = "Вы отлично разбираетесь в особенностях творчества Серова!";
 				progressData.img = "img/controll/progress/small/master.jpg";
 				progressData.imgMeta = "img/controll/progress/med/master.jpg";
-				progressData.score += score;
 				break;
 		}
 

@@ -32,7 +32,6 @@ define({
 	checkImageProgress: function(){
 		var self = this;
 		var test = JSON.parse(localStorage.getItem("tests"));
-		console.log("checkImageProgress");
 		//Вход в цикл
 		//console.log("ПРоверяем тест на выполнение");
 		if(test){
@@ -45,7 +44,7 @@ define({
 					console.log("Проверяем тест "+element+" пройден");
 					//console.log("Тест",test[element]);
 
-					$(self.accordionHtml.find("#"+test[element].name +" img")).attr("src",test[element].rewardGeneral);
+					$(self.accordionHtml.find("#"+test[element].name +" .responsive-image")).css("background-image","url("+test[element].rewardGeneral+")");
 					$(self.accordionHtml.find("#"+test[element].name)).addClass("opened");
 				}else{
 					$(self.accordionHtml.find("#"+test[element].name +" img")).attr("src",test[element].baseImage);
