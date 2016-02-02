@@ -343,6 +343,7 @@
 				img{
 					border-left: 4px #c41230 solid;
 					width: 100%;
+                    max-width: 700px;
 				}
 			}
 			.left{
@@ -350,6 +351,7 @@
 				height: 100%;
 				width: 50%;
 				padding: 10% 5% 0 5%;
+                text-align: right;
 
 				h1{
 					font-size: 4em;
@@ -358,14 +360,15 @@
 				}
 
 				img{
-					border-right: 4px #c41230 solid;
 					width: 100%;
+                    max-width: 600px;
 				}
 			}
 		}
 	}
 
     #illustrationNature, #illustrationStyle, #illustrationText, #illustrationDetail{
+        background-color: #e5d5b2;
         .first {
             .frame {
                 background: url('../../../img/tests/krylov/frame.png') 0 0 no-repeat;
@@ -638,7 +641,7 @@
                     }
                 }
                 &.bloks {
-                    min-height: 700px;
+//                    min-height: 700px;
                 }
             }
         }

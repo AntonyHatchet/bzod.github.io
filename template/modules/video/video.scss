@@ -4,16 +4,43 @@
   	top: 0;
 	position: absolute;
 	background-color: #ffffff;
-	font-size: 1.8vh;
+	/*font-size: 1.8vh;*/
+	font-size: 16px;
 	
 	&#video-history{
 		.circle.bottom {
 			right: 10%;
 		    bottom: 20px;
-		    height: 400px;
+		    /*
+			height: 400px;
 		    width: 400px;
+			*/
+			width: 550px;
+			height: 550px;
 		}
 	}
+	
+	&#video-story{
+		.circle.bottom {
+			width: 480px;
+			height: 480px;
+		}
+	}
+	
+	&#video-antiq{
+		.circle.bottom {
+			width: 450px;
+			height: 450px;
+		}
+	}
+	
+	&#video-history{
+		.circle.bottom {
+			width: 490px;
+			height: 490px;
+		}
+	}
+	
 	/*
 	&#video-history{
 		.circle.bottom {
@@ -88,7 +115,8 @@
 				*/
 				width:450px;
 				height:450px;
-				font-size:13px;
+				/*font-size:13px;*/
+				font-size:16px;
 		    }
 
 

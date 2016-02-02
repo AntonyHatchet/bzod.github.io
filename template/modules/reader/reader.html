@@ -28,7 +28,8 @@
 					    	{{else}}
 								{{#if image}}
 									<div class="imageWrapper">
-										<img src={{thumbnail}}>
+										<!--<img src={{thumbnail}}>-->
+										<div class="responsive-image" style="background-image:url({{thumbnail}});"></div>
 										<div class="imageTitleCover">
 											<p class="imageTitle">{{title}}</p>
 											<img class="openModal" data-fullImage={{image}} src="img/controll/loupe.png">
