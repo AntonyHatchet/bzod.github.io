@@ -4,13 +4,12 @@ define({
 
 		var preloader = this.renderPreloader();
 
-		$('body').html('').append(preloader, this.content);
+		$('#app').html('').append(preloader, this.content);
 		this.preloadImage(150);
 		this.subscribe();
 	},
 	subscribe: function() {
 		var self = this;
-
 		this.on('Preload:End', self.startVideo);
 		var scene = self.content.find('#scene');
 		var parallax = new Parallax(scene[0]);

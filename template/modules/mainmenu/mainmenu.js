@@ -15,17 +15,16 @@ define({
 		// }
 		//this.audioState = false;
 		self.find('.leftSide .icon').on('click', function() {
-
 			self.find('.leftSide .leftMenu').toggleClass('hide');
 		});
 
 		self.find('.menu a:not(.icon)').on('click', function(e) {
-				self.find('.menu a:not(.icon)').removeClass('active');
-				$(e.target).addClass('active');
-				self.find('.leftSide .leftMenu').toggleClass('hide');
+			self.find('.menu a:not(.icon)').removeClass('active');
+			$(e.target).addClass('active');
+			self.find('.leftSide .leftMenu').toggleClass('hide');
 		});
 
-		self.find('.rightSide *').on('click', function(element) {
+		self.find('.rightSide button').on('click', function(element) {
 			that.controllButtons(self,element);
 		});
 	},
@@ -121,13 +120,14 @@ define({
 					self.find("#succesMenuButton").attr('href','www.tretyakovgallery.ru');
 					break;
 				case "aboutButton":
-					this.trigger('Get:About');
+					this.animateAbout();
 					break;
 				default:
 
 			}
+
 			if($(element.target).hasClass("pushed")){
-				$(element.target).toggleClass('pushed');
+				$(element.target).removeClass('pushed');
 				self.find(".selectSection").removeClass().addClass("selectSection");
 			}else{
 				self.find(".pushed").removeClass('pushed');
@@ -154,6 +154,13 @@ define({
 		$('#descriptionMetaTw').attr("content","Ваш статус: "+ progressData.status + ". " + progressData.comment);
 		$('#titleMetaTw').attr("content","Уроки Валентина Серова");
 		$('#imgMetaTw').attr("content",progressData.imgMeta);
+
+		this.share.updateContent({
+		    title: 'Уроки Валентина Серова',
+		    description: "Ваш статус: "+ progressData.status + ". " + progressData.comment,
+		    url: 'http://edu.tretyakov.ru/',
+		    image: 'http://edu.tretyakov.ru/'+progressData.imgMeta
+		});
 
 		if(progressData.progress === 100){
 			self.find("#progressShare > div").css('pointer-events','auto');

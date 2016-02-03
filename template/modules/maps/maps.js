@@ -3,16 +3,12 @@ define({
 		var self = this;
 		this.loadMap("maps");
 
-		// self.on('Test:Loaded', function(testName) {
-		// 	this.buildDonePoints(testName);
-		// });
-
 		return this.mapsHtml;
 	},
 	mapLoaded: function() {
-			this.subscribeMap();
-			this.animatePoints();
-			this.animateShip();
+		this.subscribeMap();
+		this.animatePoints();
+		this.animateShip();
 	},
 	printMap : function (mapName) {
 		var self = this;

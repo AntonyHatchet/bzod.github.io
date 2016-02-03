@@ -27,10 +27,10 @@ define({
 				self.printTestPages();
 			}else{
 				self.tests.data=test;
+				localStorage.setItem("progress",JSON.stringify(gameProgress));
 			}
 			self.tests.template = self.renderHandlebarsTemplate("#testTemplate", self.tests.data);
 			localStorage.setItem("tests",JSON.stringify(self.tests.data));
-			localStorage.setItem("progress",JSON.stringify(gameProgress));
 			self.printTestPages();
 		});
 
